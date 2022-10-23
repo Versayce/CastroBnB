@@ -2,6 +2,30 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
-    "express-validator": "^6.14.2"
-  }
+    "express-validator": "^6.14.2",
+    "pg": "^8.8.0"
+  },
+  "name": "authenticate-me",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "install": "npm --prefix backend install backend",
+    "dev:backend": "npm install --prefix backend start",
+    "sequelize": "npm run --prefix backend sequelize",
+    "sequelize-cli": "npm run --prefix backend sequelize-cli",
+    "start": "npm start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Versayce/Authenticate-Me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Versayce/Authenticate-Me/issues"
+  },
+  "homepage": "https://github.com/Versayce/Authenticate-Me#readme",
+  "description": ""
 }
