@@ -1,6 +1,6 @@
 const express = require('express')
 const { Spot } = require('../../db/models');
-const { User } = require('../../db/models');
+
 const router = express.Router();
 
 
