@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      //Spot.hasOne(models.User)
+      //Spot.hasOne(models.User) //commented out because foreign key was being made for UserId **need to do more testing
     }
   }
   Spot.init({
