@@ -10,11 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       spotId: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       userId: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       startDate: {

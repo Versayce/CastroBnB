@@ -1,5 +1,6 @@
 const express = require('express')
-const { Spot, User } = require('../../db/models');
+const url = require('url');
+const { Spot, User, SpotImage } = require('../../db/models');
 
 
 const router = express.Router();
@@ -40,6 +41,21 @@ router.get('/current', async (req, res) => {
     })
     return res.json({
         spots,
+    })
+})
+
+router.get('/:spotId', async (req, res) => {
+    
+})
+
+router.post('/:spotId/images', async (req, res) => {
+    spotImage = await SpotImage.create({
+        "url": req.body.url,
+        "preview": req.body.preview,
+        "spotId": req.query.spotId
+    })
+    return res.json({
+        spotImage
     })
 })
 
