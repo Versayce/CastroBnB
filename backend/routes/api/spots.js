@@ -27,16 +27,14 @@ router.post('/', async (req, res) => {
         "price": req.body.price,
         "ownerId": req.user.id
     });
-    return res.json({
-        spot,
-    })
+    res.status(201)
+    return res.json(spot)
 })
 
 router.get('/current', async (req, res) => {
-    const { id } = req.user
     const spots = await Spot.findAll({
         where: {
-            ownerId: id
+            ownerId: req.user.id
         }
     })
     return res.json({
@@ -44,19 +42,33 @@ router.get('/current', async (req, res) => {
     })
 })
 
-router.get('/:spotId', async (req, res) => {
-    
+router.get('/:spotId', async (req, res, next) => {
+    const spot = await Spot.findOne({
+        where: {
+            id: req.params.spotId
+        }
+    })
+    if (!spot) {
+        const err = new Error('Invalid Spot Id');
+        err.status = 404;
+        err.title = 'Request Failed';
+        err.errors = ['The given Id does not exist.'];
+        return next(err);
+    }
+    return res.json({
+        spot
+    })
 })
 
-router.post('/:spotId/images', async (req, res) => {
-    spotImage = await SpotImage.create({
-        "url": req.body.url,
-        "preview": req.body.preview,
-        "spotId": req.query.spotId
-    })
-    return res.json({
-        spotImage
-    })
-})
+// router.post('/:spotId/images', async (req, res) => {
+//     spotImage = await SpotImage.create({
+//         "url": req.body.url,
+//         "preview": req.body.preview,
+//         "spotId": req.params.spotId
+//     })
+//     return res.json({
+//         spotImage
+//     })
+// })
 
 module.exports = router;
