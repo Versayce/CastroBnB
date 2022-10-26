@@ -33,7 +33,6 @@ router.post('/', async (req, res) => {
 
 router.get('/current', async (req, res) => {
     const { id } = req.user
-    //const userId = await User.findByPk(id)
     const spots = await Spot.findAll({
         where: {
             ownerId: id
