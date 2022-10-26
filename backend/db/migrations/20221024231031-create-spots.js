@@ -10,6 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       ownerId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      ownerId: {
         type: Sequelize.INTEGER
       },
       address: {
