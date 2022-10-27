@@ -49,11 +49,10 @@ router.get('/:spotId', async (req, res, next) => {
         }
     })
     if (!spot) {
-        const err = new Error('Invalid Spot Id');
-        err.status = 404;
-        err.title = 'Request Failed';
-        err.errors = ['The given Id does not exist.'];
-        return next(err);
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
     }
     return res.json({
         spot
