@@ -60,6 +60,47 @@ router.get('/:spotId', async (req, res, next) => {
     })
 })
 
+router.post('/:spotId/images', async (req, res) => {
+    const spotImage = await SpotImage.create({
+        "url": req.body.url,
+        "preview": req.body.preview,
+        "spotId": req.params.spotId
+    })
+
+    const spot = await Spot.findByPk(req.params.spotId)
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+    return res.json({
+        spotImage
+    })
+})
+
+router.put('/:spotId', async (req, res) => {
+    const spot = await Spot.findByPk(req.params.spotId)
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+    
+    spot.address = req.body.address
+    spot.city = req.body.city
+    spot.state = req.body.state
+    spot.country = req.body.country
+    spot.lat = req.body.lat
+    spot.lng = req.body.lng
+    spot.name = req.body.name
+    spot.description = req.body.description
+    spot.price = req.body.price
+
+    return res.json(spot);
+})
+
 // router.post('/:spotId/images', async (req, res) => {
 //     spotImage = await SpotImage.create({
 //         "url": req.body.url,
