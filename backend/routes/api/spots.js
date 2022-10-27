@@ -101,15 +101,29 @@ router.put('/:spotId', async (req, res) => {
     return res.json(spot);
 })
 
-// router.post('/:spotId/images', async (req, res) => {
-//     spotImage = await SpotImage.create({
-//         "url": req.body.url,
-//         "preview": req.body.preview,
-//         "spotId": req.params.spotId
-//     })
-//     return res.json({
-//         spotImage
-//     })
-// })
+router.delete('/:spotId', async (req, res) => {
+    const {spotId} = req.params
+    const spot = await Spot.findOne({
+        where: {
+            id: spotId
+        }
+    })
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    await Spot.destroy({
+        where: {
+            id: spotId
+        }
+    })
+    return res.status(200).json({
+        message: "Successfully deleted",
+        statusCode: 200
+    })
+})
 
 module.exports = router;
