@@ -80,9 +80,11 @@ router.get('/current', async (req, res) => {
     })
 })
 
+
 router.get('/:spotId', async (req, res, next) => {
+    const { spotId } = req.params;
     const spot = await Spot.findOne({
-        where: { id: req.params.spotId },
+        where: { id: spotId },
         include:[
             {
                 model: SpotImage,
@@ -94,8 +96,8 @@ router.get('/:spotId', async (req, res, next) => {
                 attributes: ['id', 'firstName', 'lastName']
             },
         ],
-        group: ["Spot.id"]
     })
+
     if (!spot) {
         return res.status(404).json({
             message: "Spot couldn't be found",
@@ -105,12 +107,12 @@ router.get('/:spotId', async (req, res, next) => {
     const newSpot = spot.toJSON();
     newSpot.numReviews = await Review.count({
         where: {
-            spotId: req.params.spotId
+            spotId: spotId
         }
     })
     const reviews = await Review.findAll({
         where: {
-            spotId: req.params.spotId
+            spotId: spotId
         }
     })
     
@@ -125,7 +127,7 @@ router.get('/:spotId', async (req, res, next) => {
     // console.log(starCount)
     // console.log('numrev: ', numRev)
     newSpot.avgStarRating = starCount/numRev
-
+    newSpot.const
     return res.json(
         newSpot,
     )
