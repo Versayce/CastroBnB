@@ -194,6 +194,23 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     )
 })
 
+router.get('/:spotId/reviews', requireAuth, async (req, res) => {
+    const reviews = await Review.findAll({
+        where: { spotId: req.params.spotId}
+    })
+    //error handling for if spot does not exist
+    const spot = await Spot.findByPk(req.params.spotId)
+    if(!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+    })
+    }
+    return res.json(
+        reviews
+    )
+})
+
 router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     //error for if a spot cannot be found for a given spot id
     const reviewSpot = await Spot.findByPk(req.params.spotId)
