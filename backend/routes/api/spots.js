@@ -212,7 +212,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     //error for if a review has already been placed by the same user for the targeted spot
     const review = await Review.findByPk(req.user.id)
     if (review) {
-        return res.status(404).json({
+        return res.status(403).json({
             message: "User already has a review for this spot",
             statusCode: 403,
         })
