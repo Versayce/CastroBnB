@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/current', requireAuth, async (req, res) => {
     const reviews = Review.findAll({
-        where: { id: req.user.id }
+        where: { userId: req.user.id }
     })
     return res.json(
         reviews
@@ -28,7 +28,7 @@ router.post('/:reviewId/images', async (req, res) => {
     const trimmedImage = await ReviewImage.findOne({
         where: { reviewId: req.params.reviewId },
         attributes: { exclude: ['reviewId', 'createdAt', 'updatedAt'] },
-        //order: [['id', 'DESC']]
+        order: [['id', 'DESC']]
     })
 
     const reviewExists = await Review.findByPk(req.params.reviewId)
@@ -40,7 +40,7 @@ router.post('/:reviewId/images', async (req, res) => {
     }
     
     return res.json(
-        newImage
+        trimmedImage
     )
 })
 
