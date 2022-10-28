@@ -104,7 +104,7 @@ router.get('/:spotId', async (req, res, next) => {
             statusCode: 404
         })
     }
-    const newSpot = spot.toJSON();
+    let newSpot = spot.toJSON();
     newSpot.numReviews = await Review.count({
         where: {
             spotId: spotId
@@ -119,9 +119,9 @@ router.get('/:spotId', async (req, res, next) => {
     let starCount = 0;
     let numRev = 0;
     reviews.forEach(review => {
-        newReview = review.toJSON();
+        const newReview = review.toJSON();
         // console.log(newReview.stars)
-        starCount += Number.parseInt(newReview.stars)
+        starCount += newReview.stars
         numRev += 1
     });
     // console.log(starCount)
