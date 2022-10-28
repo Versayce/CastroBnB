@@ -15,7 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   ReviewImage.init({
-    url: DataTypes.STRING
+    url: DataTypes.STRING,
+    reviewId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'ReviewImage',

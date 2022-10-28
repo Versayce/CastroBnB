@@ -70,7 +70,7 @@ router.post('/', requireAuth, async (req, res) => {
 })
 
 router.get('/current', requireAuth, async (req, res, next) => {
-    console.log(req.user)
+    //console.log(req.user)
     const spots = await Spot.findAll({
         where: { ownerId: req.user.id },
         include: [
@@ -195,14 +195,8 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 })
 
 router.post('/:spotId/reviews', requireAuth, async (req, res) => {
-    const makeReview = await Review.create({
-        "review": req.body.review,
-        "stars": req.body.stars,
-        "spotId": req.params.spotId,
-        "userId": req.user.id,
-    })
-    //error for if a review cannot be found for a given spot id
-    const reviewSpot = await Review.findByPk(req.params.spotId)
+    //error for if a spot cannot be found for a given spot id
+    const reviewSpot = await Spot.findByPk(req.params.spotId)
     if (!reviewSpot) {
         return res.status(404).json({
             message: "Spot couldn't be found",
@@ -210,13 +204,26 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
         })
     }
     //error for if a review has already been placed by the same user for the targeted spot
-    const review = await Review.findByPk(req.user.id)
+    const review = await Review.findOne({
+        where: {
+            userId: req.user.id,
+            spotId: req.params.spotId
+        }
+    })
+    console.log('review: ', review)
     if (review) {
         return res.status(403).json({
             message: "User already has a review for this spot",
             statusCode: 403,
         })
     }
+    const makeReview = await Review.create({
+        "review": req.body.review,
+        "stars": req.body.stars,
+        "spotId": req.params.spotId,
+        "userId": req.user.id,
+    })
+    
     return res.json(
         makeReview
     )
