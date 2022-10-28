@@ -9,8 +9,8 @@ const router = express.Router();
 
 
 router.get('/current', requireAuth, async (req, res) => {
-    const reviews = Review.findAll({
-        where: { userId: req.user.id }
+    const reviews = await Review.findAll({
+        where: { userId: req.user.id },
     })
     return res.json(
         reviews
