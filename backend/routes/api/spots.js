@@ -93,7 +93,8 @@ router.get('/:spotId', async (req, res, next) => {
                 as: "Owner",
                 attributes: ['id', 'firstName', 'lastName']
             },
-        ]
+        ],
+        group: ["Spot.id"]
     })
     if (!spot) {
         return res.status(404).json({
