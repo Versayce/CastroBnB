@@ -12,11 +12,11 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
-        include: {
-            model: Review
-        }
+        include: [
+            {model: Review},
+            {model: SpotImage}
+        ] 
     });
-    
     //console.log("og spots: ", spots)
     let spotList = [];
     spots.forEach(spot => {
@@ -29,19 +29,26 @@ router.get('/', async (req, res) => {
     spotList.forEach(spot => {
         spot.Reviews.forEach(review => {
             //console.log(review.stars)
-            if(review.stars) {
+            if(review) {
                 //console.log(review)
                 numRev += 1;
                 starCount += review.stars;
                 spot.avgRating = starCount/numRev;
             }
-            if(!review.stars) {
-                spot.avgRating = "Not enough data to calculate an average"
+        })
+
+        spot.SpotImages.forEach(image => {
+            if(!image) {}
+            if(image.preview === true) {
+                spot.previewImage = image.url
             }
         })
+
+        if(spot.avgRating === undefined) spot.avgRating = null
+        if(spot.SpotImages.length === 0) spot.previewImage = null
         delete spot.Reviews;
+        delete spot.SpotImages
     })
-    
     return res.json({
         spotList,
     })
