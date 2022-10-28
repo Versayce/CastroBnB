@@ -210,7 +210,6 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
             spotId: req.params.spotId
         }
     })
-    console.log('review: ', review)
     if (review) {
         return res.status(403).json({
             message: "User already has a review for this spot",
@@ -220,7 +219,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     const makeReview = await Review.create({
         "review": req.body.review,
         "stars": req.body.stars,
-        "spotId": req.params.spotId,
+        "spotId": Number.parseInt(req.params.spotId),
         "userId": req.user.id,
     })
     
