@@ -95,6 +95,12 @@ router.get('/:spotId', async (req, res, next) => {
             },
         ]
     })
+    if (!spot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
 
     const newSpot = spot.toJSON();
     newSpot.numReviews = await Review.count({
@@ -120,12 +126,6 @@ router.get('/:spotId', async (req, res, next) => {
     // console.log('numrev: ', numRev)
     newSpot.avgStarRating = starCount/numRev
 
-    if (!spot) {
-        return res.status(404).json({
-            message: "Spot couldn't be found",
-            statusCode: 404
-        })
-    }
     return res.json(
         newSpot,
     )
