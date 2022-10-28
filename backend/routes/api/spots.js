@@ -54,7 +54,7 @@ router.get('/', async (req, res) => {
     })
 })
 
-router.post('/', async (req, res) => {
+router.post('/', requireAuth, async (req, res) => {
     const spot = await Spot.create({
         "address": req.body.address,
         "city": req.body.city,
