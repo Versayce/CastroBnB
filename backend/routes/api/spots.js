@@ -5,7 +5,7 @@ const { Spot, User, SpotImage, Review } = require('../../db/models');
 const review = require('../../db/models/review');
 const spot = require('../../db/models/spot');
 const { setPriority } = require('os');
-
+const { requireAuth } = require('../../utils/auth')
 
 const router = express.Router();
 
@@ -71,10 +71,14 @@ router.post('/', async (req, res) => {
     return res.json(spot)
 })
 
-router.get('/current', async (req, res) => {
+router.get('/current', requireAuth, async (req, res, next) => {
+    console.log(req.user)
     const spots = await Spot.findAll({
         where: { ownerId: req.user.id },
         include: [
+            {
+                model: Review
+            },
             {
                 model: SpotImage,
                 attributes: ['id', 'url', 'preview']
@@ -87,7 +91,8 @@ router.get('/current', async (req, res) => {
         //console.log('New Spots: ', spot.toJSON())
         spotList.push(spot.toJSON())
     })
-
+    let starCount = 0;
+    let numRev = 0;
     spotList.forEach(spot => {
         spot.SpotImages.forEach(image => {
             if(!image) {}
@@ -95,8 +100,19 @@ router.get('/current', async (req, res) => {
                 spot.previewImage = image.url
             }
         })
+        spot.Reviews.forEach(review => {
+            //console.log(review.stars)
+            if(review) {
+                //console.log(review)
+                numRev += 1;
+                starCount += review.stars;
+                spot.avgRating = starCount/numRev;
+            }
+        })
         if(spot.SpotImages.length === 0) spot.previewImage = null;
         delete spot.SpotImages;
+        if(spot.avgRating === undefined) spot.avgRating = null;
+        delete spot.Reviews;
     })
     return res.json({
         spotList,
@@ -175,7 +191,7 @@ router.post('/:spotId/images', async (req, res) => {
     })
 })
 
-router.put('/:spotId', async (req, res) => {
+router.put('/:spotId', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         return res.status(404).json({
@@ -197,7 +213,7 @@ router.put('/:spotId', async (req, res) => {
     return res.json(spot);
 })
 
-router.delete('/:spotId', async (req, res) => {
+router.delete('/:spotId', requireAuth, async (req, res) => {
     const {spotId} = req.params
     const spot = await Spot.findOne({
         where: {
