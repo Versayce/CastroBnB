@@ -2,8 +2,6 @@ const express = require('express')
 const url = require('url');
 const sequelize = require('sequelize')
 const { Spot, User, SpotImage, Review } = require('../../db/models');
-const review = require('../../db/models/review');
-const spot = require('../../db/models/spot');
 const { setPriority } = require('os');
 
 
