@@ -73,10 +73,33 @@ router.post('/', async (req, res) => {
 
 router.get('/current', async (req, res) => {
     const spots = await Spot.findAll({
-        where: { ownerId: req.user.id }
+        where: { ownerId: req.user.id },
+        include: [
+            {
+                model: SpotImage,
+                attributes: ['id', 'url', 'preview']
+            }
+        ]
+            
+    })
+    let spotList = [];
+    spots.forEach(spot => {
+        //console.log('New Spots: ', spot.toJSON())
+        spotList.push(spot.toJSON())
+    })
+
+    spotList.forEach(spot => {
+        spot.SpotImages.forEach(image => {
+            if(!image) {}
+            if(image.preview === true) {
+                spot.previewImage = image.url
+            }
+        })
+        if(spot.SpotImages.length === 0) spot.previewImage = null;
+        delete spot.SpotImages;
     })
     return res.json({
-        spots,
+        spotList,
     })
 })
 
@@ -88,8 +111,8 @@ router.get('/:spotId', async (req, res, next) => {
                 model: SpotImage,
                 attributes: ['id', 'url', 'preview']
             },
-            {model: 
-                User,
+            {
+                model: User,
                 as: "Owner",
                 attributes: ['id', 'firstName', 'lastName']
             },
