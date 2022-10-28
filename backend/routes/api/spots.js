@@ -172,11 +172,16 @@ router.get('/:spotId', async (req, res, next) => {
     )
 })
 
-router.post('/:spotId/images', async (req, res) => {
-    const spotImage = await SpotImage.create({
+router.post('/:spotId/images', requireAuth, async (req, res) => {
+    const makeSpotImage = await SpotImage.create({
         "url": req.body.url,
         "preview": req.body.preview,
-        "spotId": req.params.spotId
+        "spotId": req.params.spotId,
+    })
+    const spotImage = await SpotImage.findOne({
+        where: { spotId: req.params.spotId},
+        attributes: { exclude: ['spotId', 'createdAt', 'updatedAt'] },
+        order: [['id', 'DESC']]
     })
 
     const spot = await Spot.findByPk(req.params.spotId)
@@ -186,9 +191,9 @@ router.post('/:spotId/images', async (req, res) => {
             statusCode: 404
         })
     }
-    return res.json({
+    return res.json(
         spotImage
-    })
+    )
 })
 
 router.put('/:spotId', requireAuth, async (req, res) => {
