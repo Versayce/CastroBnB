@@ -263,7 +263,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     spot.name = req.body.name
     spot.description = req.body.description
     spot.price = req.body.price
-
+    await spot.save();
     return res.json(spot);
 })
 

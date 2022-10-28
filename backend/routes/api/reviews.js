@@ -46,5 +46,20 @@ router.post('/:reviewId/images', async (req, res) => {
 
 
 
+router.put('/:reviewId', requireAuth, async (req, res) => {
+    const review = await Review.findByPk(req.params.reviewId)
+    if (!review) {
+        return res.status(404).json({
+            message: "Review couldn't be found",
+            statusCode: 404
+        })
+    }
+  
+    review.review = req.body.review
+    review.stars = req.body.stars
+    await review.save();
+    return res.json(review);
+})
+
 
 module.exports = router;
