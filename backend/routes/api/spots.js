@@ -44,10 +44,10 @@ router.get('/', async (req, res) => {
             }
         })
 
-        if(spot.avgRating === undefined) spot.avgRating = null
-        if(spot.SpotImages.length === 0) spot.previewImage = null
+        if(spot.avgRating === undefined) spot.avgRating = null;
+        if(spot.SpotImages.length === 0) spot.previewImage = null;
         delete spot.Reviews;
-        delete spot.SpotImages
+        delete spot.SpotImages;
     })
     return res.json({
         spotList,
