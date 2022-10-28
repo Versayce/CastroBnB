@@ -2,8 +2,6 @@ const express = require('express')
 const url = require('url');
 const sequelize = require('sequelize')
 const { Spot, User, SpotImage, Review } = require('../../db/models');
-const review = require('../../db/models/review');
-const spot = require('../../db/models/spot');
 const { setPriority } = require('os');
 const { requireAuth } = require('../../utils/auth')
 
@@ -193,6 +191,34 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     }
     return res.json(
         spotImage
+    )
+})
+
+router.post('/:spotId/reviews', requireAuth, async (req, res) => {
+    const makeReview = await Review.create({
+        "review": req.body.review,
+        "stars": req.body.stars,
+        "spotId": req.params.spotId,
+        "userId": req.user.id,
+    })
+    //error for if a review cannot be found for a given spot id
+    const reviewSpot = await Review.findByPk(req.params.spotId)
+    if (!reviewSpot) {
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+    //error for if a review has already been placed by the same user for the targeted spot
+    const review = await Review.findByPk(req.user.id)
+    if (review) {
+        return res.status(404).json({
+            message: "User already has a review for this spot",
+            statusCode: 403,
+        })
+    }
+    return res.json(
+        makeReview
     )
 })
 
