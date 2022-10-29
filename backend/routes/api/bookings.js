@@ -92,4 +92,27 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
     )
 })
 
+
+router.delete('/:bookingId', requireAuth, async (req, res) => {
+    const { bookingId } = req.params
+    const booking = await Booking.findByPk(bookingId)
+    //console.log(image.toJSON())
+    if (!booking) {
+        return res.status(404).json({
+            message: "Booking couldn't be found",
+            statusCode: 404
+        })
+    }
+
+    await Booking.destroy({
+        where: {
+            id: bookingId
+        }
+    })
+    return res.status(200).json({
+        message: "Successfully deleted",
+        statusCode: 200
+    })
+})
+
 module.exports = router;
