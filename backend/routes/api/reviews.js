@@ -1,8 +1,10 @@
 const express = require('express')
-const { Review, User, Spot, ReviewImage } = require('../../db/models');
+const { Review, User, Spot, ReviewImage, SpotImage } = require('../../db/models');
 const sequelize = require('sequelize');
 const { requireAuth } = require('../../utils/auth');
 const user = require('../../db/models/user');
+const { Model } = require('sequelize');
+const e = require('express');
 
 
 const router = express.Router();
@@ -11,7 +13,21 @@ const router = express.Router();
 router.get('/current', requireAuth, async (req, res) => {
     const reviews = await Review.findAll({
         where: { userId: req.user.id },
+        include: [
+            {
+                model: User
+            },
+            {
+                model: Spot,
+                attributes: {exclude: ['createdAt', 'updatedAt'] }
+            },
+            {
+                model: ReviewImage,
+                attributes: {exclude: ['reviewId', 'createdAt', 'updatedAt'] }
+            }
+        ]
     })
+
     return res.json(
         reviews
     )

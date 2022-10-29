@@ -10,22 +10,22 @@ const router = express.Router();
 
 
 router.get('/', async (req, res) => {
-    const spots = await Spot.findAll({
+    const allSpots = await Spot.findAll({
         include: [
             {model: Review},
             {model: SpotImage}
         ] 
     });
     //console.log("og spots: ", spots)
-    let spotList = [];
-    spots.forEach(spot => {
+    let Spots = [];
+    allSpots.forEach(spot => {
         //console.log('New Spots: ', spot.toJSON())
-        spotList.push(spot.toJSON())
+        Spots.push(spot.toJSON())
     })
     let starCount = 0;
     let numRev = 0;
 
-    spotList.forEach(spot => {
+    Spots.forEach(spot => {
         spot.Reviews.forEach(review => {
             //console.log(review.stars)
             if(review) {
@@ -49,7 +49,7 @@ router.get('/', async (req, res) => {
         delete spot.SpotImages;
     })
     return res.json({
-        spotList,
+        Spots,
     })
 })
 
