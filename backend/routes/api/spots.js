@@ -346,6 +346,41 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 })
 
 
+router.get('/:spotId/bookings', requireAuth, async (req, res) =>{
+    const { spotId, userId } = req.params
+    const { id } = req.user
+    const spot = await Spot.findOne({
+        where: {
+            id: spotId,
+        },
+    })
+    if(spot.userId === id){
+        const userSpotBookings = await Booking.findAll({
+            where: {
+                spotId: spotId
+            },
+            include: {
+                model: User
+            }
+        })
+        return res.json(
+            userSpotBookings
+        )
+    }
+
+    const Bookings = await Booking.findAll({
+        where: {
+            spotId: spotId
+        },
+        attributes: {
+            exclude: ['createdAt', 'updatedAt', 'id', 'userId']
+        }
+    })
+    return res.json({Bookings})
+
+})
+
+
 router.delete('/:spotId', requireAuth, async (req, res) => {
     const {spotId} = req.params
     const spot = await Spot.findOne({
