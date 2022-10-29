@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
         if(Number.isNaN(page) || page <= 0) page = 1;
         if(size > 20) size = 20
         if(page > 10) size = 10
-
+        //console.log(size)
         let newSpots = await Spot.findAll({
             limit: size,
             offset: (page - 1) * size
@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
                     //preview: true
                 }
             })
-            console.log('image: ', image)
+            //console.log('image: ', image)
             if(!image){
                 newSpot.previewImage = null
             }
