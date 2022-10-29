@@ -347,20 +347,27 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
 
 router.get('/:spotId/bookings', requireAuth, async (req, res) =>{
-    const { spotId, userId } = req.params
+    const { spotId } = req.params
     const { id } = req.user
-    const spot = await Spot.findOne({
-        where: {
-            id: spotId,
-        },
-    })
-    if(spot.userId === id){
+
+    const spot = await Spot.findByPk(spotId);
+    if(!spot){
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+    const newSpot = spot.toJSON();
+    //console.log('owner: ', newSpot)
+
+    if(newSpot.ownerId === req.user.id){
         const userSpotBookings = await Booking.findAll({
             where: {
                 spotId: spotId
             },
             include: {
-                model: User
+                model: User,
+                attributes: { exclude: ['username','createdAt', 'updatedAt', 'hashedPassword', 'email']}
             }
         })
         return res.json(
