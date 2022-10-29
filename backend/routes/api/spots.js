@@ -318,7 +318,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         const bookingEndTime = booking.endDate.getTime();
         //console.log(`reqstartdate ${reqStartDate}, reqenddate ${reqEndDate}, bookingstarttime ${bookingStartTime}, bookingendtime ${bookingEndTime}`)
 
-        return (reqStartDate >= bookingStartTime && reqStartDate <= bookingEndTime || reqEndDate >= bookingStartTime && reqEndDate <= bookingEndTime )  //create conditions for if booking timeline is around existing booking
+        return (reqStartDate >= bookingStartTime && reqStartDate <= bookingEndTime || reqEndDate >= bookingStartTime && reqEndDate <= bookingEndTime )  //create conditions for if booking timeline is around existing booking later
     })
 
     if(filteredBookings.length > 0){
