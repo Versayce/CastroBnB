@@ -197,7 +197,11 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 
 router.get('/:spotId/reviews', requireAuth, async (req, res) => {
     const reviews = await Review.findAll({
-        where: { spotId: req.params.spotId}
+        where: { spotId: req.params.spotId},
+        include: {
+            model: User,
+            attributes: { exclude: ['username'] }
+        }
     })
     //error handling for if spot does not exist
     const spot = await Spot.findByPk(req.params.spotId)
@@ -333,6 +337,41 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     return res.json(
         makeBooking
     )
+})
+
+
+router.get('/:spotId/bookings', requireAuth, async (req, res) =>{
+    const { spotId, userId } = req.params
+    const { id } = req.user
+    const spot = await Spot.findOne({
+        where: {
+            id: spotId,
+        },
+    })
+    if(spot.userId === id){
+        const userSpotBookings = await Booking.findAll({
+            where: {
+                spotId: spotId
+            },
+            include: {
+                model: User
+            }
+        })
+        return res.json(
+            userSpotBookings
+        )
+    }
+
+    const Bookings = await Booking.findAll({
+        where: {
+            spotId: spotId
+        },
+        attributes: {
+            exclude: ['createdAt', 'updatedAt', 'id', 'userId']
+        }
+    })
+    return res.json({Bookings})
+
 })
 
 
