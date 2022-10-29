@@ -215,7 +215,7 @@ router.get('/:spotId/reviews', requireAuth, async (req, res) => {
         return res.status(404).json({
             message: "Spot couldn't be found",
             statusCode: 404
-    })
+        })
     }
     return res.json(
         {Reviews}
