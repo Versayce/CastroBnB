@@ -1,7 +1,7 @@
 const express = require('express')
 const url = require('url');
 const sequelize = require('sequelize')
-const { Spot, User, SpotImage, Review, Booking } = require('../../db/models');
+const { Spot, User, SpotImage, Review, Booking, ReviewImage } = require('../../db/models');
 const { setPriority } = require('os');
 const { requireAuth } = require('../../utils/auth')
 const { Op } = require('sequelize')
@@ -198,10 +198,16 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
 router.get('/:spotId/reviews', requireAuth, async (req, res) => {
     const reviews = await Review.findAll({
         where: { spotId: req.params.spotId},
-        include: {
-            model: User,
-            attributes: { exclude: ['username'] }
-        }
+        include: [
+            {
+                model: User,
+                attributes: { exclude: ['username', 'hashedPassword', 'createdAt', 'updatedAt', 'email'] }
+            },
+            {
+                model: ReviewImage,
+                attributes: { exclude: ['reviewId', 'createdAt', 'updatedAt'] }
+            }
+        ],
     })
     //error handling for if spot does not exist
     const spot = await Spot.findByPk(req.params.spotId)
