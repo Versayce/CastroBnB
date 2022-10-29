@@ -10,6 +10,50 @@ const router = express.Router();
 
 
 router.get('/', async (req, res) => {
+
+    if(req.query.page && req.query.size){
+        let {
+            page, size, minLat, maxLat,
+            minLng, maxLng, minPrice, maxPrice
+        } = req.query
+
+        page = parseInt(page)
+        size = parseInt(size)
+        if(Number.isNaN(size) || size <= 0) size = 20;
+        if(Number.isNaN(page) || page <= 0) page = 1;
+        if(size > 20) size = 20
+        if(page > 10) size = 10
+
+        let newSpots = await Spot.findAll({
+            limit: size,
+            offset: (page - 1) * size
+        })
+        let paginatedSpots = []
+        for(let spot of newSpots) {
+            newSpot = spot.toJSON();
+            //console.log('newSpot: ', newSpot.id)
+            const image = await SpotImage.findOne({
+                where: {
+                    spotId: newSpot.id,
+                    //preview: true
+                }
+            })
+            console.log('image: ', image)
+            if(!image){
+                newSpot.previewImage = null
+            }
+            //imagejson = image.toJSON();
+            //newSpot.previewImage = image.url
+            paginatedSpots.push(newSpot)
+        }
+        return res.json({
+            'Spots': paginatedSpots,
+            page,
+            size
+        })
+    }
+
+
     const allSpots = await Spot.findAll({
         include: [
             {model: Review},
