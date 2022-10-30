@@ -12,10 +12,8 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 
     if(req.query.page && req.query.size){
-        let {
-            page, size, minLat, maxLat,
-            minLng, maxLng, minPrice, maxPrice
-        } = req.query
+        let {page, size, minLat, maxLat,
+            minLng, maxLng, minPrice, maxPrice} = req.query
 
         page = parseInt(page)
         size = parseInt(size)
@@ -158,7 +156,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
         delete spot.Reviews;
     })
     return res.json({
-        spotList,
+        'Spots': spotList,
     })
 })
 
