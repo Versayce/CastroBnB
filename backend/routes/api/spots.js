@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
         if(Number.isNaN(size) || size <= 0) size = 20;
         if(Number.isNaN(page) || page <= 0) page = 1;
         if(size > 20) size = 20
-        if(page > 10) size = 10
+        if(page > 10) page = 10
         //console.log(size)
         let newSpots = await Spot.findAll({
             limit: size,
