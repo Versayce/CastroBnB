@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
             limit: size,
             offset: (page - 1) * size
         })
-        let paginatedSpots = []
+        let paginatedSpots = []  //rename all these variables later because this real confusing
         for(let spot of newSpots) {
             newSpot = spot.toJSON();
             //console.log('newSpot: ', newSpot.id)
