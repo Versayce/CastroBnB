@@ -26,8 +26,8 @@ router.get('/', async (req, res) => {
             limit: size,
             offset: (page - 1) * size
         })
-        let paginatedSpots = []  //rename all these variables later because this real confusing
-        for(let spot of newSpots) {
+        let paginatedSpots = [] 
+        for(let spot of newSpots) { //rename variables later
             newSpot = spot.toJSON();
             //console.log('newSpot: ', newSpot.id)
             const image = await SpotImage.findOne({
@@ -354,14 +354,14 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     }
 
     const filteredBookings = bookings.filter(booking => {
-        const objBooking = booking.toJSON();
+        //const objBooking = booking.toJSON();
         //console.log('json booking: ', objBooking);
         const bookingStartTime = booking.startDate.getTime();
         const bookingEndTime = booking.endDate.getTime();
         //console.log(`reqstartdate ${reqStartDate}, reqenddate ${reqEndDate}, bookingstarttime ${bookingStartTime}, bookingendtime ${bookingEndTime}`)
 
-        return (reqStartDate >= bookingStartTime && reqStartDate <= bookingEndTime || reqEndDate >= bookingStartTime && reqEndDate <= bookingEndTime )  //create conditions for if booking timeline is around existing booking later
-    })                                                                                                                                                  // || reqStartDate < bookingStartTime && reqEndDate > bookingEndTime --->ee add this
+        return (reqStartDate >= bookingStartTime && reqStartDate <= bookingEndTime || reqEndDate >= bookingStartTime && reqEndDate <= bookingEndTime )  //create conditions for if new booking timeline wraps existing booking later
+    })                                                                                                                                                  // || reqStartDate < bookingStartTime && bookingEndTime > reqEndDate 
 
     if(filteredBookings.length > 0){
         return res.status(403).json({
@@ -429,7 +429,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) =>{
 
 })
 
-
+//ADD CASCADE TO DELETIONS THAT NEED IT
 router.delete('/:spotId', requireAuth, async (req, res) => {
     const {spotId} = req.params
     const spot = await Spot.findOne({
