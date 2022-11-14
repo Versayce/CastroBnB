@@ -4,12 +4,11 @@ import { getSpots } from "../../store/SpotReducer";
 
 const SpotList = () => {
     const dispatch = useDispatch;
-    const spots = useSelector(state => state.payload)
+    const spots = useSelector(state => state.spots)
 
     useEffect(() => {
         dispatch(getSpots())
     }, [dispatch])
-
 
     return (
         <div className="spot-container">
