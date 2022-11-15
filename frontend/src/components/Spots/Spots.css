@@ -6,8 +6,19 @@
     margin: 10px;
 }
 
-.spot-image-container {
-    
+.spot-name {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.spot-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.spot-info {
+    margin-bottom: 4px;
 }
 
 .spot-image {
