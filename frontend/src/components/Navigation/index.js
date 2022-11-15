@@ -15,19 +15,19 @@ function Navigation({ isLoaded }){
   const [showModal, setShowModal] = useState(false);
   const [login, setLogin] = useState(true);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
-      <>
-        <LoginFormModal />
-        <SignupFormModal />
-      </>
-    );
-  }
+  // let sessionLinks;
+  // if (sessionUser) {
+  //   sessionLinks = (
+  //     <ProfileButton user={sessionUser} />
+  //   );
+  // } else {
+  //   sessionLinks = (
+  //     <>
+  //       <LoginFormModal />
+  //       <SignupFormModal />
+  //     </>
+  //   );
+  // }
 
   return (
     <div className='navbar'>

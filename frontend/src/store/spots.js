@@ -10,7 +10,7 @@ export const loadSpots = (spots) => {
 }
 
 export const getSpots = () => async (dispatch) => {
-    const res = await csrfFetch('/api/spots');
+    const res = await csrfFetch('/api/spots'); //use csrf fetch for all requests
 
     if(res.ok){
         const data = await res.json();
