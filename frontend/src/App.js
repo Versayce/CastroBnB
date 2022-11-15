@@ -16,7 +16,13 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <SpotList />
+      {isLoaded && (
+        <Switch>
+          <Route path="/">
+            <SpotList />
+          </Route>
+        </Switch>
+      )}
     </>
   );
 }

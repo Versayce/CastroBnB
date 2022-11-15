@@ -3,7 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 
 
-function SignupForm() {
+function SignupForm({ setShowModal }) {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
@@ -18,6 +18,7 @@ function SignupForm() {
       if (password === confirmPassword) {
         setErrors([]);
         return dispatch(sessionActions.signup({ email, username, password, firstName, lastName }))
+          .then(setShowModal(false))
           .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);

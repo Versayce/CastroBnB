@@ -1,0 +1,25 @@
+.spot-card {
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid hotpink; */
+    width: 300px;
+    margin: 10px;
+}
+
+.spot-image-container {
+    
+}
+
+.spot-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.spot-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
