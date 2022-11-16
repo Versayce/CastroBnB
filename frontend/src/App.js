@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/">
             <SpotList />
           </Route>
-          <Route path="/spots/1">
+          <Route path="/spots/:spotId">
             <SpotPage />
           </Route>
         </Switch>

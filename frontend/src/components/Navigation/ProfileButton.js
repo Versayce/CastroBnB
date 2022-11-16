@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { DemoLogin } from "./DemoLogin";
 
 function ProfileButton({ user, setLogin, setShowModal }) {
   const dispatch = useDispatch();
@@ -53,6 +54,9 @@ function ProfileButton({ user, setLogin, setShowModal }) {
               setLogin(false)
               setShowModal(true)
             }}>Sign Up</button>
+          </li>
+          <li>
+            <DemoLogin />
           </li>
         </ul>)
       )}

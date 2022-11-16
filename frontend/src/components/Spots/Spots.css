@@ -1,4 +1,5 @@
 .spot-card {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     /* border: 2px solid hotpink; */
