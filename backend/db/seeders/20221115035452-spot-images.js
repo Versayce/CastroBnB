@@ -54,6 +54,11 @@ module.exports = {
         "url": 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-47354666/original/b92fc905-70ea-449a-aa95-c79ade3ceadb.jpeg?im_w=720',
         "preview": true,
       },
+      {
+        "spotId": 3,
+        "url": 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-47354666/original/b92fc905-70ea-449a-aa95-c79ade3ceadb.jpeg?im_w=720',
+        "preview": true,
+      },
     ], {});
   },
 

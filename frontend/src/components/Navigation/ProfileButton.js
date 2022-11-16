@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { DemoLogin } from "./DemoLogin";
+import { useHistory } from "react-router-dom";
+import { MODAL_TYPE } from ".";
 
 function ProfileButton({ user, setLogin, setShowModal }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   
@@ -27,6 +30,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/')
   };
 
   return (
@@ -39,6 +43,14 @@ function ProfileButton({ user, setLogin, setShowModal }) {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
+            <button onClick={() => history.push(`/spots/current`)}>User Spots</button>
+          </li>
+          <li>
+            <button onClick={() => {
+              setShowModal(MODAL_TYPE.createSpot);
+            }}>Create Spot</button>
+          </li>
+          <li>
             <button onClick={logout}>Log Out</button>
           </li>
         </ul>) :
@@ -46,13 +58,13 @@ function ProfileButton({ user, setLogin, setShowModal }) {
           <li>
             <button onClick={() => {
               setLogin(true)
-              setShowModal(true)
+              setShowModal(MODAL_TYPE.login)
             }}>Log In</button>
           </li>
           <li>
             <button onClick={() => {
               setLogin(false)
-              setShowModal(true)
+              setShowModal(MODAL_TYPE.signup)
             }}>Sign Up</button>
           </li>
           <li>

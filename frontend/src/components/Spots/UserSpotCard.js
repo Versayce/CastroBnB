@@ -6,8 +6,9 @@ import { useEffect } from 'react';
 import { createSpot } from '../../store/spots';
 
 
-export default function SpotCard({ spot }){
+export default function CurrentUserSpotCard({ spot }){
     //console.log('spot: ', spot)
+    const dispatch = useDispatch();
     return (
             <div>
                 <img src={spot.previewImage} className="spot-image" />
@@ -16,6 +17,16 @@ export default function SpotCard({ spot }){
                         <p style={{fontWeight: 'bold'}}>{`${spot.city}, ${spot.state}`}</p>
                         <p>{spot.name}</p>
                         <p>{`$${spot.price} night`}</p>
+
+                        <button onClick={(event)=> {
+                            event.stopPropagation();
+                            dispatch(deleteSpot(spot.id))}
+                        }>DELETE</button>
+
+                        <button onClick={(event)=> {
+                            event.stopPropagation();
+                            dispatch(createSpot(spot))}
+                        }>CREATE</button>
 
                     </div>
                     <div className='spot-rating'>

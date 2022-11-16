@@ -2,32 +2,29 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
-import SignupFormModal from '../SignupFormModal';
 import { Modal } from '../../context/Modal';
 import SignupForm from '../SignupFormModal/SignupForm';
 import LoginForm from '../LoginFormModal/LoginForm';
+import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
 
+export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot' };
+
+const getModalForType = (modalType, setShowModal) => {
+  switch(modalType) {
+    case MODAL_TYPE.login:
+      return <LoginForm setShowModal={setShowModal} />
+    case MODAL_TYPE.signup:
+      return <SignupForm setShowModal={setShowModal} />
+    case MODAL_TYPE.createSpot:
+      return <CreateSpotForm setShowModal={setShowModal} />
+  }
+}
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState();
   const [login, setLogin] = useState(true);
-
-  // let sessionLinks;
-  // if (sessionUser) {
-  //   sessionLinks = (
-  //     <ProfileButton user={sessionUser} />
-  //   );
-  // } else {
-  //   sessionLinks = (
-  //     <>
-  //       <LoginFormModal />
-  //       <SignupFormModal />
-  //     </>
-  //   );
-  // }
 
   return (
     <div className='navbar'>
@@ -37,8 +34,9 @@ function Navigation({ isLoaded }){
           {isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}
         </li>
         {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            {login ? <LoginForm setShowModal={setShowModal} /> : <SignupForm setShowModal={setShowModal}/>}
+          <Modal onClose={() => setShowModal(undefined)}>
+            {getModalForType(showModal, setShowModal)}
+            {/* {login ? <LoginForm setShowModal={setShowModal} /> : <SignupForm setShowModal={setShowModal}/>} */}
           </Modal>
         )}
       </ul>

@@ -5,6 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('Spots', [
       {
+        ownerId: 2,
         address: '8963 E. Mescal St',
         city: 'Scottsdale',
         state: 'Arizona',
@@ -16,6 +17,7 @@ module.exports = {
         price: 1300.00,
       },
       {
+        ownerId: 2,
         address: '1122 S. Random Ave',
         city: 'Strawberry',
         state: 'Arizona',
@@ -27,6 +29,7 @@ module.exports = {
         price: 125.00,
       },
       {
+        ownerId: 2,
         address: '1111 N. East St.',
         city: 'Tempe',
         state: 'Arizona',
@@ -38,6 +41,7 @@ module.exports = {
         price: 250.00,
       },
       {
+        ownerId: 2,
         address: '2222 S. West St.',
         city: 'Mesa',
         state: 'Arizona',
@@ -49,6 +53,7 @@ module.exports = {
         price: 300.00,
       },
       {
+        ownerId: 2,
         address: '3333 E. North St.',
         city: 'Phoenix',
         state: 'Arizona',
@@ -60,6 +65,7 @@ module.exports = {
         price: 225.00,
       },
       {
+        ownerId: 3,
         address: '4444 N. South Ave.',
         city: 'Sedona',
         state: 'Arizona',
@@ -71,6 +77,7 @@ module.exports = {
         price: 955.00,
       },
       {
+        ownerId: 3,
         address: '5443 N Lyndon Ave.',
         city: 'Mesa',
         state: 'Arizona',
@@ -82,6 +89,7 @@ module.exports = {
         price: 450.00,
       },
       {
+        ownerId: 3,
         address: '7841 N 32 St.',
         city: 'Phoenix',
         state: 'Arizona',
@@ -93,6 +101,7 @@ module.exports = {
         price: 333.00,
       },
       {
+        ownerId: 1,
         address: '3654 S Kenwood Dr.',
         city: 'Tempe',
         state: 'Arizona',
@@ -104,6 +113,7 @@ module.exports = {
         price: 355.00,
       },
       {
+        ownerId: 2,
         address: '1850 E. Southern Ave.',
         city: 'Scottsdale',
         state: 'Arizona',
