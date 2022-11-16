@@ -120,7 +120,7 @@ const spotReducer = (state = initialState, action) => {
             console.log('action data: ', action.spot)
             return {
                 ...state,
-                allSpots: state.allSpots.push(action.spot)
+                allSpots: [action.spot, ...state.allSpots]
             }
 
         default:
