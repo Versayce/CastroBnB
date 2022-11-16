@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteSpot, getOneSpot } from '../../store/spots';
 import { useEffect } from 'react';
+import { createSpot } from '../../store/spots';
 
 
 export default function SpotCard({ spot }){
@@ -20,6 +21,10 @@ export default function SpotCard({ spot }){
                             event.stopPropagation();
                             dispatch(deleteSpot(spot.id))}
                         }>DELETE</button>
+                        <button onClick={(event)=> {
+                            event.stopPropagation();
+                            dispatch(createSpot(spot))}
+                        }>CREATE</button>
                     </div>
                     <div className='spot-rating'>
                         <p>{`AVG Rating: ${spot.avgRating}`}</p>
