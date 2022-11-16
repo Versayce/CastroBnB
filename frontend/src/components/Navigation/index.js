@@ -8,7 +8,7 @@ import SignupFormModal from '../SignupFormModal';
 import { Modal } from '../../context/Modal';
 import SignupForm from '../SignupFormModal/SignupForm';
 import LoginForm from '../LoginFormModal/LoginForm';
-import SignupFormPage from '../SignupFormPage'
+
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
