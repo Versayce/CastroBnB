@@ -67,11 +67,24 @@ export const deleteSpot = (spotId) => async (dispatch) => {
 }
 
 export const createSpot = (spot) => async (dispatch) => {
+    console.log('create spot param data: ', spot)
     const res = await csrfFetch('/api/spots/', {
         method: 'POST',
-        headers: {'ContentType': 'application/json'},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(spot)
+        // {
+        //     "address": "Test Address",
+        //     "city": "Test City",
+        //     "state": "Test State",
+        //     "country": "Test Country",
+        //     "lat": 37.7645358,
+        //     "lng": -122.4730327,
+        //     "name": "Test",
+        //     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        //     "price": 555
+        // }
     })
+    console.log('res: ', res)
 
     if(res.ok) {
         const data = await res.json()
