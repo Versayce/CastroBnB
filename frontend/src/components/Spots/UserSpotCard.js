@@ -7,6 +7,7 @@ import { createSpot } from '../../store/spots';
 
 
 export default function CurrentUserSpotCard({ spot }){
+    const history = useHistory();
     //console.log('spot: ', spot)
     const dispatch = useDispatch();
     return (
@@ -25,8 +26,9 @@ export default function CurrentUserSpotCard({ spot }){
 
                         <button onClick={(event)=> {
                             event.stopPropagation();
-                            dispatch(createSpot(spot))}
-                        }>CREATE</button>
+                            history.push('/spots/edit')}
+                            // dispatch((spot))}
+                        }>EDIT</button>
 
                     </div>
                     <div className='spot-rating'>

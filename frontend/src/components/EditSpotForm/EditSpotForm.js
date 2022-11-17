@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createSpot } from "../../store/spots";
+import React, { useEffect, useState } from "react";
+import * as sessionActions from "../../store/session";
+import { createStoreHook, useDispatch, useSelector } from "react-redux";
+import { createSpot, createSpotImage, loadOneSpot } from "../../store/spots";
+import { editSpotById } from "../../store/spots";
 import { useHistory } from "react-router-dom";
 
-function CreateSpotForm({ setShowModal }) {
+function EditSpotForm({ setShowModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -12,24 +14,28 @@ function CreateSpotForm({ setShowModal }) {
   //console.log('session user: ', user)
   console.log('spotform spot: ', spot)
 
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
-  const [imageUrl, setImageUrl] = useState("")
+  const [address, setAddress] = useState(spot.address);
+  const [city, setCity] = useState(spot.city);
+  const [state, setState] = useState(spot.state);
+  const [country, setCountry] = useState(spot.country);
+  const [name, setName] = useState(spot.name);
+  const [description, setDescription] = useState(spot.description);
+  const [price, setPrice] = useState(spot.price);
+  const [imageUrl, setImageUrl] = useState(spot.SpotImages[spot.SpotImages.length - 1].url)
   const [errors, setErrors] = useState([]);
+
+//   useEffect(() => {
+//     dispatch(loadOneSpot)
+//   })
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     history.push('/spots/current')
-    setShowModal(undefined)
+    //setShowModal(undefined)
     //add conditionals for error throwing
     setErrors([]);
-      return await dispatch(createSpot({ address, city, state, country, name, description, price, imageUrl }))
+      return await dispatch(editSpotById({ address, city, state, country, name, description, price, imageUrl }))
       //.then(setShowModal(false))
       .catch(
       async (res) => {
@@ -136,9 +142,9 @@ function CreateSpotForm({ setShowModal }) {
           required
         />
       </label>
-      <button type="submit">Create Spot</button>
+      <button type="submit">Save Changes</button>
     </form>
   );
 }
 
-export default CreateSpotForm;
+export default EditSpotForm;
