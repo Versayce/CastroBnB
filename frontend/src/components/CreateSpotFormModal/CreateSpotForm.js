@@ -10,7 +10,7 @@ function CreateSpotForm({ setShowModal }) {
   const spot = useSelector(state => state.spots.oneSpot)
   const user = useSelector(state => state.session.user)
   //console.log('session user: ', user)
-  console.log('spotform spot: ', spot)
+  //console.log('createspotform spot: ', spot)
 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");

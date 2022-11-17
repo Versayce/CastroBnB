@@ -203,15 +203,15 @@ const spotReducer = (state = initialState, action) => {
         
         case ADD_SPOT_IMAGE:
             const spot = state.allSpots.find(spot => spot.id === action.spotId)
-            //const updatedSpot = {...spot, previewImage: action.spotImage.url}
-            const updatedSpot = {...spot, SpotImages: [...(spot.SpotImages ?? []), action.spotImage]} //TEST MORE
+            const updatedSpot = {...spot, previewImage: action.spotImage.url, SpotImages: [...(spot.SpotImages ?? []), action.spotImage]}
+            //const updatedSpot = {...spot, SpotImages: [...(spot.SpotImages ?? []), action.spotImage]} //TEST MORE
             return {
                 ...state,
                 allSpots: state.allSpots.map(spot => {
                    if (spot.id === updatedSpot.id) return updatedSpot
                    return spot;
                 }),
-                oneSpot: updatedSpot
+                //oneSpot: updatedSpot
             }
 
         default:

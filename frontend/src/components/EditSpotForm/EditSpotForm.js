@@ -3,16 +3,18 @@ import * as sessionActions from "../../store/session";
 import { createStoreHook, useDispatch, useSelector } from "react-redux";
 import { createSpot, createSpotImage, loadOneSpot } from "../../store/spots";
 import { editSpotById } from "../../store/spots";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
-function EditSpotForm({ setShowModal }) {
+function EditSpotForm({ setShowModal, spots }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  //const spots = useSelector(state => state.spots.allSpots)
   const spot = useSelector(state => state.spots.oneSpot)
   const user = useSelector(state => state.session.user)
-  //console.log('session user: ', user)
-  console.log('spotform spot: ', spot)
+  console.log('editform single spot: ', spot)
+  console.log('editform spots: ', spots)
+
 
   const [address, setAddress] = useState(spot.address);
   const [city, setCity] = useState(spot.city);
@@ -21,7 +23,8 @@ function EditSpotForm({ setShowModal }) {
   const [name, setName] = useState(spot.name);
   const [description, setDescription] = useState(spot.description);
   const [price, setPrice] = useState(spot.price);
-  const [imageUrl, setImageUrl] = useState(spot.SpotImages[spot.SpotImages.length - 1].url)
+  //const [imageUrl, setImageUrl] = useState(spot.SpotImages[spot.SpotImages.length - 1].url)\
+  const [imageUrl, setImageUrl] = useState(spot.previewImage)
   const [errors, setErrors] = useState([]);
 
   // useEffect(() => {
@@ -32,7 +35,7 @@ function EditSpotForm({ setShowModal }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     history.push('/spots/current')
-    //setShowModal(undefined)
+    setShowModal(false)
     //add conditionals for error throwing
     setErrors([]);
       return await dispatch(editSpotById({ address, city, state, country, name, description, price, imageUrl }))

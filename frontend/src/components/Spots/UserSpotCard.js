@@ -2,11 +2,11 @@ import './Spots.css'
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteSpot, getOneSpot } from '../../store/spots';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createSpot } from '../../store/spots';
 
 
-export default function CurrentUserSpotCard({ spot }){
+export default function CurrentUserSpotCard({ spot, setShowModal }){
     const history = useHistory();
     //console.log('spot: ', spot)
     const dispatch = useDispatch();
@@ -26,8 +26,8 @@ export default function CurrentUserSpotCard({ spot }){
 
                         <button onClick={(event)=> {
                             event.stopPropagation();
-                            history.push('/spots/edit')}
-                            // dispatch((spot))}
+                            setShowModal(true)
+                            }
                         }>EDIT</button>
 
                     </div>
