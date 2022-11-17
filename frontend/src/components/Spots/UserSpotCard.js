@@ -1,9 +1,9 @@
 import './Spots.css'
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteSpot, getOneSpot } from '../../store/spots';
-import { useEffect, useState } from 'react';
-import { createSpot } from '../../store/spots';
+import { useDispatch } from 'react-redux';
+import { deleteSpot } from '../../store/spots';
+import { useState } from 'react';
+
 import { Modal } from '../../context/Modal';
 import EditSpotForm from '../EditSpotForm/EditSpotForm';
 
@@ -11,7 +11,7 @@ import EditSpotForm from '../EditSpotForm/EditSpotForm';
 export default function CurrentUserSpotCard({ spot }){
     const history = useHistory();
     const [showModal, setShowModal] = useState()
-    console.log('spot from currentspotcard: ', spot)
+    //console.log('spot from currentspotcard: ', spot)
     const dispatch = useDispatch();
     return (
         <>
@@ -36,7 +36,7 @@ export default function CurrentUserSpotCard({ spot }){
                         
                     </div>
                     <div className='spot-rating'>
-                        <p>{`AVG Rating: ${spot.avgRating}`}</p>
+                        <p>{`Stars: ${spot.avgRating}`}</p>
                     </div>
                 </div>
             </div>

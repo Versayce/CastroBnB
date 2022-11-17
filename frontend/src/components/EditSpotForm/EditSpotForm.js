@@ -6,15 +6,10 @@ import { editSpotById } from "../../store/spots";
 import { useHistory, useParams } from "react-router-dom";
 
 function EditSpotForm({ setShowModal, spot }) {
+  console.log('EditSpotForm spot: ', spot)
+  console.log('EditSpotForm spotId: ', spot.id)
   const dispatch = useDispatch();
   const history = useHistory();
-
-  //const spots = useSelector(state => state.spots.allSpots)
-  //const spot = useSelector(state => state.spots.oneSpot)
-  const user = useSelector(state => state.session.user)
-  //console.log('editform single spot: ', spot)
-  //console.log('editform spots: ', spots)
-
 
   const [address, setAddress] = useState(spot.address);
   const [city, setCity] = useState(spot.city);
@@ -23,22 +18,18 @@ function EditSpotForm({ setShowModal, spot }) {
   const [name, setName] = useState(spot.name);
   const [description, setDescription] = useState(spot.description);
   const [price, setPrice] = useState(spot.price);
-  //const [imageUrl, setImageUrl] = useState(spot.SpotImages[spot.SpotImages.length - 1].url)\
   const [imageUrl, setImageUrl] = useState(spot.previewImage)
+  //const [imageUrl, setImageUrl] = useState(spot.SpotImages[spot.SpotImages.length - 1].url)
   const [errors, setErrors] = useState([]);
 
-  // useEffect(() => {
-  //   dispatch(loadOneSpot())
-  // })
-
-
   const handleSubmit = async (e) => {
+    const id = spot.id
     e.preventDefault();
     history.push('/spots/current')
     setShowModal(false)
     //add conditionals for error throwing
     setErrors([]);
-      return await dispatch(editSpotById({ address, city, state, country, name, description, price, imageUrl }))
+      return await dispatch(editSpotById({ address, city, state, country, name, description, price, imageUrl, id }))
       //.then(setShowModal(false))
       .catch(
       async (res) => {

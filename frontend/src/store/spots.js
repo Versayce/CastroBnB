@@ -35,10 +35,10 @@ export const addSpot = (spot) => {
     }
 }
 
-export const editSpot = (spotId) => {
+export const editSpot = (spot) => {
     return {
         type: EDIT_SPOT,
-        spotId
+        spot
     }
 }
 
@@ -126,11 +126,12 @@ export const createSpot = (spot) => async (dispatch) => {
     }
 }
 
-export const editSpotById = (spot, spotId) => async (dispatch) => {
-    const {address, city, state, country, name, description, price, imageUrl} = spot
+export const editSpotById = (spot) => async (dispatch) => {
+    const {address, city, state, country, name, description, price, imageUrl, id} = spot
+    console.log('ididididididid', id)
     const lat = 37.76;
     const lng = -122.47;
-    const res = await csrfFetch(`/api/spots/${spotId}`, {
+    const res = await csrfFetch(`/api/spots/${id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -142,13 +143,16 @@ export const editSpotById = (spot, spotId) => async (dispatch) => {
             lng,
             name,
             description,
-            price
+            price,
         })
     })
 
     if(res.ok) {
         const data = await res.json();
-        
+        console.log('edit spot action data: ', data)
+        if(imageUrl !== undefined) {
+            dispatch(createSpotImage(id, imageUrl))
+        }
         dispatch(editSpot(data))
     }
 }
