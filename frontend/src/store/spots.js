@@ -59,6 +59,15 @@ export const getSpots = () => async (dispatch) => {
     }
 }
 
+export const getSpotsCurrent = () => async (dispatch) => {
+    const res = await csrfFetch('/api/spots/current'); //use csrf fetch for all requests
+    
+    if(res.ok){
+        const data = await res.json();
+        dispatch(loadSpots(data.Spots))
+    }
+}
+
 export const getOneSpot = (spotId) => async (dispatch) => {
     //console.log('Thunk Data: ', spotId)
     const res = await csrfFetch(`/api/spots/${spotId}`)

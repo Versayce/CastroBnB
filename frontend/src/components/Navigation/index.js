@@ -9,7 +9,7 @@ import LoginForm from '../LoginFormModal/LoginForm';
 import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
 import EditSpotForm from '../EditSpotForm/EditSpotForm';
 
-export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot', editSpot: 'editSpot' };
+export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot' };
 
 const getModalForType = (modalType, setShowModal) => {
   switch(modalType) {

@@ -12,7 +12,7 @@ function EditSpotForm({ setShowModal, spot }) {
   //const spots = useSelector(state => state.spots.allSpots)
   //const spot = useSelector(state => state.spots.oneSpot)
   const user = useSelector(state => state.session.user)
-  console.log('editform single spot: ', spot)
+  //console.log('editform single spot: ', spot)
   //console.log('editform spots: ', spots)
 
 
