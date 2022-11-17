@@ -16,10 +16,13 @@ const CurrentUserSpots = () => {
 
     const sessionUser = useSelector(state => state.session.user);
     const { id } = sessionUser;
+    
     const spotsObj = useSelector(state => state.spots.allSpots);
     const spots = Object.values(spotsObj);
     const filteredSpots = spots.filter(spot => spot.ownerId === id)
-    //console.log('Current User Spots: ', id)
+
+    const oneSpot = useSelector(state => state.spots.oneSpot);
+    console.log('Current User Spots: ', oneSpot)
 
     useEffect(() => {
         dispatch(getSpots())
@@ -36,7 +39,7 @@ const CurrentUserSpots = () => {
             ))}
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditSpotForm setShowModal={setShowModal} spots={spots} />
+                    <EditSpotForm setShowModal={setShowModal} spot={oneSpot} />
                 </Modal>
             )}
         </div>

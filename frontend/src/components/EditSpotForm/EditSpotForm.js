@@ -5,15 +5,15 @@ import { createSpot, createSpotImage, loadOneSpot } from "../../store/spots";
 import { editSpotById } from "../../store/spots";
 import { useHistory, useParams } from "react-router-dom";
 
-function EditSpotForm({ setShowModal, spots }) {
+function EditSpotForm({ setShowModal, spot }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
   //const spots = useSelector(state => state.spots.allSpots)
-  const spot = useSelector(state => state.spots.oneSpot)
+  //const spot = useSelector(state => state.spots.oneSpot)
   const user = useSelector(state => state.session.user)
   console.log('editform single spot: ', spot)
-  console.log('editform spots: ', spots)
+  //console.log('editform spots: ', spots)
 
 
   const [address, setAddress] = useState(spot.address);

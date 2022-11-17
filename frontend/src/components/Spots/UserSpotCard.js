@@ -27,6 +27,7 @@ export default function CurrentUserSpotCard({ spot, setShowModal }){
                         <button onClick={(event)=> {
                             event.stopPropagation();
                             setShowModal(true)
+                            dispatch(getOneSpot(spot.id))
                             }
                         }>EDIT</button>
 
