@@ -24,9 +24,9 @@ function EditSpotForm({ setShowModal }) {
   const [imageUrl, setImageUrl] = useState(spot.SpotImages[spot.SpotImages.length - 1].url)
   const [errors, setErrors] = useState([]);
 
-//   useEffect(() => {
-//     dispatch(loadOneSpot)
-//   })
+  // useEffect(() => {
+  //   dispatch(loadOneSpot())
+  // })
 
 
   const handleSubmit = async (e) => {

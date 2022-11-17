@@ -190,7 +190,7 @@ const spotReducer = (state = initialState, action) => {
         case ADD_SPOT:
             return {
                 ...state,
-                allSpots: [action.spot, ...state.allSpots],
+                allSpots: [...state.allSpots, action.spot],
                 // oneSpot: action.spot
             }
         
