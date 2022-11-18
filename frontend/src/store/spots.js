@@ -273,7 +273,7 @@ const spotReducer = (state = initialState, action) => {
         case EDIT_SPOT:
             {
                 console.log('EDIT ACTION SPOT: ', action.spot)
-                const newState = { allSpots: {...state.allSpots}, oneSpot: {}};
+                const newState = { allSpots: {...state.allSpots}, oneSpot: {...state.oneSpot}};
                 console.log('ALL SPOTS FROM EDIT SPOT NEWSTATE: ', newState.allSpots)
                 newState.allSpots[action.spot.id] = action.spot;
                 return newState;
