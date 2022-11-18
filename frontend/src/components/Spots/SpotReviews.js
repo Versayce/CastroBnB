@@ -10,11 +10,11 @@ const SpotReviews = ({ review }) => {
     const { id } = sessionUser
     //console.log('SpotReviews SESSION USER ID: ', id)
     const dispatch = useDispatch();
-    if(id === review.userId)
+    const showDeleteForRelatedUser = id === review.userId
     return (
         <div>
             <div>{review.review}</div>
-            <button onClick={() => dispatch(deleteReview(review.id))}>Delete</button>
+            {showDeleteForRelatedUser && <button onClick={() => dispatch(deleteReview(review.id))}>Delete</button>}
         </div>
     )
 }

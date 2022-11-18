@@ -15,22 +15,18 @@ function SpotPage () {
     useEffect(() => {
         dispatch(getOneSpot(spotId));
         dispatch(getSpotReviews(spotId));
-    }, [dispatch])
+    }, [dispatch]);
     
     const sessionUser = useSelector(state => state.session.user);
     const spot = useSelector(state => state.spots.oneSpot);
-    const reviewsObj = useSelector(state => state.reviews.Reviews)
-    const reviews = Object.values(reviewsObj)
+    const reviewsObj = useSelector(state => state.reviews.Reviews);
+    const reviews = Object.values(reviewsObj);
     //console.log('SPOT REVIEWS SESSION USER: ', sessionUser)
-    
     //console.log('ORIGINAL spotId', spot.id)
-    
-    const { id } = sessionUser
-    //console.log('SPOT REVIEWS SESSION USER ID: ', id)
     
     const handleClick = () => {
         setIsShown(current => !current);
-        // setIsShown(true);
+        // or use setIsShown(true);
       };
     
 

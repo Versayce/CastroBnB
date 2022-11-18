@@ -14,7 +14,7 @@ function CreateReviewForm({ spotId, setIsShown }) {
     const [errors, setErrors] = useState([]);
 
     //console.log('review form spotId: ', spotId)
-    console.log('review form stars: ', stars)
+    //console.log('review form stars: ', stars)
 
     const handleSubmit = async (e) => {
         e.preventDefault();

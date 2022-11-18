@@ -13,6 +13,12 @@ module.exports = {
       {
         "spotId": 1,
         "userId": 5,
+        "review": "TESTING USER CONDITIONALS",
+        "stars": 5
+      },
+      {
+        "spotId": 1,
+        "userId": 5,
         "review": "Review 2",
         "stars": 1
       },
