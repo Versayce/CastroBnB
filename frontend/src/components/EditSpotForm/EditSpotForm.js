@@ -19,7 +19,6 @@ function EditSpotForm({ setShowModal, spot }) {
   const [description, setDescription] = useState(spot.description);
   const [price, setPrice] = useState(spot.price);
   const [imageUrl, setImageUrl] = useState(spot.previewImage)
-  //const [imageUrl, setImageUrl] = useState(spot.SpotImages[spot.SpotImages.length - 1].url)
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {

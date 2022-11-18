@@ -7,6 +7,9 @@ const ADD_SPOT = 'spots/add'
 const ADD_SPOT_IMAGE = 'spots/spotId/addimages'
 const EDIT_SPOT = '/spots/spotId/edit'
 
+
+//------------------------------ ACTIONS ------------------------------//
+
 export const loadSpots = (spots) => {
     return {
         type: LOAD_SPOTS,
@@ -49,6 +52,8 @@ export const addSpotImage = (spotImage, spotId) => {
         spotId
     }
 }
+
+//------------------------------ THUNKS ------------------------------//
 
 export const getSpots = () => async (dispatch) => {
     const res = await csrfFetch('/api/spots'); //use csrf fetch for all requests
@@ -186,6 +191,8 @@ export const createSpotImage = (spotId, imageUrl) => async (dispatch) => { //not
         dispatch(addSpotImage(data, spotId))
     }
 }
+
+//------------------------------ REDUCER ------------------------------//
 
 const initialState = { allSpots: {}, oneSpot: {} }
 const spotReducer = (state = initialState, action) => {
