@@ -29,10 +29,40 @@ module.exports = {
         "stars": 2
       },
       {
-        "spotId": 1,
+        "spotId": 2,
         "userId": 2,
         "review": "Review 5",
-        "stars": 2
+        "stars": 1
+      },
+      {
+        "spotId": 4,
+        "userId": 2,
+        "review": "Review 6",
+        "stars": 1
+      },
+      {
+        "spotId": 5,
+        "userId": 2,
+        "review": "Review 7",
+        "stars": 5
+      },
+      {
+        "spotId": 5,
+        "userId": 2,
+        "review": "Review 8",
+        "stars": 3
+      },
+      {
+        "spotId": 6,
+        "userId": 2,
+        "review": "Review 9",
+        "stars": 3
+      },
+      {
+        "spotId": 2,
+        "userId": 3,
+        "review": "Review 10",
+        "stars": 5
       },
     ], {});
   },
