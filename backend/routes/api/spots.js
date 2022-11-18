@@ -132,9 +132,9 @@ router.get('/current', requireAuth, async (req, res, next) => {
         //console.log('New Spots: ', spot.toJSON())
         spotList.push(spot.toJSON())
     })
-    let starCount = 0;
-    let numRev = 0;
     spotList.forEach(spot => {
+        let starCount = 0;
+        let numRev = 0;
         spot.SpotImages.forEach(image => {
             if(!image) {}
             if(image.preview === true) {
@@ -146,7 +146,7 @@ router.get('/current', requireAuth, async (req, res, next) => {
             if(review) {
                 //console.log(review)
                 numRev += 1;
-                starCount += review.stars;
+                starCount = starCount + review.stars;
                 spot.avgRating = starCount/numRev;
             }
         })
@@ -208,7 +208,8 @@ router.get('/:spotId', async (req, res, next) => {
         const newReview = review.toJSON();
         // console.log(newReview.stars)
         starCount += newReview.stars
-        numRev += 1
+        numRev ++
+        //numRev += 1
     });
     // console.log(starCount)
     // console.log('numrev: ', numRev)

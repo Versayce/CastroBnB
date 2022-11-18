@@ -20,19 +20,19 @@ module.exports = {
         "spotId": 1,
         "userId": 3,
         "review": "Review 3",
-        "stars": 1
+        "stars": 2
       },
       {
         "spotId": 1,
         "userId": 1,
         "review": "Review 4",
-        "stars": 1
+        "stars": 2
       },
       {
         "spotId": 1,
         "userId": 2,
         "review": "Review 5",
-        "stars": 1
+        "stars": 2
       },
     ], {});
   },
