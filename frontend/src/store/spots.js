@@ -92,7 +92,7 @@ export const deleteSpot = (spotId) => async (dispatch) => {
     }
 }
 
-export const createSpot = (spot) => async (dispatch) => {
+export const createSpot = (spot) => async (dispatch) => {  //make a fetch request for image within this thunk
     //console.log('create spot param data: ', spot)
     const {address, city, state, country, name, description, price, imageUrl} = spot
     const lat = 37.76;
@@ -109,7 +109,8 @@ export const createSpot = (spot) => async (dispatch) => {
             lng,
             name,
             description,
-            price
+            price,
+            "previewImage": undefined
         })
     });
     //console.log('create res: ', res)
@@ -118,20 +119,31 @@ export const createSpot = (spot) => async (dispatch) => {
         const data = await res.json();
         const spotId = data.id
         if(imageUrl !== undefined) {
-            dispatch(createSpotImage(spotId, imageUrl))
+            const preview = true;
+            const res2 = await csrfFetch(`/api/spots/${spotId}/images`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    "spotId": spotId,
+                    "url": imageUrl,
+                    preview
+                })
+            })
+            const imageData = await res2.json();
+            console.log('imagedata: ', imageData.url)
+            data.previewImage = imageData.url
         }
-        //console.log('data: ', data)
         dispatch(addSpot(data))
         return res;
     }
 }
 
-export const editSpotById = (spot) => async (dispatch) => {
-    const {address, city, state, country, name, description, price, imageUrl, id} = spot
-    console.log('ididididididid', id)
+export const editSpotById = (spot) => async (dispatch) => {  //make a fetch request for image within this thunk
+    const {address, city, state, country, name, description, price, previewImage, spotId} = spot
+    //console.log('id', spotId)
     const lat = 37.76;
     const lng = -122.47;
-    const res = await csrfFetch(`/api/spots/${id}`, {
+    const res = await csrfFetch(`/api/spots/${spotId}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -149,16 +161,14 @@ export const editSpotById = (spot) => async (dispatch) => {
 
     if(res.ok) {
         const data = await res.json();
-        console.log('edit spot action data: ', data)
-        if(imageUrl !== undefined) {
-            dispatch(createSpotImage(id, imageUrl))
-        }
+        data.previewImage = previewImage
+        //console.log('edit spot action data: ', data)
         dispatch(editSpot(data))
     }
 }
 
-export const createSpotImage = (spotId, imageUrl) => async (dispatch) => {
-    console.log('image data: ', imageUrl)
+export const createSpotImage = (spotId, imageUrl) => async (dispatch) => { //not being used currently
+    //console.log('image data: ', imageUrl)
     const preview = true;
     const res = await csrfFetch(`/api/spots/${spotId}/images`,{
         method: 'POST',
@@ -172,47 +182,68 @@ export const createSpotImage = (spotId, imageUrl) => async (dispatch) => {
 
     if(res.ok) {
         const data = await res.json();
-        console.log('data: ', data)
+        //console.log('data: ', data)
         dispatch(addSpotImage(data, spotId))
     }
 }
 
-const initialState = { allSpots: [], oneSpot: null }
-
+const initialState = { allSpots: {}, oneSpot: {} }
 const spotReducer = (state = initialState, action) => {
     switch(action.type) {
 
         case LOAD_SPOTS:
-            return {
-                ...state, 
-                allSpots: action.spots
+            {
+                const newState = { allSpots: {}, oneSpot: {} };
+                action.spots.forEach(spot => {
+                    newState.allSpots[spot.id] = spot
+                });
+                return newState;
             }
 
         case LOAD_ONE_SPOT:
-            return {
-                ...state,
-                oneSpot: action.spot
-            };
+            {
+                const newState = { allSpots: {},  oneSpot: {} };
+                newState.oneSpot = action.spot;
+                return newState;
+            }
 
         case DELETE_SPOT:
-            return {
-                ...state,
-                allSpots: state.allSpots.filter(spot => spot.id !== action.spotId)
+            {
+                const newState = { allSpots: {...state.allSpots}, oneSpot: {...state.oneSpot}};
+                delete newState.allSpots[action.spotId]
+                //delete newState.oneSpot[action.spotId]
+                return newState
             }
+            // return {
+            //     ...state,
+            //     allSpots: state.allSpots.filter(spot => spot.id !== action.spotId)
+            // }
         
         case ADD_SPOT:
-            return {
-                ...state,
-                allSpots: [...state.allSpots, action.spot],
-                // oneSpot: action.spot
+            {
+                // console.log('add spot action: ', action.spot);
+                const newState = { allSpots: {...state.allSpots}};
+                newState.allSpots[action.spot.id] = action.spot;
+                return newState;
             }
+            // return {
+            //     ...state,
+            //     allSpots: [...state.allSpots, action.spot],
+            //     // oneSpot: action.spot
+            // }
         
         case EDIT_SPOT:
-            return {
-                ...state,
-                allSpots: [...state.allSpots, action.spot],
-                //oneSpot: action.spot
+            {
+                const newState = { allSpots: {...state.allSpots}, oneSpot: {}};
+                newState.allSpots[action.spot.id] = action.spot;
+                return newState;
             }
+            // console.log('edit reducer action', action.spot)
+            // return {
+            //     ...state,
+            //     allSpots: [...state.allSpots, action.spot],
+            //     //oneSpot: action.spot
+            // }
         
         case ADD_SPOT_IMAGE:
             const spot = state.allSpots.find(spot => spot.id === action.spotId)

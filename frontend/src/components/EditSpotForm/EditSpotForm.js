@@ -23,20 +23,31 @@ function EditSpotForm({ setShowModal, spot }) {
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
-    const id = spot.id
+    const editedSpot = {
+      spotId: spot.id,
+      address,
+      city,
+      state,
+      country,
+      name,
+      description,
+      price,
+      "previewImage": imageUrl
+    }
+
     e.preventDefault();
     history.push('/spots/current')
-    setShowModal(false)
     //add conditionals for error throwing
     setErrors([]);
-      return await dispatch(editSpotById({ address, city, state, country, name, description, price, imageUrl, id }))
-      //.then(setShowModal(false))
-      .catch(
+    await dispatch(editSpotById(editedSpot))
+    //.then(setShowModal(false))
+    .catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
-    );
+      );
+    setShowModal(false)
   };
 
   // const spotReqBody = {

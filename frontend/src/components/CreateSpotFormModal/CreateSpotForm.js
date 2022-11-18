@@ -31,12 +31,12 @@ function CreateSpotForm({ setShowModal }) {
     setErrors([]);
       return await dispatch(createSpot({ address, city, state, country, name, description, price, imageUrl }))
       //.then(setShowModal(false))
-      .catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
+    //   .catch(
+    //   async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) setErrors(data.errors);
+    //   }
+    // );
   };
 
   // const spotReqBody = {

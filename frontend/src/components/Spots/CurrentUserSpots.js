@@ -10,10 +10,7 @@ const CurrentUserSpots = () => {
 
     const spotsObj = useSelector(state => state.spots.allSpots);
     const spots = Object.values(spotsObj);
-    //console.log('spots: ', spots)
-
-    const oneSpot = useSelector(state => state.spots.oneSpot);
-    console.log('Current User Spots: ', oneSpot)
+    //console.log('current user spots: ', spotsObj)
 
     useEffect(() => {
         dispatch(getSpotsCurrent())

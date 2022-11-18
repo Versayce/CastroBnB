@@ -13,11 +13,13 @@ function SpotPage () {
     }, [dispatch])
     
     const spot = useSelector(state => state.spots.oneSpot);
-    console.log('spot: ', spot)
+    //const newSpot = spot[1]
+    console.log('spotpage spot: ', spot)
+    //console.log('newSpot: ', newSpot)
     if(spot === null) return null
     return (
         <div className="spot-page">
-            <img src={spot.SpotImages[0]?.url ?? spot.previewImage} className="spot-image" />
+            <img src={spot.previewImage} className="spot-image" />
             <p>{spot.name}</p>
             <p>{spot.description}</p>
             <p>{spot.address}</p>

@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
-import { getSpots, getOneSpot } from "../../store/spots";
+import { useHistory } from "react-router-dom";
+import { getSpots } from "../../store/spots";
 import SpotCard from "./SpotCard";
 import './Spots.css'
 
 const SpotList = () => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const params = useParams();
-    const { spotId } = params;
+    
     const spotsObj = useSelector(state => state.spots.allSpots)
     const spots = Object.values(spotsObj);
     //console.log('spotsObj: ', spots)
