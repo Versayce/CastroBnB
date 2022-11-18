@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
-import * as sessionActions from "../../store/session";
-import { createStoreHook, useDispatch, useSelector } from "react-redux";
-import { createSpot, createSpotImage, loadOneSpot } from "../../store/spots";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { editSpotById } from "../../store/spots";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function EditSpotForm({ setShowModal, spot }) {
-  console.log('EditSpotForm spot: ', spot)
-  console.log('EditSpotForm spotId: ', spot.id)
+  //console.log('EditSpotForm spot: ', spot)
+  //console.log('EditSpotForm spotId: ', spot.id)
   const dispatch = useDispatch();
   const history = useHistory();
 

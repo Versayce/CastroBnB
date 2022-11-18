@@ -145,7 +145,7 @@ export const createSpot = (spot) => async (dispatch) => {  //make a fetch reques
 
 export const editSpotById = (spot) => async (dispatch) => {  //make a fetch request for image within this thunk
     const {address, city, state, country, name, description, price, previewImage, spotId} = spot
-    //console.log('id', spotId)
+    console.log('preview image id', previewImage)
     const lat = 37.76;
     const lng = -122.47;
     const res = await csrfFetch(`/api/spots/${spotId}`, {
@@ -163,11 +163,24 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
             price,
         })
     })
-
     if(res.ok) {
         const data = await res.json();
-        data.previewImage = previewImage
-        //console.log('edit spot action data: ', data)
+        if(previewImage !== undefined) {
+            const preview = true;
+            const res2 = await csrfFetch(`/api/spots/${spotId}/images`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    "spotId": spotId,
+                    "url": previewImage,
+                    preview
+                })
+            })
+            const imageData = await res2.json();
+            console.log('imagedata: ', imageData.url)
+            data.previewImage = imageData.url
+        }
+        console.log('edit spot action data: ', data.previewImage)
         dispatch(editSpot(data))
     }
 }
@@ -200,7 +213,7 @@ const spotReducer = (state = initialState, action) => {
 
         case LOAD_SPOTS:
             {
-                const newState = { allSpots: {}, oneSpot: {} };
+                const newState = { allSpots: {...state.allSpots}, oneSpot: {...state.oneSpot} };
                 action.spots.forEach(spot => {
                     newState.allSpots[spot.id] = spot
                 });
@@ -209,7 +222,7 @@ const spotReducer = (state = initialState, action) => {
 
         case LOAD_ONE_SPOT:
             {
-                const newState = { allSpots: {},  oneSpot: {} };
+                const newState = { allSpots: {...state.allSpots},  oneSpot: {...state.oneSpot} };
                 newState.oneSpot = action.spot;
                 return newState;
             }
@@ -241,7 +254,9 @@ const spotReducer = (state = initialState, action) => {
         
         case EDIT_SPOT:
             {
+                console.log('EDIT ACTION SPOT: ', action.spot)
                 const newState = { allSpots: {...state.allSpots}, oneSpot: {}};
+                console.log('ALL SPOTS FROM EDIT SPOT NEWSTATE: ', newState.allSpots)
                 newState.allSpots[action.spot.id] = action.spot;
                 return newState;
             }

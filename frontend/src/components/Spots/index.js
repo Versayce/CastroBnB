@@ -11,7 +11,7 @@ const SpotList = () => {
     
     const spotsObj = useSelector(state => state.spots.allSpots)
     const spots = Object.values(spotsObj);
-    //console.log('spotsObj: ', spots)
+    //console.log('spots index spots: ', spots)
 
     useEffect(() => {
         dispatch(getSpots())
