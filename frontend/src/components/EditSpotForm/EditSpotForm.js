@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 function EditSpotForm({ setShowModal, spot }) {
   //console.log('EditSpotForm spot: ', spot)
   //console.log('EditSpotForm spotId: ', spot.id)
+  const { avgRating } = spot
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -29,7 +30,8 @@ function EditSpotForm({ setShowModal, spot }) {
       name,
       description,
       price,
-      "previewImage": imageUrl
+      "previewImage": imageUrl,
+      avgRating
     }
 
     e.preventDefault();

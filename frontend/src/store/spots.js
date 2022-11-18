@@ -153,7 +153,7 @@ export const createSpot = (spot) => async (dispatch) => {  //make a fetch reques
 }
 
 export const editSpotById = (spot) => async (dispatch) => {  //make a fetch request for image within this thunk
-    const {address, city, state, country, name, description, price, previewImage, spotId} = spot
+    const {address, city, state, country, name, description, price, previewImage, spotId, avgRating} = spot
     console.log('preview image id', previewImage)
     const lat = 37.76;
     const lng = -122.47;
@@ -170,6 +170,7 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
             name,
             description,
             price,
+            avgRating
         })
     })
     if(res.ok) {
@@ -186,7 +187,8 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
                 })
             })
             const imageData = await res2.json();
-            console.log('imagedata: ', imageData.url)
+            console.log('spot.avgRating: ', spot.avgRating)
+            data.avgRating = spot.avgRating
             data.previewImage = imageData.url
         }
         console.log('edit spot action data: ', data.previewImage)
