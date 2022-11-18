@@ -39,7 +39,7 @@ export const removeSpotReview = (reviewId) => {
 //------------------------------ THUNKS ------------------------------//
 
 export const getSpotReviews = (spotId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/spots/${spotId}/reviews`); //use csrf fetch for all requests
+    const res = await csrfFetch(`/api/spots/${spotId}/reviews`); 
     console.log('GET REVIEW RES: ', res)
     if(res.ok){
         const data = await res.json();
@@ -57,7 +57,7 @@ export const createSpotReview = (spotReview) => async (dispatch) => {
             review,
             stars
         })
-    }); //use csrf fetch for all requests
+    });
     
     if(res.ok){
         const data = await res.json();
