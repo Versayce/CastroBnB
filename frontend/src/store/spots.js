@@ -276,6 +276,7 @@ const spotReducer = (state = initialState, action) => {
                 const newState = { allSpots: {...state.allSpots}, oneSpot: {...state.oneSpot}};
                 console.log('ALL SPOTS FROM EDIT SPOT NEWSTATE: ', newState.allSpots)
                 newState.allSpots[action.spot.id] = action.spot;
+                newState.oneSpot = action.spot
                 return newState;
             }
             // console.log('edit reducer action', action.spot)
