@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSpotReview } from "../../store/reviews";
 
-function CreateReviewForm( {spotId} ) {
+function CreateReviewForm({ spotId, setIsShown }) {
     const dispatch = useDispatch();
   
     const spot = useSelector(state => state.spots.oneSpot)
@@ -10,10 +10,11 @@ function CreateReviewForm( {spotId} ) {
     const reviews = useSelector(state => state.reviews.Reviews)
 
     const [review, setReview] = useState("");
-    const [stars, setStars] = useState("");
+    const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
 
     //console.log('review form spotId: ', spotId)
+    console.log('review form stars: ', stars)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,7 +24,7 @@ function CreateReviewForm( {spotId} ) {
           }
         //add conditionals for error throwing
         setErrors([]);
-          return dispatch(createSpotReview(editedSpot, spotId))
+        dispatch(createSpotReview(editedSpot, spotId))
           //.then(setShowModal(false))
         //   .catch(
         //   async (res) => {
@@ -31,6 +32,7 @@ function CreateReviewForm( {spotId} ) {
         //     if (data && data.errors) setErrors(data.errors);
         //   }
         // );
+        setIsShown(false)
       };
 
 
@@ -53,7 +55,7 @@ function CreateReviewForm( {spotId} ) {
           <label>
             Stars
             <input
-              type="text"
+              type="number"
               value={stars}
               onChange={(e) => setStars(e.target.value)}
               required

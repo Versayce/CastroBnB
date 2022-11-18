@@ -23,6 +23,8 @@ function SpotPage () {
     const reviews = Object.values(reviewsObj)
     //console.log('SPOT REVIEWS SESSION USER: ', sessionUser)
     
+    //console.log('ORIGINAL spotId', spot.id)
+    
     const { id } = sessionUser
     //console.log('SPOT REVIEWS SESSION USER ID: ', id)
     
@@ -53,7 +55,7 @@ function SpotPage () {
             <div>
                 <button className="create-review-button" onClick={handleClick}>CREATE REVIEW</button>   
                 {isShown && (
-                    <CreateReviewForm setIsShown={setIsShown} spotId={spot.id} />
+                    <CreateReviewForm setIsShown={setIsShown} spotId={spotId} />
                 )} 
             </div>
             </div>
