@@ -19,7 +19,7 @@ export default function SpotCard({ spot }){
 
                     </div>
                     <div className='spot-rating'>
-                        <p>{`AVG Rating: ${spot.avgRating}`}</p>
+                        <p>{`Stars: ${spot.avgRating}`}</p>
                     </div>
                 </div>
             </div>

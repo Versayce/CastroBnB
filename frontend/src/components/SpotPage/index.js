@@ -30,7 +30,9 @@ function SpotPage () {
             </div>
             <div className="spot-reviews" reviews={reviews}>
                 {reviews.map((review) => (
-                    <p key={review.id}>{review.review}</p>
+                    <div key={review.id}>
+                        <p>{review.review}</p>
+                    </div>
                 ))}
             </div>
         </div>

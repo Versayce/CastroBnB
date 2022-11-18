@@ -6,6 +6,7 @@ const DELETE_SPOT = 'spots/delete'
 const ADD_SPOT = 'spots/add'
 const ADD_SPOT_IMAGE = 'spots/spotId/addimages'
 const EDIT_SPOT = '/spots/spotId/edit'
+const LOAD_CURRENT_SPOTS = '/spots/load/current'
 
 
 //------------------------------ ACTIONS ------------------------------//
@@ -13,6 +14,13 @@ const EDIT_SPOT = '/spots/spotId/edit'
 export const loadSpots = (spots) => {
     return {
         type: LOAD_SPOTS,
+        spots
+    }
+}
+
+export const loadCurrentSpots = (spots) => {
+    return {
+        type: LOAD_CURRENT_SPOTS,
         spots
     }
 }
@@ -69,7 +77,8 @@ export const getSpotsCurrent = () => async (dispatch) => {
     
     if(res.ok){
         const data = await res.json();
-        dispatch(loadSpots(data.Spots))
+        console.log('get current spots data: ', data)
+        dispatch(loadCurrentSpots(data.Spots))
     }
 }
 
@@ -214,6 +223,15 @@ const spotReducer = (state = initialState, action) => {
         case LOAD_SPOTS:
             {
                 const newState = { allSpots: {...state.allSpots}, oneSpot: {...state.oneSpot} };
+                action.spots.forEach(spot => {
+                    newState.allSpots[spot.id] = spot
+                });
+                return newState;
+            }
+
+        case LOAD_CURRENT_SPOTS:
+            {
+                const newState = { allSpots: {}, oneSpot: {} };
                 action.spots.forEach(spot => {
                     newState.allSpots[spot.id] = spot
                 });

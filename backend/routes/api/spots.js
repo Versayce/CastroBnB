@@ -64,10 +64,10 @@ router.get('/', async (req, res) => {
         //console.log('New Spots: ', spot.toJSON())
         Spots.push(spot.toJSON())
     })
-    let starCount = 0;
-    let numRev = 0;
-
+    
     Spots.forEach(spot => {
+        let starCount = 0;
+        let numRev = 0;
         spot.Reviews.forEach(review => {
             //console.log(review.stars)
             if(review) {
@@ -132,9 +132,9 @@ router.get('/current', requireAuth, async (req, res, next) => {
         //console.log('New Spots: ', spot.toJSON())
         spotList.push(spot.toJSON())
     })
-    let starCount = 0;
-    let numRev = 0;
     spotList.forEach(spot => {
+        let starCount = 0;
+        let numRev = 0;
         spot.SpotImages.forEach(image => {
             if(!image) {}
             if(image.preview === true) {
@@ -147,8 +147,8 @@ router.get('/current', requireAuth, async (req, res, next) => {
                 //console.log(review)
                 numRev += 1;
                 starCount += review.stars;
-                spot.avgRating = Math.round(starCount/numRev * 10) / 10;
             }
+            spot.avgRating = Math.round(starCount/numRev * 10) / 10;
         })
         if(spot.SpotImages.length === 0) spot.previewImage = null;
         delete spot.SpotImages;
