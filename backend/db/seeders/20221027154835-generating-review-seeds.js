@@ -20,12 +20,24 @@ module.exports = {
         "spotId": 1,
         "userId": 3,
         "review": "Review 3",
-        "stars": 2
+        "stars": 3
       },
       {
         "spotId": 1,
         "userId": 1,
         "review": "Review 4",
+        "stars": 2
+      },
+      {
+        "spotId": 1,
+        "userId": 2,
+        "review": "Testing userId conditional",
+        "stars": 2
+      },
+      {
+        "spotId": 1,
+        "userId": 2,
+        "review": "Testing userId conditional 2",
         "stars": 2
       },
       {

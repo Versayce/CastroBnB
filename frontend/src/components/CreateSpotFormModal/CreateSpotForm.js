@@ -29,7 +29,7 @@ function CreateSpotForm({ setShowModal }) {
     setShowModal(undefined)
     //add conditionals for error throwing
     setErrors([]);
-      return await dispatch(createSpot({ address, city, state, country, name, description, price, imageUrl }))
+      return dispatch(createSpot({ address, city, state, country, name, description, price, imageUrl }))
       //.then(setShowModal(false))
     //   .catch(
     //   async (res) => {

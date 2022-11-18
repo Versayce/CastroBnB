@@ -40,17 +40,18 @@ export const removeSpotReview = (reviewId) => {
 
 export const getSpotReviews = (spotId) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots/${spotId}/reviews`); 
-    console.log('GET REVIEW RES: ', res)
+    //console.log('GET REVIEW RES: ', res)
     if(res.ok){
         const data = await res.json();
-        console.log('GET REVIEW DATA: ', data)
+        //console.log('GET REVIEW DATA: ', data)
         dispatch(loadSpotReviews(data))
     }
 }
 
-export const createSpotReview = (spotReview) => async (dispatch) => {
+export const createSpotReview = (spotReview, spotId) => async (dispatch) => {
+    console.log('THUNK: createSpotReview: ', spotReview, 'ID VAL: ', spotId)
     const { review, stars } = spotReview
-    const res = await csrfFetch(`/api/spots/${review.id}/reviews`, {
+    const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -58,10 +59,12 @@ export const createSpotReview = (spotReview) => async (dispatch) => {
             stars
         })
     });
+
+    console.log('response body: ', res.body)
     
     if(res.ok){
         const data = await res.json();
-        console.log('CREATE SPOT DATA: ', data)
+        console.log('CREATE SPOT REVIEW DATA: ', data)
         dispatch(addSpotReview(data))
     }
 }
@@ -78,14 +81,14 @@ export const deleteReview = (reviewId) => async (dispatch) => {
 
 //------------------------------ REDUCER ------------------------------//
 
-const initialState = { Reviews: [] }
+const initialState = { Reviews: {} }
 const reviewReducer = (state = initialState, action) => {
     switch(action.type) {
 
         case LOAD_SPOT_REVIEWS:
             {
-                console.log('action.reviews: ', action.reviews.Reviews)
-                const newState = { Reviews: [] };
+                //console.log('action.reviews: ', action.reviews.Reviews)
+                const newState = { Reviews: {} };
                 action.reviews.Reviews.forEach(review => {
                     newState.Reviews[review.id] = review
                 });
@@ -94,14 +97,14 @@ const reviewReducer = (state = initialState, action) => {
 
         case ADD_REVIEW:
             {
-                const newState = { Reviews: [] };
+                const newState = { Reviews: {...state.Reviews} };
                 newState.Reviews[action.review.id] = action.review;
                 return newState;
             }
 
         case DELETE_REVIEW:
             {
-                const newState = { Reviews: [...state.Reviews] };
+                const newState = { Reviews: {...state.Reviews} };
                 delete newState.Reviews[action.reviewId];
                 return newState;
             }
