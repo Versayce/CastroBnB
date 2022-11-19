@@ -43,10 +43,10 @@ function SpotPage () {
             <div className="spot-wrapper">
                 <div className="spot-image-container">
                     <div className="spot-first-image">
-                        <img src={spot.previewImage} className="spot-image" />
+                        <img src={spot.previewImage} className="spot-image-inside" />
                     </div>
                     <div className="spot-secondary-images-container">
-                        {/* ADD REST OF IMAGES HERE */}
+                        {/* ADD REMAINING IMAGES HERE */}
                         {spot.SpotImages && spot.SpotImages.length !== 0 && 
                             spot.SpotImages.slice(1, 5).map(image => (<img className='secondary-image' key={image.id} src={image.url}></img>))
                             //spot.SpotImages.map(image => (<img src={image.url}></img>)) // use after fixing issue with backend previewimages

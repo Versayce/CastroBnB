@@ -28,17 +28,23 @@
 .spot-first-image {
     box-sizing: border-box;
     height: 100%;
+    width: 50%;
     object-fit: cover;
     /* border: solid blue 3px; */
 }
 
-.spot-first-image > img{
-    border-radius: 0px;
+.spot-image-inside {
+    box-sizing: border-box;
+    border-radius: 15px 0px 0px 15px;
+    height: 100%;
+    width: 100%;
+    padding: 3px;
 }
 
 .spot-secondary-images-container {
-    box-sizing: border-box;
+    display: flex;
     /* boder: green solid 3px; */
+    align-content: space-around;
     flex-wrap: wrap;
     height: 100%;
     width: 50%;
@@ -47,5 +53,5 @@
 .spot-secondary-images-container > img {
     box-sizing: border-box;
     width: 50%;
-    padding: 0px;
+    padding: 3PX;
 }
