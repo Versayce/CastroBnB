@@ -4,11 +4,35 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('SpotImages', [
+
+      //IMAGES FOR FIRST SPOT TO TEST IMAGES ARRAY
       {
         "spotId": 1,
-        "url": 'https://a0.muscache.com/im/pictures/cf9aedb7-d2cd-4ca5-8661-1274434eedfe.jpg?im_w=720',
+        "url": 'https://a0.muscache.com/im/pictures/miso/Hosting-715759276214360126/original/875ea373-9fa5-4632-9228-0bb8aa3efa88.jpeg?im_w=960',
         "preview": true,
       },
+      {
+        "spotId": 1,
+        "url": 'https://a0.muscache.com/im/pictures/miso/Hosting-715759276214360126/original/a811a4d0-14d2-45f1-ac43-9964f61c261a.jpeg?im_w=720',
+        "preview": false,
+      },
+      {
+        "spotId": 1,
+        "url": 'https://a0.muscache.com/im/pictures/miso/Hosting-715759276214360126/original/96bd40c8-a62a-4f4e-8c5e-f4a85656084a.jpeg?im_w=720',
+        "preview": false,
+      },
+      {
+        "spotId": 1,
+        "url": 'https://a0.muscache.com/im/pictures/miso/Hosting-715759276214360126/original/efb19fc3-7027-4b95-aa85-41e9b1339224.jpeg?im_w=720',
+        "preview": false,
+      },
+      {
+        "spotId": 1,
+        "url": 'https://a0.muscache.com/im/pictures/miso/Hosting-715759276214360126/original/6c04ca59-6e3b-4cf3-8cb2-210b01e4f09a.jpeg?im_w=720',
+        "preview": false,
+      },
+      //END FIRST SPOT TEST IMAGES
+
       {
         "spotId": 2,
         "url": 'https://a0.muscache.com/im/pictures/ce9b772b-987e-4732-9d41-8e0d0ce24e43.jpg?im_w=720',

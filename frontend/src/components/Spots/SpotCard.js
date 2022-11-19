@@ -1,9 +1,4 @@
 import './Spots.css'
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteSpot, getOneSpot } from '../../store/spots';
-import { useEffect } from 'react';
-import { createSpot } from '../../store/spots';
 
 
 export default function SpotCard({ spot }){

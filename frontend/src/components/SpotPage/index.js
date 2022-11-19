@@ -5,6 +5,7 @@ import { getSpotReviews } from "../../store/reviews";
 import { getOneSpot } from "../../store/spots";
 import SpotReviews from "../Spots/SpotReviews";
 import CreateReviewForm from "./CreateReviewForm";
+import './SpotPage.css'
 
 function SpotPage () {
     const [isShown, setIsShown] = useState(false);
@@ -12,15 +13,21 @@ function SpotPage () {
     const params = useParams();
     const { spotId } = params;
     
+    
+    const sessionUser = useSelector(state => state.session.user);
+    const reviewsObj = useSelector(state => state.reviews.Reviews);
+    const spot = useSelector(state => state.spots.oneSpot);
+    const reviews = Object.values(reviewsObj);
+    const images = spot.SpotImages;
+
+
     useEffect(() => {
         dispatch(getOneSpot(spotId));
         dispatch(getSpotReviews(spotId));
     }, [dispatch]);
     
-    const sessionUser = useSelector(state => state.session.user);
-    const spot = useSelector(state => state.spots.oneSpot);
-    const reviewsObj = useSelector(state => state.reviews.Reviews);
-    const reviews = Object.values(reviewsObj);
+
+    //console.log('SINGLE SPOT PAGE SPOT: ', spot)
     //console.log('SPOT REVIEWS SESSION USER: ', sessionUser)
     //console.log('ORIGINAL spotId', spot.id)
     
@@ -32,28 +39,44 @@ function SpotPage () {
 
     if(spot === null) return null
     return (
-        <div className="spot-page">
-            <div className="spot-details">
-                <img src={spot.previewImage} className="spot-image" />
-                <p>{spot.name}</p>
-                <p>{spot.description}</p>
-                <p>{spot.address}</p>
-            </div>
-            <div className="spot-reviews" reviews={reviews}>
-                {reviews.map((review) => (
-                    //console.log('mapping spot reviews: ', review),
-                    <SpotReviews key={review.id} review={review} sessionUser={sessionUser} />
-                    // <div key={review.id}>
-                    //     <p>{review.review}</p>
-                    //     <button onClick={() => dispatch(deleteReview(review.id))}>Delete</button>
-                    // </div>
-                ))}
-            <div>
-                <button className="create-review-button" onClick={handleClick}>CREATE REVIEW</button>   
-                {isShown && (
-                    <CreateReviewForm setIsShown={setIsShown} spotId={spotId} />
-                )} 
-            </div>
+        <div className="page">
+            <div className="spot-wrapper">
+                <div className="spot-image-container">
+                    <div className="spot-first-image">
+                        <img src={spot.previewImage} className="spot-image" />
+                    </div>
+                    <div className="spot-secondary-images-container">
+                        {/* ADD REST OF IMAGES HERE */}
+                        {spot.SpotImages && spot.SpotImages.length !== 0 && 
+                            spot.SpotImages.slice(1, 5).map(image => (<img className='secondary-image' key={image.id} src={image.url}></img>))
+                            //spot.SpotImages.map(image => (<img src={image.url}></img>)) // use after fixing issue with backend previewimages
+                            // <>
+                            //     <img src={spot.SpotImages[1].url}></img>
+                            //     <img src={spot.SpotImages[2].url}></img>
+                            //     <img src={spot.SpotImages[3].url}></img>
+                            //     <img src={spot.SpotImages[4].url}></img>
+                            // </>
+                        }
+                    </div>
+                </div>
+
+                <div className="spot-info">
+                    <p>{spot.name}</p>
+                    <p>{spot.description}</p>
+                    <p>{spot.address}</p>
+                </div>
+
+                <div className="spot-reviews" reviews={reviews}>
+                    {reviews.map((review) => (
+                        <SpotReviews key={review.id} review={review} sessionUser={sessionUser} />
+                    ))}
+                    <div>
+                        <button className="create-review-button" onClick={handleClick}>CREATE REVIEW</button>   
+                        {isShown && (
+                            <CreateReviewForm setIsShown={setIsShown} spotId={spotId} />
+                        )} 
+                    </div>
+                </div>
             </div>
         </div>
     );

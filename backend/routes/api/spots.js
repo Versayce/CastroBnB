@@ -51,7 +51,7 @@ router.get('/', async (req, res) => {
         })
     }
 
-
+    // *******GET ALL SPOTS NO PAGINATION********
     const allSpots = await Spot.findAll({
         include: [
             {model: Review},
