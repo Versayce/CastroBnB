@@ -23,23 +23,26 @@ export default function CurrentUserSpotCard({ spot }){
                         <p style={{fontWeight: 'bold'}}>{`${spot.city}, ${spot.state}`}</p>
                         <p>{spot.name}</p>
                         <p>{`$${spot.price} night`}</p>
-
-                        <button onClick={(event)=> {
-                            event.stopPropagation();
-                            dispatch(deleteSpot(spot.id))}
-                        }>DELETE</button>
-
-                        <button onClick={(event)=> {
-                            event.stopPropagation();
-                            setShowModal(true)
-                            }
-                        }>EDIT</button>
-                        
                     </div>
+
                     <div className='spot-rating'>
                         <p>{`Stars: ${spot.avgRating}`}</p>
                     </div>
                 </div>
+
+                <div className='spot-card-button-wrapper'>
+                    <a class='button' className='spot-card-buttons' onClick={(event)=> {
+                        event.stopPropagation();
+                        dispatch(deleteSpot(spot.id))}
+                    }>DELETE</a>
+
+                    <a class='button' className='spot-card-buttons' onClick={(event)=> {
+                        event.stopPropagation();
+                        setShowModal(true)
+                        }
+                    }>EDIT</a>
+                </div>
+
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpotsCurrent } from "../../store/spots";
 import CurrentUserSpotCard from "./UserSpotCard";
-import './Spots.css'
+import './SpotCard.css'
 
 
 const CurrentUserSpots = () => {

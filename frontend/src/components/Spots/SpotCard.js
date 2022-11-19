@@ -1,4 +1,4 @@
-import './Spots.css'
+import './SpotCard.css'
 
 
 export default function SpotCard({ spot }){

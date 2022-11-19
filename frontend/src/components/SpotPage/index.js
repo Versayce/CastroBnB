@@ -5,7 +5,7 @@ import { getSpotReviews } from "../../store/reviews";
 import { getOneSpot } from "../../store/spots";
 import SpotReviews from "../Spots/SpotReviews";
 import CreateReviewForm from "./CreateReviewForm";
-import './SpotPage.css'
+// import './SpotPage.css'
 
 function SpotPage () {
     const [isShown, setIsShown] = useState(false);
@@ -39,7 +39,6 @@ function SpotPage () {
 
     if(spot === null) return null
     return (
-        <div className="page">
             <div className="spot-wrapper">
                 <div className="spot-image-container">
                     <div className="spot-first-image">
@@ -60,8 +59,8 @@ function SpotPage () {
                     </div>
                 </div>
 
-                <div className="spot-info">
-                    <p>{`${spot.Owner.firstName}, ${spot.Owner.lastName}`}</p>
+                <div className="spot-information">
+                    <p>{`${spot.Owner?.firstName}, ${spot.Owner?.lastName}`}</p>
                     <p>{spot.description}</p>
                     <p>{spot.address}</p>
                 </div>
@@ -78,7 +77,6 @@ function SpotPage () {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 
