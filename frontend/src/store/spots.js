@@ -133,20 +133,21 @@ export const createSpot = (spot) => async (dispatch) => {  //make a fetch reques
         const data = await res.json();
         const spotId = data.id
         if(imageUrl !== undefined) {
-            //const preview = true;
+            const preview = true;
             const res2 = await csrfFetch(`/api/spots/${spotId}/images`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     "spotId": spotId,
                     "url": imageUrl,
-                    //preview
+                    preview
                 })
             })
             const imageData = await res2.json();
             //console.log('imagedata: ', imageData.url)
             data.previewImage = imageData.url
         }
+
         dispatch(addSpot(data))
         return res;
     }
@@ -264,7 +265,7 @@ const spotReducer = (state = initialState, action) => {
         case ADD_SPOT:
             {
                 // console.log('add spot action: ', action.spot);
-                const newState = { allSpots: {...state.allSpots}};
+                const newState = { allSpots: {...state.allSpots}, oneSpot: {} };
                 newState.allSpots[action.spot.id] = action.spot;
                 return newState;
             }

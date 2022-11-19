@@ -130,7 +130,7 @@ function CreateSpotForm({ setShowModal }) {
       <label>
         Image Url
         <input
-          type="text"
+          type="url"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           required

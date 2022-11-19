@@ -61,7 +61,7 @@ function SpotPage () {
                 </div>
 
                 <div className="spot-info">
-                    <p>{spot.name}</p>
+                    <p>{`${spot.Owner.firstName}, ${spot.Owner.lastName}`}</p>
                     <p>{spot.description}</p>
                     <p>{spot.address}</p>
                 </div>
