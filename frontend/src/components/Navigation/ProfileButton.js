@@ -29,21 +29,21 @@ function ProfileButton({ user, setLogin, setShowModal }) {
 
   const logout = (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
     history.push('/')
+    dispatch(sessionActions.logout());
   };
 
   return (
     <>
-      <button onClick={openMenu}>
+      <div className="profile-button" onClick={openMenu}>
         <i className="fa-solid fa-user" />
-      </button>
+      </div>
       {showMenu && (user ? 
         (<ul className="profile-dropdown">
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
-            <button onClick={() => history.push(`/spots/current`)}>User Spots</button>
+            <button onClick={() => history.push(`/spots/current`)}>My Spots</button>
           </li>
           <li>
             <button onClick={() => {

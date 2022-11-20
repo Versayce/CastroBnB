@@ -5,7 +5,7 @@ import { getSpotReviews } from "../../store/reviews";
 import { getOneSpot } from "../../store/spots";
 import SpotReviews from "../Spots/SpotReviews";
 import CreateReviewForm from "./CreateReviewForm";
-// import './SpotPage.css'
+import './SpotPage.css'
 
 function SpotPage () {
     const [isShown, setIsShown] = useState(false);

@@ -29,18 +29,20 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='navbar'>
-      <ul className='nav-elements'>
-        <li>
+      <div className='nav-elements'>
+        <div className='home-button'>
           <NavLink exact to="/">Home</NavLink>
+        </div>
+        <div>
           {isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}
-        </li>
+        </div>
         {showModal && (
           <Modal onClose={() => setShowModal(undefined)}>
             {getModalForType(showModal, setShowModal)}
             {/* {login ? <LoginForm setShowModal={setShowModal} /> : <SignupForm setShowModal={setShowModal}/>} */}
           </Modal>
         )}
-      </ul>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import './Spots.css'
+import './SpotCard.css'
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteSpot } from '../../store/spots';
@@ -20,13 +20,19 @@ export default function CurrentUserSpotCard({ spot }){
                 <img src={spot.previewImage} className="spot-image" />
                 <div className='spot-info-container'>
                     <div className='spot-info'>
-                        <p style={{fontWeight: 'bold'}}>{`${spot.city}, ${spot.state}`}</p>
+                        <p className='spot-card-title' style={{fontWeight: 'bold'}}>{`${spot.city}, ${spot.state}`}</p>
+                        <p>{spot.address}</p>
                         <p>{spot.name}</p>
-                        <p>{`$${spot.price} night`}</p>
+                        <div className='price-container'>
+                            <p style={{fontWeight: 'bold'}}>{`$${spot.price}`}</p>    
+                            <p>night</p>
+                        </div>
                     </div>
-
-                    <div className='spot-rating'>
-                        <p>{`Stars: ${spot.avgRating}`}</p>
+                    <div className='spot-rating-container'>
+                        <div className='spot-rating'>
+                                <div className="fa-solid fa-star fa-xs" />
+                                <p>{`${spot.avgRating}`}</p>
+                        </div>
                     </div>
                 </div>
 

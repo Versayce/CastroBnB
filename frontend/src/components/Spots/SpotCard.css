@@ -1,16 +1,3 @@
-.spot-card {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid hotpink;
-    width: 300px;
-    margin: 10px;
-}
-
-.spot-name {
-    margin-top: 15px;
-    font-weight: bold;
-}
 
 .spot-info-container {
     display: flex;
@@ -19,29 +6,101 @@
 }
 
 .spot-info {
-    width: 50%;
-    border: 2px solid blue;
+    /* border: 1px solid red; */
+    width: 75%;
+    margin-top: 10;
+}
+
+.spot-info > p {
+    /* border: 1px solid pink; */
+    margin: 0px;
+    color: grey;
 }
 
 .spot-image {
     width: 100%;
-    height: 300px;
+    height: 280px;
     object-fit: cover;
     border-radius: 15px;
+    margin-bottom: 5px;
+}
+
+.spot-rating-container {
+    /* border: solid red 3px; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 25%;
+}
+
+.spot-rating > div{
+    /* border: solid green 3px; */
+    height: 90%;
+    width: 90%;
 }
 
 .spot-rating {
-    border: green solid 3px;
+    /* border: green solid 2px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: auto;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.spot-rating > p {
+    /* border: solid red 3px; */
+    margin-left: 4px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.price-container {
+    /* border: green solid 2px; */
+    display: flex;
+    flex-direction: row;
+}
+.price-container > p {
+    /* border: solid 3px blue; */
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+.price-container > p:first-child {
+    margin-right: 5px;
 }
 
 .spot-card-button-wrapper {
+    /* border: solid red 1px; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    border: solid red 3px;
+    background-color: grey;
+    color: white;
+    border-radius: 0px 0px 13px 13px;
+    margin-top: 20px;
+
+}
+
+.spot-card-title {
+    color: black !important;
 }
 
 .spot-card-buttons {
     width: 100%;
+    text-align: center;
+}
+
+.spot-card-buttons:first-child{
+    border-radius: 0px 0px 0px 13px;
+}
+
+.spot-card-buttons:last-child{
+    border-radius: 0px 0px 13px 0px;
+}
+
+.spot-card-buttons:hover {
+    background-color: rgb(227, 28, 95);
+    cursor: pointer;
 }

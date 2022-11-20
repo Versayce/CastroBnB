@@ -30,7 +30,7 @@ function Root() {
       </ModalProvider>
     </Provider>
   );
-}
+};
 
 ReactDOM.render(
   <React.StrictMode>
