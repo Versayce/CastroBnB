@@ -39,7 +39,8 @@ function SpotPage () {
 
     if(spot === null) return null
     return (
-            <div className="spot-wrapper">
+        <div className="spot-page-index">
+            <div className="spot-page-wrapper">
                 <div className="spot-image-container">
                     <div className="spot-first-image">
                         <img src={spot.previewImage} className="spot-image-inside" />
@@ -77,6 +78,7 @@ function SpotPage () {
                     </div>
                 </div>
             </div>
+        </div>
     );
 }
 

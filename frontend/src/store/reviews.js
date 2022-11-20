@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf"
+import { REMOVE_USER } from "./session"
 
 const LOAD_SPOT_REVIEWS = 'reviews/load'
 const DELETE_REVIEW = 'reviews/delete'
@@ -115,6 +116,11 @@ const reviewReducer = (state = initialState, action) => {
                 const newState = { Reviews: [...state.Reviews] };
                 newState.Reviews[action.review.id] = action.review;
                 return newState;
+            }
+
+        case REMOVE_USER:
+            {
+                return initialState;
             }
 
         default:

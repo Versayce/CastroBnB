@@ -23,6 +23,6 @@ if (process.env.NODE_ENV === 'production') {
 
 const configureStore = (preloadedState) => {
     return createStore(rootReducer, preloadedState, enhancer);
-  };
+};
   
   export default configureStore;

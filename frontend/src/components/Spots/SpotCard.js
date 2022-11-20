@@ -4,7 +4,7 @@ import './SpotCard.css'
 export default function SpotCard({ spot }){
     //console.log('spot: ', spot)
     return (
-            <div>
+            <div className='single-spot'>
                 <img src={spot.previewImage} className="spot-image" />
                 <div className='spot-info-container'>
                     <div className='spot-info'>

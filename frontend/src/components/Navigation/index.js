@@ -7,7 +7,7 @@ import { Modal } from '../../context/Modal';
 import SignupForm from '../SignupFormModal/SignupForm';
 import LoginForm from '../LoginFormModal/LoginForm';
 import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
-import EditSpotForm from '../EditSpotForm/EditSpotForm';
+import logo from './logo.svg'
 
 export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot' };
 
@@ -31,7 +31,9 @@ function Navigation({ isLoaded }){
     <div className='navbar'>
       <div className='nav-elements'>
         <div className='home-button'>
-          <NavLink exact to="/">Home</NavLink>
+          <NavLink exact to="/">
+            <img src={logo} />
+          </NavLink>
         </div>
         <div>
           {isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}

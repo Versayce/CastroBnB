@@ -17,13 +17,15 @@ const CurrentUserSpots = () => {
     }, [dispatch])
 
     return (
-        <div className="page">
-            <div className="spot-container">
-                {spots.map((spot) => (
-                    <div key={spot.id} className="spot-card">
-                        <CurrentUserSpotCard spot={spot} />
-                    </div>
-                ))}
+        <div className="spot-index">
+            <div className="page">
+                <div className="spot-container">
+                    {spots.map((spot) => (
+                        <div key={spot.id} className="spot-card">
+                            <CurrentUserSpotCard spot={spot} />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )

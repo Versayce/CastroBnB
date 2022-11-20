@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { DemoLogin } from "./DemoLogin";
 import { useHistory } from "react-router-dom";
-import { MODAL_TYPE } from ".";
+import Navigation, { MODAL_TYPE } from ".";
+import './Navigation.css'
 
 function ProfileButton({ user, setLogin, setShowModal }) {
   const history = useHistory();

@@ -8,16 +8,16 @@
 }
 
 .navbar {
-
     display: flex;
     align-items: center;
 }
 
 div.nav-elements {
     border: solid green 3px;
-    width: 100%;
     display: flex;
+    width: 100%;
     justify-content: space-between;
     margin-left: 3%;
     margin-right: 3%;
 }
+

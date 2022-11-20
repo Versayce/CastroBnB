@@ -20,12 +20,14 @@ const SpotList = () => {
     //console.log('spots: ', spots)
     //console.log('spotsOBJ: ', spotsObj)
     return (
-        <div className="spot-container">
-            {spots.map((spot) => (
-                <div key={spot.id} className="spot-card" onClick={() => history.push(`/spots/${spot.id}`)}>
-                    <SpotCard spot={spot} />
-                </div>
-            ))}
+        <div className="spot-index">
+            <div className="spot-container">
+                {spots.map((spot) => (
+                    <div key={spot.id} className="spot-card" onClick={() => history.push(`/spots/${spot.id}`)}>
+                        <SpotCard spot={spot} />
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
