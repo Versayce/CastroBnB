@@ -86,7 +86,6 @@ ul.profile-dropdown {
 ul.profile-dropdown > li {
     box-sizing: border-box;
     width: 100%;
-    padding: 10px 0px 10px 0px;
 }
 
 ul.profile-dropdown>li:nth-child(-n - 2):hover {
@@ -100,7 +99,7 @@ ul.profile-dropdown>li:hover {
 
 .profile-dropdown-buttons {
     width: 100%;
-    padding-top: ;
-    padding-bottom: ;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border: none;
 }
