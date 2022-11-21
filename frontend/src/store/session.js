@@ -16,6 +16,15 @@ const removeUser = () => {
   };
 };
 
+//------------------------------ ERROR HANDLING ------------------------------//
+function handleErrors(response) {
+  if (!response.ok) {
+      throw Error(response.errors[0]);
+  }
+  return response;
+}
+
+
 export const restoreUser = () => async dispatch => {
     const response = await csrfFetch('/api/session');
     const data = await response.json();
@@ -49,10 +58,13 @@ export const login = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  //console.log('data: ', data)
-  dispatch(setUser(data.user));
-  return response;
+
+  if(response.ok){
+    const data = await response.json();
+    //console.log('data: ', data)
+    dispatch(setUser(data.user));
+    return response;
+  }
 };
 
 export const logout = () => async (dispatch) => {

@@ -15,16 +15,33 @@ function SignupForm({ setShowModal }) {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (password === confirmPassword) {
+      if (password === confirmPassword && password.length > 8 && firstName.length > 3 && lastName.length > 3 && username.length > 3 && email.includes('@') && email.includes('.')) {
         setErrors([]);
         return dispatch(sessionActions.signup({ email, username, password, firstName, lastName }))
-          .then(setShowModal(false))
-          .catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-          });
+        .then(setShowModal(false))
+        .catch(async (res) => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors);
+        });
       }
-      return setErrors(['Confirm Password field must be the same as the Password field']);
+      if(!email.includes('@') || !email.includes('.')){
+        return setErrors(['Please enter a valid email address'])
+      }
+      if(username.length < 6) {
+        return setErrors(['Username must be longer than 5 characters'])
+      }
+      if (password !== confirmPassword) {
+        return setErrors(['Confirm Password field must be the same as the Password field']);
+      }
+      if(firstName.length < 4) {
+        return setErrors(['First Name must be longer than 3 characters'])
+      }
+      if(lastName.length < 4) {
+        return setErrors(['Last Name must be longer than 3 characters'])
+      }
+      if(password.length < 8) {
+        return setErrors(['Password Must be longer than 8 characters'])
+      }
     };
   
     return (

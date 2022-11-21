@@ -118,10 +118,10 @@ const reviewReducer = (state = initialState, action) => {
                 return newState;
             }
 
-        case REMOVE_USER:
-            {
-                return initialState;
-            }
+        // case REMOVE_USER:
+        //     {
+        //         return initialState;
+        //     }
 
         default:
             return state;

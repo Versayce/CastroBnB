@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import SpotList from './components/Spots/index'
 import SpotPage from "./components/SpotPage";
 import CurrentUserSpots from "./components/Spots/CurrentUserSpots";
-import EditSpotForm from "./components/EditSpotForm/EditSpotForm";
+
 
 function App() {
   const dispatch = useDispatch();

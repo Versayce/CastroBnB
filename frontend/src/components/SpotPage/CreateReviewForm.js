@@ -25,14 +25,14 @@ function CreateReviewForm({ spotId, setIsShown }) {
         //add conditionals for error throwing
         setErrors([]);
         dispatch(createSpotReview(editedSpot, spotId))
-          //.then(setShowModal(false))
-        //   .catch(
-        //   async (res) => {
-        //     const data = await res.json();
-        //     if (data && data.errors) setErrors(data.errors);
-        //   }
-        // );
-        setIsShown(false)
+          .then(setIsShown(false))
+          .catch(
+          async (res) => {
+            const data = await res.json();
+            if (data && data.errors) setErrors(data.errors);
+          }
+        );
+        // setIsShown(false)
       };
 
 
@@ -62,7 +62,7 @@ function CreateReviewForm({ spotId, setIsShown }) {
             />
           </label>
 
-          <button type="submit">Create Review</button>
+          <button type="submit">Submit Review</button>
         </form>
       );
 

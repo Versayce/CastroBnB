@@ -71,7 +71,7 @@ function SpotPage () {
                         <SpotReviews key={review.id} review={review} sessionUser={sessionUser} />
                     ))}
                     <div>
-                        <button className="create-review-button" onClick={handleClick}>CREATE REVIEW</button>   
+                        <button className="create-review-button" onClick={handleClick}>Create Review</button>   
                         {isShown && (
                             <CreateReviewForm setIsShown={setIsShown} spotId={spotId} />
                         )} 

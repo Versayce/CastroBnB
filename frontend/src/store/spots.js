@@ -61,6 +61,7 @@ export const addSpotImage = (spotImage, spotId) => {
     }
 }
 
+
 //------------------------------ THUNKS ------------------------------//
 
 export const getSpots = () => async (dispatch) => {
@@ -196,26 +197,6 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
         dispatch(editSpot(data))
     }
 }
-
-// export const createSpotImage = (spotId, imageUrl) => async (dispatch) => { //not being used currently
-//     //console.log('image data: ', imageUrl)
-//     const preview = true;
-//     const res = await csrfFetch(`/api/spots/${spotId}/images`,{
-//         method: 'POST',
-//         headers: {'Content-Type': 'application/json'},
-//         body: JSON.stringify({
-//             "spotId": spotId,
-//             "url": imageUrl,
-//             preview
-//         })
-//     })
-
-//     if(res.ok) {
-//         const data = await res.json();
-//         //console.log('data: ', data)
-//         dispatch(addSpotImage(data, spotId))
-//     }
-// }
 
 //------------------------------ REDUCER ------------------------------//
 

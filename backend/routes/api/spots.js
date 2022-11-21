@@ -244,7 +244,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     )
 })
 
-router.get('/:spotId/reviews', requireAuth, async (req, res) => {
+router.get('/:spotId/reviews', async (req, res) => {
     const Reviews = await Review.findAll({
         where: { spotId: req.params.spotId},
         include: [ 
