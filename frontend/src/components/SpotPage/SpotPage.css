@@ -1,3 +1,13 @@
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.spot-page-index {
+    font-family: 'Manrope', sans-serif;
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 .spot-wrapper {
     box-sizing: border-box;
@@ -5,6 +15,37 @@
     flex-direction: column;
     margin-left: 25%;
     margin-right: 25%;
+}
+
+#spot-title {
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.spot-page-subheader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.spot-page-subheader > ul {
+    margin: 0px;
+    padding-left: 28px;
+}
+
+#host-status {
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
+#spot-location {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 0px;
 }
 
 .spot-image-container {
@@ -16,6 +57,7 @@
     height: auto;
     /* border: solid red 3px; */
 }
+
 
 .spot-first-image {
     box-sizing: border-box;
@@ -55,16 +97,140 @@
     border-radius: 0px 0px 15px 0px;
 }
 
-.spot-information {
+#spot-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.spot-details {
     display: flex;
     flex-direction: column;
+    width: 50%;
+    align-items: flex-start;
+}
+
+.spot-titles {
+    width: 90%;
+    border-bottom: solid rgb(235, 235, 235) 2px;
+}
+
+.spot-titles > h1 {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.spot-titles > h3 {
+    margin-top: 0px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.spot-details > h4 {
+    font-size: 16px;
+    font-weight: 400;
+    width: 90%;
+}
+
+#review-section {
+    width: 50%;
+
+}
+
+#review-section > h1 {
+    font-size: 30px;
+    font-weight: 400;
+    margin-top: 20px;
+    padding-bottom: 27px;
     width: 100%;
-    align-items: center;
+    justify-content: center;
+    /* border-bottom: solid rgb(235, 235, 235) 2px; */
 }
 
 .spot-reviews {
+    border: solid rgb(196, 196, 196) 2px;
+    border-radius: 10px;
+    /* border: 1px solid red; */
+    padding-top: 0px;
+    /* margin-top: 20px; */
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
+    align-items: flex-start;
+}
+
+.spot-reviews > div {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* border-bottom: solid rgb(235, 235, 235) 2px; */
+    justify-content: center;
+}
+
+#user-reviews-wrapper {
+    margin-top: 20px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    border-bottom: solid rgb(235, 235, 235) 2px;
+}
+
+#user-reviews-wrapper:last-child {
+    border-bottom: none !important
+}
+
+#user-reviews {
+    display: flex;
+}
+
+#username {
+    margin-right: 20px;
+}
+
+.spot-review-form {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+}
+
+.spot-review-form > form {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.spot-review-form > form > input{
+    width: 100%;
+}
+
+#review-form-button {
+    margin-top: 30px;
+}
+
+.review-delete-button {
+    margin-left: 30px;
+    font-family: 'Manrope', sans-serif;
+    color: white;
+    width: 70px;
+    background-color: grey;
+    border: none;
+    border-radius: 10px;
+}
+
+#delete-button {
+ padding-left: 11px;
+ padding-right: 10px;
+}
+
+.review-delete-button:hover {
+    background-color: rgb(227, 28, 95);
+    cursor: pointer;
+}
+
+#submit-review-button {
+    align-items: center;
+    width: 100%
 }

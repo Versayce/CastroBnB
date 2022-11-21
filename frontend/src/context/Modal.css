@@ -1,6 +1,5 @@
 form {
   font-family: 'Manrope', sans-serif; 
-  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
@@ -10,11 +9,14 @@ form > h1 {
 }
 
 #modal {
+    height: 50%;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
+    margin-top: 15%;
+    margin-bottom: 15%;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -9,7 +9,7 @@
 .spot-info {
     /* border: 1px solid red; */
     width: 75%;
-    margin-top: 10;
+    margin-top: 10px;
 }
 
 .spot-info > p {
@@ -19,7 +19,7 @@
 }
 
 .spot-page-wrapper {
-    border: solid red 3px;
+    /* border: solid red 3px; */
     width: auto;
     margin: 0% 10%;
 }

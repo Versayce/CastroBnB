@@ -12,13 +12,15 @@ function CreateReviewForm({ spotId, setIsShown }) {
     const [review, setReview] = useState("");
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
-
+    
+    console.log("This is the user:", user)
     //console.log('review form spotId: ', spotId)
     //console.log('review form stars: ', stars)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const editedSpot = {
+            "User": user,
             review,
             stars
           }
@@ -43,26 +45,27 @@ function CreateReviewForm({ spotId, setIsShown }) {
               <li key={idx}>{error}</li>
             ))}
           </ul>
-          <label>
-            Review
+          
             <input
               type="text"
               value={review}
               onChange={(e) => setReview(e.target.value)}
+              placeholder="Review"
               required
             />
-          </label>
-          <label>
-            Stars
+          
+          <label>Stars</label>
             <input
               type="number"
               value={stars}
               onChange={(e) => setStars(e.target.value)}
               required
             />
-          </label>
+          
 
-          <button type="submit">Submit Review</button>
+          <span className='form-button'>
+            <input id='submit-review-button' type="submit" value='Submit Review' />
+          </span>
         </form>
       );
 

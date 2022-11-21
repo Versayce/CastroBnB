@@ -41,6 +41,11 @@ function SpotPage () {
     return (
         <div className="spot-page-index">
             <div className="spot-page-wrapper">
+                <h1 id="spot-title">{spot.name}</h1>
+                <div className="spot-page-subheader">
+                    <h3 id="host-status">Superhost</h3>
+                    <ul><li><h3 id="spot-location">{`${spot.city}, ${spot.state}`}</h3></li></ul>
+                </div>
                 <div className="spot-image-container">
                     <div className="spot-first-image">
                         <img src={spot.previewImage} className="spot-image-inside" />
@@ -60,22 +65,33 @@ function SpotPage () {
                     </div>
                 </div>
 
-                <div className="spot-information">
-                    <p>{`${spot.Owner?.firstName}, ${spot.Owner?.lastName}`}</p>
-                    <p>{spot.description}</p>
-                    <p>{spot.address}</p>
-                </div>
-
-                <div className="spot-reviews" reviews={reviews}>
-                    {reviews.map((review) => (
-                        <SpotReviews key={review.id} review={review} sessionUser={sessionUser} />
-                    ))}
-                    <div>
-                        <button className="create-review-button" onClick={handleClick}>Create Review</button>   
-                        {isShown && (
-                            <CreateReviewForm setIsShown={setIsShown} spotId={spotId} />
-                        )} 
+                <div id="spot-info">
+                    <div className="spot-details">
+                        <div className="spot-titles">
+                            <h1>{`Hosted By: ${spot.Owner?.firstName}`}</h1>
+                            <h3>{spot.address}</h3>
+                        </div>
+                        <h4>{spot.description}</h4>
                     </div>
+
+                    <div id="review-section">
+                        <h1>Reviews</h1>
+
+                        <div className="spot-reviews" reviews={reviews}>
+                            {reviews.map((review) => (
+                                <SpotReviews key={review.id} review={review} sessionUser={sessionUser} />
+                            ))}
+                        </div>
+
+                        <div className="spot-review-form">
+                            <span id='review-form-button'>
+                                <input type="submit" onClick={handleClick} value='Leave a Review' />
+                            </span>
+                            {isShown && (
+                                <CreateReviewForm setIsShown={setIsShown} spotId={spotId} />
+                            )} 
+                        </div>
+                    </div>       
                 </div>
             </div>
         </div>

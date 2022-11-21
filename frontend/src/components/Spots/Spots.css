@@ -1,7 +1,9 @@
-
+.page {
+    margin-top: 100px;
+}
 
 .spot-index {
-    margin: 0px 40px;
+    margin: 100px 40px;
 }
 
 .spot-container {

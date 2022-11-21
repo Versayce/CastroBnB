@@ -1,12 +1,11 @@
-import './SpotCard.css'
-import '../../context/Modal.css'
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteSpot } from '../../store/spots';
 import { useState } from 'react';
-
 import { Modal } from '../../context/Modal';
 import EditSpotForm from '../EditSpotForm/EditSpotForm';
+import './SpotCard.css'
+import '../../context/Modal.css'
 
 
 export default function CurrentUserSpotCard({ spot }){

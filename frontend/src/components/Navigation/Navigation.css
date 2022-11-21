@@ -1,7 +1,10 @@
 .navbar {
     font-family: 'Manrope', sans-serif;
     /* border: solid green 3px; */
-    position: static;
+    position: fixed;
+    background-color: white;
+    z-index: 200;
+    top: 0px;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
@@ -10,8 +13,6 @@
     align-items: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.267);
 }
-
-
 
 #logo-text {
     font-size: 30px;

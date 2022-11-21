@@ -74,77 +74,71 @@ function EditSpotForm({ setShowModal, spot }) {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
-        Address
+      <h1>Edit Spot</h1>
+      <label>Address</label>
         <input
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           required
         />
-      </label>
-      <label>
-        City
+      
+      <label>City</label>
         <input
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           required
         />
-      </label>
-      <label>
-        State
+      
+      <label>State</label>
         <input
           type="text"
           value={state}
           onChange={(e) => setState(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Country
+      
+      <label>Country</label>
         <input
           type="text"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Name
+      
+      <label>Name</label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Description
+      
+      <label>Description</label>       
         <input
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Price
+      
+      <label>Price</label>
         <input
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
         />
-      </label>
-      <label>
+    
+      <label>Image Url</label>
         <input
           type="url"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           required
         />
-      </label>
+      
       <span className='form-button'>
           <input type="submit" value='Save Changes' />
       </span>
