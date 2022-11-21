@@ -5,6 +5,7 @@ import { DemoLogin } from "./DemoLogin";
 import { useHistory } from "react-router-dom";
 import Navigation, { MODAL_TYPE } from ".";
 import './Navigation.css'
+import menuIcon from './menuIcon.png'
 
 function ProfileButton({ user, setLogin, setShowModal }) {
   const history = useHistory();
@@ -35,8 +36,9 @@ function ProfileButton({ user, setLogin, setShowModal }) {
   };
 
   return (
-    <>
-      <div className="profile-button" onClick={openMenu}>
+    <div id="profile-button" onClick={openMenu}>
+      <img src={menuIcon}></img>
+      <div className="profile-button">
         <i className="fa-solid fa-user" />
       </div>
       {showMenu && (user ? 
@@ -75,7 +77,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
           </li>
         </ul>)
       )}
-    </>
+    </div>
   );
 }
 

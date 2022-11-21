@@ -6,8 +6,8 @@ import { Modal } from '../../context/Modal';
 import SignupForm from '../SignupFormModal/SignupForm';
 import LoginForm from '../LoginFormModal/LoginForm';
 import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
-import logo from './logo.png'
 import './Navigation.css';
+
 
 export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot' };
 
@@ -31,8 +31,8 @@ function Navigation({ isLoaded }){
     <div className='navbar'>
       <div className='nav-elements'>
         <div className='home-button'>
-          <NavLink exact to="/">
-            <img src={logo} />
+          <NavLink id="logo-link" exact to="/">
+            <span id="logo-text">Castrobnb</span>
           </NavLink>
         </div>
         <div>

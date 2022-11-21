@@ -138,7 +138,6 @@ function EditSpotForm({ setShowModal, spot }) {
         />
       </label>
       <label>
-        Image Url
         <input
           type="url"
           value={imageUrl}
@@ -146,7 +145,9 @@ function EditSpotForm({ setShowModal, spot }) {
           required
         />
       </label>
-      <button type="submit">Save Changes</button>
+      <span className='form-button'>
+          <input type="submit" value='Save Changes' />
+      </span>
     </form>
   );
 }

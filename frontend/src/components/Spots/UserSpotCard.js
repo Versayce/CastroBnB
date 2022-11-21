@@ -1,4 +1,5 @@
 import './SpotCard.css'
+import '../../context/Modal.css'
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteSpot } from '../../store/spots';
