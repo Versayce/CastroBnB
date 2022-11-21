@@ -128,6 +128,7 @@ div.spot-page-subheader > ul {
 }
 
 .spot-details > h4 {
+    word-break:break-all;
     font-size: 16px;
     font-weight: 400;
     width: 90%;
@@ -221,8 +222,8 @@ div.spot-page-subheader > ul {
 }
 
 #delete-button {
- padding-left: 11px;
- padding-right: 10px;
+    padding-left: 11px;
+    padding-right: 10px;
 }
 
 .review-delete-button:hover {
