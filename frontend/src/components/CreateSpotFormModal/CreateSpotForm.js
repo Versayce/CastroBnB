@@ -65,76 +65,84 @@ function CreateSpotForm({ setShowModal }) {
           <li key={idx}>{error}</li>
         ))}
       </ul>
+
       <label>
-        Address
         <input
           type="text"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          placeholder='Address'
           required
         />
       </label>
+
       <label>
-        City
         <input
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          placeholder='City'
           required
         />
       </label>
+
       <label>
-        State
         <input
           type="text"
           value={state}
           onChange={(e) => setState(e.target.value)}
+          placeholder='State'
           required
         />
       </label>
+
       <label>
-        Country
         <input
           type="text"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
+          placeholder='Country'
           required
         />
       </label>
+
       <label>
-        Name
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          placeholder='Name'
           required
         />
       </label>
+
       <label>
-        Description
         <input
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          placeholder='Description'
           required
         />
       </label>
+
       <label>
-        Price
         <input
           type="number"
           inputmode="numeric"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          placeholder='Price'
           required
         />
       </label>
+      
       <label>
-        Image Url
         <input
           type="url"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
+          placeholder='Image Url'
           required
         />
       </label>

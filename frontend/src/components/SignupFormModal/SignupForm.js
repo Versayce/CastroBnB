@@ -49,61 +49,70 @@ function SignupForm({ setShowModal }) {
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
+
         <label>
-          Email
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='Email'
             required
           />
         </label>
+
         <label>
-          Username
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder='username'
             required
           />
         </label>
+
         <label>
-          First Name
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder='First Name'
             required
           />
         </label>
+
         <label>
-          Last Name
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            placeholder='Last Name'
             required
           />
         </label>
+
         <label>
-          Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password'
             required
           />
         </label>
+
         <label>
-          Confirm Password
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder='Confirm Password'
             required
           />
         </label>
-        <button type="submit">Sign Up</button>
+
+        <span className='form-button'>
+          <input type="submit" value='Create Listing' />
+        </span>
       </form>
     );
   }

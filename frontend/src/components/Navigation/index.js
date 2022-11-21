@@ -6,7 +6,7 @@ import { Modal } from '../../context/Modal';
 import SignupForm from '../SignupFormModal/SignupForm';
 import LoginForm from '../LoginFormModal/LoginForm';
 import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
-import logo from './logo.svg'
+import logo from './logo.png'
 import './Navigation.css';
 
 export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot' };

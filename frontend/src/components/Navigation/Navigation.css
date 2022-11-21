@@ -14,12 +14,18 @@
 }
 
 div.nav-elements {
-    border: solid green 3px;
+    /* border: solid green 3px; */
     display: flex;
     width: 100%;
+    height: auto;
+    align-items: center;
     justify-content: space-between;
     margin-left: 3%;
     margin-right: 3%;
+}
+
+svg.nav-elements {
+    fill: rgb(227, 28, 95);
 }
 
 .profile-dropdown {
@@ -63,8 +69,6 @@ ul.profile-dropdown>li:hover {
     background-color: rgb(240, 240, 240);
     cursor: pointer;
 }
-
-
 
 .profile-dropdown-buttons {
     width: 100%;

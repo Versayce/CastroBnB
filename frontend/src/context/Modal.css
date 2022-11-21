@@ -1,6 +1,12 @@
 form {
   font-family: 'Manrope', sans-serif; 
   margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+form > h1 {
+  margin-bottom: 0px;
 }
 
 #modal {
@@ -25,7 +31,7 @@ form {
 }
 
 #modal-content {
-  width: 30%;
+  width: 20%;
   position: absolute;
   background-color:white;
   border-radius: 15px;
@@ -41,6 +47,7 @@ form {
 .form-button {
   width: 50%;
   margin-top: 30px;
+  margin-bottom: 25px;
 }
 
 input[type=submit] {
@@ -73,6 +80,13 @@ input[type=number] {
 }
 
 input[type=url] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=password]{
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

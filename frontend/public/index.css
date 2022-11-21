@@ -1,4 +1,10 @@
 #root {
-    width: 100%;
     margin: 0px;
+    padding: 0px;
+}
+
+html {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
 }
