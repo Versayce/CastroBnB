@@ -7,7 +7,7 @@ module.exports = {
       {
         "spotId": 1,
         "userId": 1,
-        "review": "Review 1",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 5
       },
       {
@@ -19,31 +19,31 @@ module.exports = {
       {
         "spotId": 1,
         "userId": 3,
-        "review": "Review 2",
+        "review": "I had a great experience",
         "stars": 1
       },
       {
         "spotId": 2,
         "userId": 1,
-        "review": "Review 3",
+        "review": "Awesome!",
         "stars": 3
       },
       {
         "spotId": 2,
         "userId": 2,
-        "review": "Review 4",
+        "review": "Had a blast staying here!",
         "stars": 2
       },
       {
         "spotId": 2,
         "userId": 3,
-        "review": "Review 5",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 2
       },
       {
         "spotId": 3,
         "userId": 1,
-        "review": "Review 6",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 2
       },
       {
@@ -55,7 +55,7 @@ module.exports = {
       {
         "spotId": 3,
         "userId": 3,
-        "review": "Review 8",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 1
       },
       {
@@ -103,121 +103,121 @@ module.exports = {
       {
         "spotId": 6,
         "userId": 1,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 3
       },
       {
         "spotId": 6,
         "userId": 2,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 4
       },
       {
         "spotId": 7,
         "userId": 3,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 4
       },
       {
         "spotId": 7,
         "userId": 1,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 1
       },
       {
         "spotId": 7,
         "userId": 2,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 1
       },
       {
         "spotId": 8,
         "userId": 3,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 2
       },
       {
         "spotId": 8,
         "userId": 1,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 1
       },
       {
         "spotId": 8,
         "userId": 2,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 2
       },
       {
         "spotId": 9,
         "userId": 3,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 1
       },
       {
         "spotId": 9,
         "userId": 1,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 4
       },
       {
         "spotId": 9,
         "userId": 2,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 5
       },
       {
         "spotId": 10,
         "userId": 3,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 5
       },
       {
         "spotId": 10,
         "userId": 1,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 3
       },
       {
         "spotId": 10,
         "userId": 2,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 5
       },
       {
         "spotId": 11,
         "userId": 3,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 1
       },
       {
         "spotId": 11,
         "userId": 1,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 5
       },
       {
         "spotId": 11,
         "userId": 2,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 2
       },
       {
         "spotId": 12,
         "userId": 3,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 2
       },
       {
         "spotId": 12,
         "userId": 1,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 3
       },
       {
         "spotId": 12,
         "userId": 2,
-        "review": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "review": "Lorem ipsum dolor sit amet, consectetur.",
         "stars": 5
       },
 
