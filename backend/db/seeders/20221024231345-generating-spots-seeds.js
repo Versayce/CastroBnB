@@ -112,6 +112,18 @@ module.exports = {
         description: "Welcome to the Okemo A-Frame! With an oversized deck, featuring outdoor dining, a barrel sauna, and hot tub you'll enjoy the outdoors year round.",
         price: 355.00,
       },
+      { //id 10
+        ownerId: 1,
+        address: '1850 E. Southern Ave.',
+        city: 'Joshua Tree',
+        state: 'California',
+        country: 'United States',
+        lat: 31.59,   
+        lng: -100.89,
+        name: 'Stunning Desert Hideaway',
+        description: 'Sunset House — breathtakingly designed to transport you to your very own mid-century modern desert retreat',
+        price: 263.00,
+      },
       {
         ownerId: 2,
         address: '1850 E. Southern Ave.',
@@ -135,18 +147,6 @@ module.exports = {
         name: '2 Br/1Ba Lakefront Cabin!',
         description: 'Adorable, cozy cabin, perfectly positioned to catch the BEST sunsets on peaceful Blodgett Lake.',
         price: 170.00,
-      },
-      { //id 12
-        ownerId: 1,
-        address: '1850 E. Southern Ave.',
-        city: 'Joshua Tree',
-        state: 'California',
-        country: 'United States',
-        lat: 31.59,   
-        lng: -100.89,
-        name: 'Stunning Desert Hideaway',
-        description: 'Sunset House — breathtakingly designed to transport you to your very own mid-century modern desert retreat',
-        price: 263.00,
       },
       
     ], {});

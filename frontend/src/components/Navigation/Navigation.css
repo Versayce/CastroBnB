@@ -1,4 +1,5 @@
 .navbar {
+    font-family: 'Manrope', sans-serif;
     border: solid green 3px;
     display: flex;
     flex-direction: row-reverse;
@@ -21,3 +22,51 @@ div.nav-elements {
     margin-right: 3%;
 }
 
+.profile-dropdown {
+    box-sizing: border-box;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    width: 200px;
+    top: 50px;
+    right: 50px;
+    border-radius: 10px;
+    height: 250px;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.267);
+}
+
+.profile-dropdown-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+ul.profile-dropdown {
+    list-style-type: none;
+}
+
+ul.profile-dropdown > li {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+}
+
+ul.profile-dropdown>li:nth-child(-n - 2):hover {
+    pointer-events: none !important
+}
+
+ul.profile-dropdown>li:hover {
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+
+
+
+.profile-dropdown-buttons {
+    width: 100%;
+    border: none;
+}

@@ -41,32 +41,34 @@ function ProfileButton({ user, setLogin, setShowModal }) {
       </div>
       {showMenu && (user ? 
         (<ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
+          <div className='profile-dropdown-user-info'>
+            <span>{user.username}</span>
+            <span>{user.email}</span>
+          </div>
           <li>
-            <button onClick={() => history.push(`/spots/current`)}>My Spots</button>
+            <div className="profile-dropdown-buttons" onClick={() => history.push(`/spots/current`)}>My Spots</div>
           </li>
           <li>
-            <button onClick={() => {
+            <div className="profile-dropdown-buttons" onClick={() => {
               setShowModal(MODAL_TYPE.createSpot);
-            }}>Create Spot</button>
+            }}>Create Spot</div>
           </li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <div className="profile-dropdown-buttons" onClick={logout}>Log Out</div>
           </li>
         </ul>) :
         (<ul className="profile-dropdown">
           <li>
-            <button onClick={() => {
+            <div className="profile-dropdown-buttons" onClick={() => {
               setLogin(true)
               setShowModal(MODAL_TYPE.login)
-            }}>Log In</button>
+            }}>Log In</div>
           </li>
           <li>
-            <button onClick={() => {
+            <div className="profile-dropdown-buttons" onClick={() => {
               setLogin(false)
               setShowModal(MODAL_TYPE.signup)
-            }}>Sign Up</button>
+            }}>Sign Up</div>
           </li>
           <li>
             <DemoLogin />

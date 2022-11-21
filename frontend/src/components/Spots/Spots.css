@@ -1,9 +1,4 @@
 
-.profile-dropdown {
-    position: absolute;
-    top: 50px;
-    right: 50px;
-}
 
 .spot-index {
     margin: 0px 40px;
@@ -20,6 +15,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .spot-card {
     /* border: 1px solid hotpink; */
     box-sizing: border-box;

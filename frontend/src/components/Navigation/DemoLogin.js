@@ -7,6 +7,6 @@ export const DemoLogin = () => {
         dispatch(login({credential: 'FakeUser1', password: 'password2'}))
     }
     return (
-        <button onClick={loginWithDemoCredentials}>DEMO LOGIN</button>
+        <div className="profile-dropdown-buttons" onClick={loginWithDemoCredentials}>DEMO LOGIN</div>
     )
 }

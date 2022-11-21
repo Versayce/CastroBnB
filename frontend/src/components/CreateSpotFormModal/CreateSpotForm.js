@@ -59,6 +59,7 @@ function CreateSpotForm({ setShowModal }) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h1>Create A Listing</h1>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -122,6 +123,7 @@ function CreateSpotForm({ setShowModal }) {
         Price
         <input
           type="number"
+          inputmode="numeric"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
@@ -136,7 +138,9 @@ function CreateSpotForm({ setShowModal }) {
           required
         />
       </label>
-      <button type="submit">Create Spot</button>
+      <span className='form-button'>
+        <input type="submit" value='Create Listing' />
+      </span>
     </form>
   );
 }
