@@ -20,37 +20,57 @@ function EditSpotForm({ setShowModal, spot }) {
   const [imageUrl, setImageUrl] = useState(spot.previewImage)
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (e) => {
-    const editedSpot = {
-      spotId: spot.id,
-      address,
-      city,
-      state,
-      country,
-      name,
-      description,
-      price,
-      "previewImage": imageUrl,
-      avgRating
-    }
+  console.log("THIS IS THE IMAGE", imageUrl)
 
+  const handleSubmit = async (e) => {
+    
     e.preventDefault();
+    if (address.length > 4 && city.length > 4 && state.length > 4 && country.length > 2 && name.length > 4 && description.length > 20) {
     history.push('/spots/current')
     //add conditionals for error throwing
     setErrors([]);
-    await dispatch(editSpotById(editedSpot))
-    //.then(setShowModal(false))
-    .catch(
-      async (res) => {
-        const data = await res.json();
+    return dispatch(editSpotById(editedSpot))
+    .then(() => setShowModal(false))
+    .catch(async (res) => {
+      const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-      }
-      );
-    setShowModal(false)
+      });
+    };
+    //setShowModal(false)
+    if(address.length < 4) {
+      return setErrors(['Address must be longer than 4 characters'])
+    }
+    if(city.length < 4) {
+      return setErrors(['City must be longer than 4 characters'])
+    }
+    if(state.length < 4) {
+      return setErrors(['State must be longer than 4 characters'])
+    }
+    if(country.length < 3) {
+      return setErrors(['Country must be longer than 2 characters'])
+    }
+    if(name.length < 4) {
+      return setErrors(['Name must be longer than 4 characters'])
+    }
+    if(description.length < 20) {
+      return setErrors(['Description must be longer than 20 characters'])
+    }
   };
-
+  
+  const editedSpot = {
+    spotId: spot.id,
+    address,
+    city,
+    state,
+    country,
+    name,
+    description,
+    price,
+    "previewImage": imageUrl,
+    avgRating
+  }
   // const spotReqBody = {
-  //   "address": address,
+    //   "address": address,
   //   "city": city,
   //   "state": state,
   //   "country": country,
@@ -60,21 +80,21 @@ function EditSpotForm({ setShowModal, spot }) {
   //   "description": description,
   //   "price": price
   // }
-
+  
   // const imgReqBody = {
-  //   "spotId": spotId
+    //   "spotId": spotId
   //   "url": imageUrl,
   //   "preview": true
   // }
-
+  
   return (
     <form id="edit-spot-form" onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
       <h1>Edit Spot</h1>
+
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
+      
       <label>Address</label>
         <input
           type="text"
@@ -139,9 +159,9 @@ function EditSpotForm({ setShowModal, spot }) {
           required
         />
       
-      <span className='form-button'>
-          <input type="submit" value='Save Changes' />
-      </span>
+      {/* <span className='form-button'> */}
+          <button type="submit" value='Save Changes'>Submit Changes</button>
+      {/* </span> */}
     </form>
   );
 }

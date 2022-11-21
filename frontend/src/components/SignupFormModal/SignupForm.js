@@ -23,7 +23,7 @@ function SignupForm({ setShowModal }) {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
-      }
+      };
       if(!email.includes('@') || !email.includes('.')){
         return setErrors(['Please enter a valid email address'])
       }
