@@ -23,6 +23,15 @@ Castrobnb is a clone inspired by the popular home listing site: Airbnb. Castrobn
     <li>Redux</li>
 </ul>
 
+### Database:
+<ul>
+    <li>Postgress</li>
+</ul>
+
+### Hosting:
+<ul>
+    <li>Heroku</li>
+</ul>
 
 # Testing
 
