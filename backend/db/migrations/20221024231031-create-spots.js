@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       address: {
-        type: Sequelize.STRING(250)
+        type: Sequelize.STRING(500)
       },
       city: {
         type: Sequelize.STRING
@@ -34,7 +34,7 @@ module.exports = {
         type: Sequelize.STRING(30)
       },
       description: {
-        type: Sequelize.STRING(250)
+        type: Sequelize.STRING(500)
       },
       price: {
         type: Sequelize.DECIMAL

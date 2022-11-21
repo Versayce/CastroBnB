@@ -13,7 +13,7 @@ module.exports = {
         lat:33.58,   
         lng: -111.89,
         name: 'Triangular A-Frame home',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        description: 'Lorem ipsum dolor sit amet.',
         price: 1300.00,
       },
       {
@@ -25,7 +25,7 @@ module.exports = {
         lat: 31.59,   
         lng: -100.89,
         name: 'Lakeside Home',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        description: 'Lorem ipsum dolor sit amet.',
         price: 125.00,
       },
       {
@@ -37,7 +37,7 @@ module.exports = {
         lat: 31.59,   
         lng: -100.89,
         name: 'Australian Beachfront Home',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        description: 'Lorem ipsum dolor sit amet.',
         price: 250.00,
       },
       {
@@ -49,7 +49,7 @@ module.exports = {
         lat: 31.59,   
         lng: -100.89,
         name: 'East Side Living',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        description: 'Lorem ipsum dolor sit amet.',
         price: 300.00,
       },
       {
@@ -61,7 +61,7 @@ module.exports = {
         lat: 31.59,   
         lng: -100.89,
         name: 'The Sam Rayburn Suite',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        description: 'Lorem ipsum dolor sit amet.',
         price: 225.00,
       },
       {
@@ -109,7 +109,7 @@ module.exports = {
         lat: 31.59,   
         lng: -100.89,
         name: 'Okemo A-Frame - Hammock',
-        description: "Welcome to the Okemo A-Frame! With an oversized deck, featuring outdoor dining, a barrel sauna, and hot tub you'll enjoy the outdoors year round.",
+        description: "Welcome to the Okemo A-Frame! With an oversized deck, featuring outdoor dining.",
         price: 355.00,
       },
       { //id 10
@@ -133,7 +133,7 @@ module.exports = {
         lat: 31.59,   
         lng: -100.89,
         name: 'Special! Jan & Feb $169/Night!',
-        description: 'Nestled in the Mountain Shadows Resort Mystic Mountain Marvel is an ideal cabin for family/friends looking to be close to Gatlinburg yet out of the downtown hustle and bustle. ',
+        description: 'Nestled in the Mountain Shadows Resort Mystic Mountain Marvel is an ideal cabin for family/friends.',
         price: 760.00,
       },
       { //id 11

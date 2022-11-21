@@ -69,8 +69,9 @@ function EditSpotForm({ setShowModal, spot }) {
     "previewImage": imageUrl,
     avgRating
   }
+
   // const spotReqBody = {
-    //   "address": address,
+  //   "address": address,
   //   "city": city,
   //   "state": state,
   //   "country": country,
