@@ -37,16 +37,16 @@ export default function CurrentUserSpotCard({ spot }){
                 </div>
 
                 <div className='spot-card-button-wrapper'>
-                    <a class='button' className='spot-card-buttons' onClick={(event)=> {
+                    <div className='spot-card-buttons' onClick={(event)=> {
                         event.stopPropagation();
                         dispatch(deleteSpot(spot.id))}
-                    }>DELETE</a>
+                    }>DELETE</div>
 
-                    <a class='button' className='spot-card-buttons' onClick={(event)=> {
+                    <div className='spot-card-buttons' onClick={(event)=> {
                         event.stopPropagation();
                         setShowModal(true)
                         }
-                    }>EDIT</a>
+                    }>EDIT</div>
                 </div>
 
             </div>

@@ -46,6 +46,16 @@ form > h1 {
   margin-bottom: 20px;
 }
 
+#edit-spot-form{
+  margin-left: 20%;
+  margin-right: 20%
+}
+
+#edit-spot-form > h1 {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
 .form-button {
   width: 50%;
   margin-top: 30px;

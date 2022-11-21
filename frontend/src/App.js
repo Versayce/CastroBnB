@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 import SpotList from './components/Spots/index'
 import SpotPage from "./components/SpotPage";
 import CurrentUserSpots from "./components/Spots/CurrentUserSpots";
-
+import './index.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/spots/:spotId">
             <SpotPage />
           </Route>
-          <h1>404: Page Not Found</h1>
+          <h1>404: Not Found</h1>
         </Switch>
       )}
     </>

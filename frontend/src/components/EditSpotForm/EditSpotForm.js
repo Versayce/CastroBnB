@@ -68,7 +68,7 @@ function EditSpotForm({ setShowModal, spot }) {
   // }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="edit-spot-form" onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
