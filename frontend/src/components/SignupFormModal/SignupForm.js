@@ -30,17 +30,17 @@ function SignupForm({ setShowModal }) {
       else if(username.length < 6) {
         return setErrors(['Username must be longer than 5 characters'])
       }
-      else if (password !== confirmPassword) {
-        return setErrors(['Confirm Password field must be the same as the Password field']);
-      }
       else if(firstName.length < 4) {
         return setErrors(['First Name must be longer than 3 characters'])
       }
       else if(lastName.length < 4) {
         return setErrors(['Last Name must be longer than 3 characters'])
       }
-      else if(password.length < 8) {
+      else if(password.length < 8 || confirmPassword.length < 8) {
         return setErrors(['Password Must be longer than 8 characters'])
+      }
+      else if (password !== confirmPassword) {
+        return setErrors(['Confirm Password field must be the same as the Password field']);
       }
     };
   
