@@ -40,19 +40,19 @@ function EditSpotForm({ setShowModal, spot }) {
     if(address.length < 4) {
       return setErrors(['Address must be longer than 4 characters'])
     }
-    if(city.length < 4) {
+    else if(city.length < 4) {
       return setErrors(['City must be longer than 4 characters'])
     }
-    if(state.length < 4) {
+    else if(state.length < 4) {
       return setErrors(['State must be longer than 4 characters'])
     }
-    if(country.length < 3) {
+    else if(country.length < 3) {
       return setErrors(['Country must be longer than 2 characters'])
     }
-    if(name.length < 4) {
+    else if(name.length < 4) {
       return setErrors(['Name must be longer than 4 characters'])
     }
-    if(description.length < 20) {
+    else if(description.length < 20) {
       return setErrors(['Description must be longer than 20 characters'])
     }
   };
@@ -160,9 +160,9 @@ function EditSpotForm({ setShowModal, spot }) {
           required
         />
       
-      {/* <span className='form-button'> */}
-          <button type="submit" value='Save Changes'>Submit Changes</button>
-      {/* </span> */}
+      <span className='form-button'>
+          <input type="submit" value='Save Changes' />
+        </span>
     </form>
   );
 }

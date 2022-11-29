@@ -4,12 +4,12 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    margin-top: 3px;
 }
 
 .spot-info {
     /* border: 1px solid red; */
     width: 75%;
-    margin-top: 10px;
 }
 
 .spot-info > p {

@@ -10,40 +10,43 @@ function CreateReviewForm({ spotId, setIsShown }) {
     const reviews = useSelector(state => state.reviews.Reviews)
 
     const [review, setReview] = useState("");
-    const [stars, setStars] = useState(0);
+    const [stars, setStars] = useState("");
     const [errors, setErrors] = useState([]);
     
-    console.log("This is the user:", user)
+    //console.log("This is the user:", user)
     //console.log('review form spotId: ', spotId)
     //console.log('review form stars: ', stars)
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const editedSpot = {
-            "User": user,
-            review,
-            stars
-          }
-        //add conditionals for error throwing
+      e.preventDefault();
+      const editedSpot = {
+          "User": user,
+          review,
+          stars
+        }
+
+      console.log('ASDASFW$ETWR', review)
+      if (review.length > 10) {
         setErrors([]);
-        dispatch(createSpotReview(editedSpot, spotId))
+        return dispatch(createSpotReview(editedSpot, spotId))
           .then(setIsShown(false))
-          .catch(
-          async (res) => {
+          .catch(async (res) => {
             const data = await res.json();
             if (data && data.errors) setErrors(data.errors);
-          }
-        );
-        // setIsShown(false)
+          });
       };
+
+      if(review.length < 10) {
+        return setErrors(['Review length must be 10 or greater'])
+      }
+
+    };
 
 
       return (
         <form onSubmit={handleSubmit}>
           <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
           
             <input
@@ -56,6 +59,7 @@ function CreateReviewForm({ spotId, setIsShown }) {
           
           <label>Stars</label>
             <input
+              min='0'
               type="number"
               value={stars}
               onChange={(e) => setStars(e.target.value)}

@@ -27,19 +27,19 @@ function SignupForm({ setShowModal }) {
       if(!email.includes('@') || !email.includes('.')){
         return setErrors(['Please enter a valid email address'])
       }
-      if(username.length < 6) {
+      else if(username.length < 6) {
         return setErrors(['Username must be longer than 5 characters'])
       }
-      if (password !== confirmPassword) {
+      else if (password !== confirmPassword) {
         return setErrors(['Confirm Password field must be the same as the Password field']);
       }
-      if(firstName.length < 4) {
+      else if(firstName.length < 4) {
         return setErrors(['First Name must be longer than 3 characters'])
       }
-      if(lastName.length < 4) {
+      else if(lastName.length < 4) {
         return setErrors(['Last Name must be longer than 3 characters'])
       }
-      if(password.length < 8) {
+      else if(password.length < 8) {
         return setErrors(['Password Must be longer than 8 characters'])
       }
     };
@@ -113,7 +113,7 @@ function SignupForm({ setShowModal }) {
         </label>
 
         <span className='form-button'>
-          <input type="submit" value='Create Listing' />
+          <input type="submit" value='Sign Up' />
         </span>
       </form>
     );
