@@ -9,10 +9,8 @@ const SpotReviews = ({ review }) => {
     // console.log('SpotReviews REVIEW: ', review.User)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const newReview = useSelector(state => state.Reviews)
-    // console.log('SpotReviews SESSION USER: ', newReview)
-    //console.log('SpotReviews SESSION USER ID: ', id)
-    // const userId = sessionUser?.id
+    // const newReview = useSelector(state => state.Reviews)
+    // console.log('new spot review: ', newReview)
     const showDeleteForRelatedUser = sessionUser?.id === review.userId
 
     return (
