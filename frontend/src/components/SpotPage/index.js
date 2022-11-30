@@ -18,22 +18,21 @@ function SpotPage () {
     const reviewsObj = useSelector(state => state.reviews.Reviews);
     const spot = useSelector(state => state.spots.oneSpot);
     const reviews = Object.values(reviewsObj);
-    const images = spot.SpotImages;
 
+    //const showDeleteForRelatedUser = sessionUser?.id === review.userId
+
+    //console.log('SINGLE SPOT PAGE SPOT: ', spot)
+    //console.log('SPOT REVIEWS SESSION USER: ', sessionUser)
+    //console.log('ORIGINAL spotId', spot.id)
 
     useEffect(() => {
         dispatch(getOneSpot(spotId));
         dispatch(getSpotReviews(spotId));
     }, [dispatch]);
     
-
-    //console.log('SINGLE SPOT PAGE SPOT: ', spot)
-    //console.log('SPOT REVIEWS SESSION USER: ', sessionUser)
-    //console.log('ORIGINAL spotId', spot.id)
-    
     const handleClick = () => {
         setIsShown(current => !current);
-        // or use setIsShown(true);
+        //setIsShown(true);
       };
     
 
@@ -77,9 +76,11 @@ function SpotPage () {
                     <div id="review-section">
                         <h1>Reviews</h1>
 
-                        <div className="spot-reviews" reviews={reviews}>
+                        <div className="spot-reviews">
                             {reviews.map((review) => (
-                                <SpotReviews key={review.id} review={review} />
+                                <div key={review.id} className="review-card">
+                                    <SpotReviews review={review} spotId={spotId} />
+                                </div>
                             ))}
                         </div>
 

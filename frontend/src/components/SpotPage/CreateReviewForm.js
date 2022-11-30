@@ -13,27 +13,28 @@ function CreateReviewForm({ spotId, setIsShown }) {
     const [stars, setStars] = useState("");
     const [errors, setErrors] = useState([]);
     
+    
     //console.log("This is the user:", user)
     //console.log('review form spotId: ', spotId)
     //console.log('review form stars: ', stars)
 
     const handleSubmit = async (e) => {
       e.preventDefault();
+
       const editedSpot = {
-          "User": user,
+          // "User": user,
           review,
           stars
         }
 
-      console.log('ASDASFW$ETWR', review)
       if (review.length > 10) {
         setErrors([]);
         return dispatch(createSpotReview(editedSpot, spotId))
-          .then(setIsShown(false))
+          .then(() => setIsShown(false))
           .catch(async (res) => {
             const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-          });
+            if (data && data.message) setErrors([data.message]);
+          })
       };
 
       if(review.length < 10) {

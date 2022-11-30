@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { deleteReview, getSpotReviews } from "../../store/reviews";
+import { deleteReview } from "../../store/reviews";
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useState } from 'react';
+
 
 
 
@@ -9,8 +10,6 @@ const SpotReviews = ({ review }) => {
     // console.log('SpotReviews REVIEW: ', review.User)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    // const newReview = useSelector(state => state.Reviews)
-    // console.log('new spot review: ', newReview)
     const showDeleteForRelatedUser = sessionUser?.id === review.userId
 
     return (
