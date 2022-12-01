@@ -10,7 +10,8 @@ const SpotReviews = ({ review }) => {
     // console.log('SpotReviews REVIEW: ', review.User)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const showDeleteForRelatedUser = sessionUser?.id === review.userId
+    //const showDeleteForRelatedUser = sessionUser?.id === review.userId
+    const [showDeleteForRelatedUser, setShowDeleteForRelatedUser] = useState(sessionUser?.id === review.userId);
 
     return (
         <div id='user-reviews-wrapper'>

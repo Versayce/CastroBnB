@@ -32,7 +32,6 @@ function SpotPage () {
     
     const handleClick = () => {
         setIsShown(current => !current);
-        //setIsShown(true);
       };
     
 

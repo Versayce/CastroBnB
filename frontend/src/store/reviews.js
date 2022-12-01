@@ -67,7 +67,9 @@ export const createSpotReview = (spotReview, spotId) => async (dispatch) => {
     if(res.ok){
         const data = await res.json();
         console.log('CREATE SPOT REVIEW DATA: ', data)
-        dispatch(addSpotReview(data));
+        //data[User] = user
+        //dispatch(addSpotReview(data));
+        dispatch(getSpotReviews(spotId))
     }
 }
 
