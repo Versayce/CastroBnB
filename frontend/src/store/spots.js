@@ -84,31 +84,25 @@ export const getSpotsCurrent = () => async (dispatch) => {
 }
 
 export const getOneSpot = (spotId) => async (dispatch) => {
-    //console.log('Thunk Data: ', spotId)
     const res = await csrfFetch(`/api/spots/${spotId}`)
 
     if(res.ok) {
         const data = await res.json();
-        //console.log('GET ONE DATA: ', data)
         dispatch(loadOneSpot(data)) 
     }
 }
 
 export const deleteSpot = (spotId) => async (dispatch) => {
-    //console.log('Thunk Data: ', spotId)
     const res = await csrfFetch(`/api/spots/${spotId}`, {
         method: 'DELETE', 
     })
 
     if(res.ok) {
-        //const data = await res.json();
-        //console.log('data: ', data)
         dispatch(removeSpot(spotId)) 
     }
 }
 
 export const createSpot = (spot) => async (dispatch) => {  //make a fetch request for image within this thunk
-    //console.log('create spot param data: ', spot)
     const {address, city, state, country, name, description, price, imageUrl} = spot
     const lat = 37.76;
     const lng = -122.47;
@@ -128,7 +122,6 @@ export const createSpot = (spot) => async (dispatch) => {  //make a fetch reques
             "previewImage": undefined
         })
     });
-    //console.log('create res: ', res)
 
     if(res.ok) {
         const data = await res.json();
@@ -145,7 +138,6 @@ export const createSpot = (spot) => async (dispatch) => {  //make a fetch reques
                 })
             })
             const imageData = await res2.json();
-            //console.log('imagedata: ', imageData.url)
             data.previewImage = imageData.url
         }
 
@@ -193,7 +185,6 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
             data.avgRating = spot.avgRating
             data.previewImage = imageData.url
         }
-        //console.log('edit spot action data: ', data.previewImage)
         dispatch(editSpot(data))
     }
 }
@@ -227,7 +218,6 @@ const spotReducer = (state = initialState, action) => {
                 const newState = { allSpots: {}, oneSpot: {...action.spot} };
                 newState.oneSpot = {...action.spot};
                 newState.oneSpot.SpotImages = [...action.spot.SpotImages]
-                //console.log('WHAT IS GOING ON', newState.oneSpot.SpotImages)
                 return newState
             }
 
@@ -235,26 +225,15 @@ const spotReducer = (state = initialState, action) => {
             {
                 const newState = { allSpots: {...state.allSpots}, oneSpot: {...state.oneSpot}};
                 delete newState.allSpots[action.spotId]
-                //delete newState.oneSpot[action.spotId]
                 return newState
             }
-            // return {
-            //     ...state,
-            //     allSpots: state.allSpots.filter(spot => spot.id !== action.spotId)
-            // }
         
         case ADD_SPOT:
             {
-                // console.log('add spot action: ', action.spot);
                 const newState = { allSpots: {...state.allSpots}, oneSpot: {} };
                 newState.allSpots[action.spot.id] = action.spot;
                 return newState;
             }
-            // return {
-            //     ...state,
-            //     allSpots: [...state.allSpots, action.spot],
-            //     // oneSpot: action.spot
-            // }
         
         case EDIT_SPOT:
             {
@@ -266,24 +245,16 @@ const spotReducer = (state = initialState, action) => {
                 newState.oneSpot.previewImage = action.spot.previewImage
                 return newState;
             }
-            // console.log('edit reducer action', action.spot)
-            // return {
-            //     ...state,
-            //     allSpots: [...state.allSpots, action.spot],
-            //     //oneSpot: action.spot
-            // }
         
         case ADD_SPOT_IMAGE:
             const spot = state.allSpots.find(spot => spot.id === action.spotId)
             const updatedSpot = {...spot, previewImage: action.spotImage.url, SpotImages: [...(spot.SpotImages ?? []), action.spotImage]}
-            //const updatedSpot = {...spot, SpotImages: [...(spot.SpotImages ?? []), action.spotImage]} //TEST MORE
             return {
                 ...state,
                 allSpots: state.allSpots.map(spot => {
                    if (spot.id === updatedSpot.id) return updatedSpot
                    return spot;
                 }),
-                //oneSpot: updatedSpot
             }
 
         default:
