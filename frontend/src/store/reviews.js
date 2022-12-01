@@ -51,7 +51,7 @@ export const getSpotReviews = (spotId) => async (dispatch) => {
 }
 
 export const createSpotReview = (spotReview, spotId) => async (dispatch) => {
-    console.log('CREATE SPOT THUNK DATA: ', spotReview)
+    //console.log('CREATE SPOT THUNK DATA: ', spotReview)
     const { review, stars } = spotReview
     const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'POST',
@@ -66,7 +66,7 @@ export const createSpotReview = (spotReview, spotId) => async (dispatch) => {
     
     if(res.ok){
         const data = await res.json();
-        console.log('CREATE SPOT REVIEW DATA: ', data)
+        //console.log('CREATE SPOT REVIEW DATA: ', data)
         //data[User] = user
         //dispatch(addSpotReview(data));
         dispatch(getSpotReviews(spotId))
@@ -92,7 +92,7 @@ const reviewReducer = (state = initialState, action) => {
         case LOAD_SPOT_REVIEWS:
             {
                 //console.log('action.reviews: ', action.reviews.Reviews)
-                const newState = { Reviews: {...state.Reviews} };
+                const newState = { Reviews: {} };
                 action.reviews.Reviews.forEach(review => {
                     newState.Reviews[review.id] = review
                 });
@@ -101,7 +101,7 @@ const reviewReducer = (state = initialState, action) => {
 
         case ADD_REVIEW:
             {
-                const newState = { Reviews: {...state.Reviews} };
+                const newState = { Reviews: {} };
                 newState.Reviews[action.review.id] = action.review;
                 return newState;
             }
