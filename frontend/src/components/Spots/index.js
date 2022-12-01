@@ -11,14 +11,11 @@ const SpotList = () => {
     
     const spotsObj = useSelector(state => state.spots.allSpots)
     const spots = Object.values(spotsObj);
-    //console.log('spots index spots: ', spots)
 
     useEffect(() => {
         dispatch(getSpots())
     }, [dispatch])
 
-    //console.log('spots: ', spots)
-    //console.log('spotsOBJ: ', spotsObj)
     return (
         <div className="spot-index">
             <div className="spot-container">

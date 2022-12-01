@@ -1,5 +1,4 @@
 import { csrfFetch } from "./csrf"
-import { REMOVE_USER } from "./session"
 
 const LOAD_SPOT_REVIEWS = 'reviews/load'
 const DELETE_REVIEW = 'reviews/delete'
@@ -42,16 +41,13 @@ export const removeSpotReview = (reviewId) => {
 
 export const getSpotReviews = (spotId) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots/${spotId}/reviews`); 
-    //console.log('GET REVIEW RES: ', res)
     if(res.ok){
         const data = await res.json();
-        //console.log('GET REVIEW DATA: ', data)
         dispatch(loadSpotReviews(data))
     }
 }
 
 export const createSpotReview = (spotReview, spotId) => async (dispatch) => {
-    //console.log('CREATE SPOT THUNK DATA: ', spotReview)
     const { review, stars } = spotReview
     const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'POST',
@@ -66,9 +62,6 @@ export const createSpotReview = (spotReview, spotId) => async (dispatch) => {
     
     if(res.ok){
         const data = await res.json();
-        //console.log('CREATE SPOT REVIEW DATA: ', data)
-        //data[User] = user
-        //dispatch(addSpotReview(data));
         dispatch(getSpotReviews(spotId))
     }
 }
@@ -91,7 +84,6 @@ const reviewReducer = (state = initialState, action) => {
 
         case LOAD_SPOT_REVIEWS:
             {
-                //console.log('action.reviews: ', action.reviews.Reviews)
                 const newState = { Reviews: {} };
                 action.reviews.Reviews.forEach(review => {
                     newState.Reviews[review.id] = review
@@ -119,11 +111,6 @@ const reviewReducer = (state = initialState, action) => {
                 newState.Reviews[action.review.id] = action.review;
                 return newState;
             }
-
-        // case REMOVE_USER:
-        //     {
-        //         return initialState;
-        //     }
 
         default:
             return state;
