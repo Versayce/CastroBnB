@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { createSpot } from "../../store/spots";
 import { useHistory } from "react-router-dom";
 
@@ -7,10 +7,8 @@ function CreateSpotForm({ setShowModal }) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const spot = useSelector(state => state.spots.oneSpot)
-  const user = useSelector(state => state.session.user)
-  //console.log('session user: ', user)
-  //console.log('createspotform spot: ', spot)
+  // const spot = useSelector(state => state.spots.oneSpot)
+  // const user = useSelector(state => state.session.user)
 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -22,15 +20,15 @@ function CreateSpotForm({ setShowModal }) {
   const [imageUrl, setImageUrl] = useState("")
   const [errors, setErrors] = useState([]);
 
+    //might change error array into error object with a key of the name of the value which is throwing the error.
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     history.push('/spots/current')
     setShowModal(undefined)
-    //add conditionals for error throwing
-    setErrors([]);
+    // setErrors([]);
       return dispatch(createSpot({ address, city, state, country, name, description, price, imageUrl }))
-      //.then(setShowModal(false))
+      .then(setShowModal(false))
     //   .catch(
     //   async (res) => {
     //     const data = await res.json();
@@ -38,6 +36,22 @@ function CreateSpotForm({ setShowModal }) {
     //   }
     // );
   };
+
+  useEffect(() => {
+    let errs = [];
+    
+    if(address.length < 4) errs.push('Address must be longer than 3 characters');
+    if(city.length < 4) errs.push('City must be longer than 3 characters');
+    if(state.length < 4) errs.push('State must be longer than 3 characters');
+    if(country.length < 3) errs.push('Country must be longer than 2 characters');
+    if(name.length < 4) errs.push('Name must be at least four characters');
+    if(description.length < 20) errs.push('Description must be longer than 20 characters');
+    if(price <= 0) errs.push('Price must be greater than 0')
+    if(!imageUrl.includes('.jpg') && !imageUrl.includes('.png')) errs.push('Image URL must be a .png or .jpg')
+    
+
+    setErrors(errs)
+  }, [address, city, state, country, name, description, price, imageUrl])
 
   // const spotReqBody = {
   //   "address": address,
@@ -61,7 +75,7 @@ function CreateSpotForm({ setShowModal }) {
     <form onSubmit={handleSubmit}>
       <h1>Create A Listing</h1>
       <ul>
-        {errors.map((error, idx) => (
+        {errors && errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
@@ -147,7 +161,7 @@ function CreateSpotForm({ setShowModal }) {
         />
       </label>
       <span className='form-button'>
-        <input type="submit" value='Create Listing' />
+        <input type="submit" disabled={errors.length > 0} value='Create Listing' />
       </span>
     </form>
   );

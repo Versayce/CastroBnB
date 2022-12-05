@@ -37,22 +37,22 @@ function EditSpotForm({ setShowModal, spot }) {
       });
     };
     //setShowModal(false)
-    if(address.length < 4) {
+    if(address.length <= 4) {
       return setErrors(['Address must be longer than 4 characters'])
     }
-    else if(city.length < 4) {
+    else if(city.length <= 4) {
       return setErrors(['City must be longer than 4 characters'])
     }
-    else if(state.length < 4) {
+    else if(state.length <= 4) {
       return setErrors(['State must be longer than 4 characters'])
     }
-    else if(country.length < 3) {
+    else if(country.length <= 2) {
       return setErrors(['Country must be longer than 2 characters'])
     }
-    else if(name.length < 4) {
+    else if(name.length <= 4) {
       return setErrors(['Name must be longer than 4 characters'])
     }
-    else if(description.length < 20) {
+    else if(description.length <= 20) {
       return setErrors(['Description must be longer than 20 characters'])
     }
   };
