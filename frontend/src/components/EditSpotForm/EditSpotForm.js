@@ -20,14 +20,11 @@ function EditSpotForm({ setShowModal, spot }) {
   const [imageUrl, setImageUrl] = useState(spot.previewImage)
   const [errors, setErrors] = useState([]);
 
-  console.log("THIS IS THE IMAGE", imageUrl)
 
   const handleSubmit = async (e) => {
-    
     e.preventDefault();
     if (address.length > 4 && city.length > 4 && state.length > 4 && country.length > 2 && name.length > 4 && description.length > 20) {
-    history.push('/spots/current')
-    //add conditionals for error throwing
+    history.push('/spots/current');
     setErrors([]);
     return dispatch(editSpotById(editedSpot))
     .then(() => setShowModal(false))
@@ -69,24 +66,6 @@ function EditSpotForm({ setShowModal, spot }) {
     "previewImage": imageUrl,
     avgRating
   }
-
-  // const spotReqBody = {
-  //   "address": address,
-  //   "city": city,
-  //   "state": state,
-  //   "country": country,
-  //   "lat": 37.7645358,
-  //   "lng": -122.4730327,
-  //   "name": name,
-  //   "description": description,
-  //   "price": price
-  // }
-  
-  // const imgReqBody = {
-    //   "spotId": spotId
-  //   "url": imageUrl,
-  //   "preview": true
-  // }
   
   return (
     <form id="edit-spot-form" onSubmit={handleSubmit}>

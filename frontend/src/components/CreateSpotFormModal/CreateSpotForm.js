@@ -49,7 +49,6 @@ function CreateSpotForm({ setShowModal }) {
     if(price <= 0) errs.push('Price must be greater than 0')
     if(!imageUrl.includes('.jpg') && !imageUrl.includes('.png')) errs.push('Image URL must be a .png or .jpg')
     
-
     setErrors(errs)
   }, [address, city, state, country, name, description, price, imageUrl])
 
