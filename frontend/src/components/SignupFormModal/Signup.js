@@ -86,7 +86,6 @@ const Signup = ({ setShowModal }) => {
         .then(() => setShowModal(false))
         .catch(async (res) => {
             const data = await res.json();
-            console.log('signup submit error data: ', data)
             if (data && data.errors) setApiErrors(data.errors);
         });
     }

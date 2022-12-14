@@ -3,9 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import { Modal } from '../../context/Modal';
-import SignupForm from '../SignupFormModal/Signup';
 import Signup from '../SignupFormModal/Signup';
-import LoginForm from '../LoginFormModal/LoginForm';
+import Login from '../LoginFormModal/Login'
 import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
 import './Navigation.css';
 
@@ -15,7 +14,7 @@ export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'creat
 const getModalForType = (modalType, setShowModal) => {
   switch(modalType) {
     case MODAL_TYPE.login:
-      return <LoginForm setShowModal={setShowModal} />
+      return <Login setShowModal={setShowModal} />
     case MODAL_TYPE.signup:
       // return <SignupForm setShowModal={setShowModal} />
       return <Signup setShowModal={setShowModal} />

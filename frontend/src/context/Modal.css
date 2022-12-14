@@ -24,7 +24,7 @@
 #modal-content {
   display: flex;
   justify-content: center;
-  width: 60%;
+  width: 48%;
   max-width: 900px;
   height: max-content;
   /* border: red solid 2px; */
