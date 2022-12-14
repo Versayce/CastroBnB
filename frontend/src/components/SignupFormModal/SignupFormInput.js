@@ -1,4 +1,4 @@
-import './formInput.css'
+import './signupFormInput.css'
 import { useState } from 'react';
 
 const FormInput = (props) => {
