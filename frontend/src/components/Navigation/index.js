@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import { Modal } from '../../context/Modal';
 import SignupForm from '../SignupFormModal/SignupForm';
+import Signup from '../SignupFormModal/Signup';
 import LoginForm from '../LoginFormModal/LoginForm';
 import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
 import './Navigation.css';
@@ -16,7 +17,8 @@ const getModalForType = (modalType, setShowModal) => {
     case MODAL_TYPE.login:
       return <LoginForm setShowModal={setShowModal} />
     case MODAL_TYPE.signup:
-      return <SignupForm setShowModal={setShowModal} />
+      // return <SignupForm setShowModal={setShowModal} />
+      return <Signup setShowModal={setShowModal} />
     case MODAL_TYPE.createSpot:
       return <CreateSpotForm setShowModal={setShowModal} />
   }
