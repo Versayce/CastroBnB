@@ -10,13 +10,16 @@
 .spot-info {
     /* border: 1px solid red; */
     overflow: auto;
-    width: 60%;
+    width: 65%;
 }
 
 .spot-info > p {
     /* border: 1px solid pink; */
     margin: 0px;
     color: grey;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .spot-page-wrapper {

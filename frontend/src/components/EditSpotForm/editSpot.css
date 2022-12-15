@@ -50,7 +50,7 @@ form {
     bottom: 0;
     background-color: var(--background-color);
     z-index: -1;
-    /* border: var(--border-size) solid var(--background-color); */
+    border: var(--border-size) solid var(--background-color);
     transition: transform 150ms ease-in-out;
     transform: scaleX(0);
     transform-origin: left;
