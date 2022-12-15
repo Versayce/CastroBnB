@@ -31,7 +31,7 @@ export default function CurrentUserSpotCard({ spot }){
                     <div className='spot-rating-container'>
                         <div className='spot-rating'>
                                 <div className="fa-solid fa-star fa-xs" />
-                                <p>{`${spot.avgRating ?? "None"}`}</p>
+                                <p>{`${spot.avgRating ?? "No Reviews"}`}</p>
                         </div>
                     </div>
                 </div>
