@@ -30,7 +30,7 @@ form {
     font-size: 13pt;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
+    /* cursor: pointer; */
 
     --background-color: rgb(227, 28, 95);
     --border-size: 2px;

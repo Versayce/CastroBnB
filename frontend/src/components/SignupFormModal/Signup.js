@@ -102,7 +102,7 @@ const Signup = ({ setShowModal }) => {
                     <FormInput key={input.id} {...input} value={signupData[input.name]} onChange={onChange} />
                     ))}
                 <span id='api-error'>{apiErrors}</span>
-                <button>Submit</button>
+                <button className='btn btn-signup'>Submit</button>
             </form>
         </div>
     )

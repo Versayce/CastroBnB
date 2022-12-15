@@ -51,14 +51,14 @@ const Signup = ({ setShowModal }) => {
     };
 
     return (
-        <div className="signup">
+        <div className="login">
             <form onSubmit={handleSubmit}>
                 <h1>Login</h1>
                 {inputs.map((input) => (
                     <FormInput key={input.id} {...input} value={loginData[input.name]} onChange={onChange} />
                     ))}
                 <span id='api-error'>{apiErrors}</span>
-                <button>Submit</button>
+                <button className='btn btn-login'>Submit</button>
             </form>
         </div>
     )
