@@ -78,7 +78,7 @@ const CreateSpot = ({ setShowModal }) => {
             label: "Description",
             errorMessage: "Description must be at least 20 characters long",
             required: true,
-            pattern: "^[A-Za-z0-9 ]{20,}$",
+            pattern: "^[A-Za-z0-9 , .]{20,}$",
         },
         {
             id: 7,
@@ -98,7 +98,7 @@ const CreateSpot = ({ setShowModal }) => {
             label: "ImageUrl",
             errorMessage: "Please enter a URL that contains .jpg, .jpeg, .png, or .gif extension type",
             required: true,
-            // pattern: "(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?",
+            pattern: "[^\\s]+(.*?)(?:jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)[0-9A-Za-z\_\=\?\-\+]+$",
         },
     ];
 
