@@ -16,12 +16,12 @@ export default function SpotCard({ spot }){
                             <p>night</p>
                         </div>
                     </div>
-                    <div className='spot-rating-container'>
+                    { spot.avgRating && <div className='spot-rating-container'>
                         <div className='spot-rating'>
                                 <div><div className="fa-solid fa-star fa-xs" /></div>
-                                <p>{`${spot.avgRating}`}</p>
+                                <p>{`${spot.avgRating ?? "no reviews"}`}</p>
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
         )

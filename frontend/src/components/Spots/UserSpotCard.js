@@ -14,7 +14,6 @@ export default function CurrentUserSpotCard({ spot }){
     const [showModal, setShowModal] = useState()
     const dispatch = useDispatch();
     //console.log('spot from currentspotcard: ', spot)
-
     return (
         <>
             <div onClick={() => history.push(`/spots/${spot.id}`)}>
@@ -32,7 +31,7 @@ export default function CurrentUserSpotCard({ spot }){
                     <div className='spot-rating-container'>
                         <div className='spot-rating'>
                                 <div className="fa-solid fa-star fa-xs" />
-                                <p>{`${spot.avgRating}`}</p>
+                                <p>{`${spot.avgRating ?? "no reviews"}`}</p>
                         </div>
                     </div>
                 </div>

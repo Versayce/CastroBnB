@@ -189,7 +189,6 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
         }
         data.avgRating = avgRating;
         dispatch(editSpot(data))
-        // dispatch(getSpotsCurrent())
     }
 }
 
