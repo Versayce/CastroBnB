@@ -1,0 +1,21 @@
+#api-error {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 3px;
+    text-align: center;
+    font-size: 14px;
+}
+
+input:invalid[focused="true"] {
+    border-radius: 3px;
+    border: solid 1px rgb(255, 79, 138);
+    background-color: rgba(255, 225, 225, 0.329) !important;
+}
+
+input:invalid[focused="true"]:focus {
+    outline: 1px solid rgb(227, 28, 95);
+}
+
+input:invalid[focused="true"] ~ span {
+    display: block;
+}

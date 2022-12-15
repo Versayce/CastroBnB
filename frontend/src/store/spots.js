@@ -78,7 +78,6 @@ export const getSpotsCurrent = () => async (dispatch) => {
     
     if(res.ok){
         const data = await res.json();
-        console.log('get current spots data: ', data)
         dispatch(loadCurrentSpots(data.Spots))
     }
 }
@@ -147,8 +146,9 @@ export const createSpot = (spot) => async (dispatch) => {  //make a fetch reques
 }
 
 export const editSpotById = (spot) => async (dispatch) => {  //make a fetch request for image within this thunk
-    const {address, city, state, country, name, description, price, previewImage, spotId, avgRating} = spot
-    console.log('preview image id', previewImage)
+    const {address, city, state, country, name, description, price, imageUrl, spotId, avgRating} = spot.editSpotData
+    const previewImage = imageUrl
+    console.log('editSpot DATA: ', spot.editSpotData)
     const lat = 37.76;
     const lng = -122.47;
     const res = await csrfFetch(`/api/spots/${spotId}`, {
@@ -185,7 +185,8 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
             data.avgRating = spot.avgRating
             data.previewImage = imageData.url
         }
-        dispatch(editSpot(data))
+        // dispatch(editSpot(data))
+        dispatch(getSpotsCurrent())
     }
 }
 
@@ -237,9 +238,7 @@ const spotReducer = (state = initialState, action) => {
         
         case EDIT_SPOT:
             {
-                console.log('EDIT ACTION SPOT: ', action.spot)
                 const newState = { allSpots: {...state.allSpots}, oneSpot: {} };
-                console.log('ALL SPOTS FROM EDIT SPOT NEWSTATE: ', newState.allSpots)
                 newState.allSpots[action.spot.id] = action.spot;
                 newState.oneSpot = action.spot
                 newState.oneSpot.previewImage = action.spot.previewImage
