@@ -1,5 +1,5 @@
 import './signup.css'
-import FormInput from './SignupFormInput'
+import FormInput from './FormInput'
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
