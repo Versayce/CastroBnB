@@ -170,24 +170,25 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
     if(res.ok) {
         const data = await res.json();
         console.log('First Response Data: ', data)
-        if(previewImage !== undefined || previewImage !== null) {
-            const preview = true;
-            const res2 = await csrfFetch(`/api/spots/${spotId}/images`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    "spotId": spotId,
-                    "url": previewImage,
-                    preview
-                })
-            })
-            const imageData = await res2.json();
-            console.log('Second Response Data ', imageData)
-            console.log('edit thunk image data: ', imageData)
-            data.previewImage = imageData.url
-            console.log('edit thunk data prev image: ', data.previewImage)
-        }
+        // if(previewImage !== undefined || previewImage !== null) {
+        //     const preview = true;
+        //     const res2 = await csrfFetch(`/api/spots/${spotId}/images`, {
+        //         method: 'POST',
+        //         headers: {'Content-Type': 'application/json'},
+        //         body: JSON.stringify({
+        //             "spotId": spotId,
+        //             "url": previewImage,
+        //             preview
+        //         })
+        //     })
+        //     const imageData = await res2.json();
+        //     console.log('Second Response Data ', imageData)
+        //     console.log('edit thunk image data: ', imageData)
+        //     data.previewImage = imageData.url
+        //     console.log('edit thunk data prev image: ', data.previewImage)
+        // }
         data.avgRating = avgRating;
+        data.previewImage = previewImage
         dispatch(editSpot(data))
     }
 }
