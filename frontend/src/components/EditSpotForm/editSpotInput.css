@@ -6,8 +6,12 @@
     font-size: 14px;
 }
 
-input::placeholder {
-    color: rgba(87, 87, 87, 0.295);
+input {
+    display: flex;
+    padding: 15px;
+    margin-top: 8px;
+    border-radius: 3px;
+    border: 1px solid gray;
 }
 
 input:invalid[focused="true"] {

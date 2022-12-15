@@ -1,0 +1,81 @@
+.create-spot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+input {
+    display: flex;
+    padding: 15px;
+    margin-top: 8px;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 5% 0%;
+    max-width: 400px;
+}
+
+.btn {
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 13pt;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    --background-color: rgb(227, 28, 95);
+    --border-size: 2px;
+    --accent-color: rgb(94, 94, 94);
+}
+
+.btn.btn-create-spot {
+    z-index: 1;
+}
+
+.btn.btn-create-spot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-color);
+    z-index: -1;
+    /* border: var(--border-size) solid var(--background-color); */
+    transition: transform 150ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.btn.btn-create-spot:hover::before {
+    transform: scaleX(.08);
+}
+
+form > h1 {
+    text-align: center;
+    color: rgb(227, 28, 95);
+}
+
+.create-spot span {
+    color: rgb(227, 28, 95);
+    font-size: 10pt;
+    display: none;
+    margin-top: 0px;
+}

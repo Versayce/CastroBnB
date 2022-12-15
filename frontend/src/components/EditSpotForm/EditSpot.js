@@ -18,7 +18,8 @@ const EditSpot = ({ setShowModal, spot }) => {
         name: spot.name,
         description:  spot.description,
         price:  spot.price,
-        imageUrl:  spot.previewImage,
+        previewImage: spot.previewImage,
+        avgRating: spot.avgRating
     });
 
     const inputs = [
@@ -92,16 +93,16 @@ const EditSpot = ({ setShowModal, spot }) => {
             required: true,
             pattern: "^[1-9][0-9]*$",
         },
-        {
-            id: 8,
-            name: "imageUrl",
-            type: "imageUrl",
-            placeholder: "ImageUrl",
-            label: "ImageUrl",
-            errorMessage: "Please enter a URL that contains .jpg, .jpeg, .png, or .gif extension type",
-            required: true,
-            // pattern: "{}",
-        },
+        // {
+        //     id: 8,
+        //     name: "previewImage",
+        //     type: "imageUrl",
+        //     placeholder: "ImageUrl",
+        //     label: "ImageUrl",
+        //     errorMessage: "Please enter a URL that contains .jpg, .jpeg, .png, or .gif extension type",
+        //     required: true,
+        //     // pattern: "{}",
+        // },
     ];
 
     const handleSubmit = (e) => {

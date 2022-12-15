@@ -47,6 +47,7 @@ export const addSpot = (spot) => {
 }
 
 export const editSpot = (spot) => {
+    console.log('edit spot action info: ', spot)
     return {
         type: EDIT_SPOT,
         spot
@@ -102,7 +103,7 @@ export const deleteSpot = (spotId) => async (dispatch) => {
 }
 
 export const createSpot = (spot) => async (dispatch) => {  //make a fetch request for image within this thunk
-    const {address, city, state, country, name, description, price, imageUrl} = spot
+    const {address, city, state, country, name, description, price, imageUrl} = spot.createSpotData
     const lat = 37.76;
     const lng = -122.47;
     const res = await csrfFetch('/api/spots/', {
@@ -146,9 +147,8 @@ export const createSpot = (spot) => async (dispatch) => {  //make a fetch reques
 }
 
 export const editSpotById = (spot) => async (dispatch) => {  //make a fetch request for image within this thunk
-    const {address, city, state, country, name, description, price, imageUrl, spotId, avgRating} = spot.editSpotData
-    const previewImage = imageUrl
-    console.log('editSpot DATA: ', spot.editSpotData)
+    const {address, city, state, country, name, description, price, previewImage, spotId, avgRating} = spot.editSpotData
+    console.log('1st data instance: ', spot.editSpotData)
     const lat = 37.76;
     const lng = -122.47;
     const res = await csrfFetch(`/api/spots/${spotId}`, {
@@ -164,12 +164,13 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
             name,
             description,
             price,
-            avgRating
+            avgRating,
         })
     })
     if(res.ok) {
         const data = await res.json();
-        if(previewImage !== undefined) {
+        console.log('First Response Data: ', data)
+        if(previewImage !== undefined || previewImage !== null) {
             const preview = true;
             const res2 = await csrfFetch(`/api/spots/${spotId}/images`, {
                 method: 'POST',
@@ -181,12 +182,14 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
                 })
             })
             const imageData = await res2.json();
-            console.log('spot.avgRating: ', spot.avgRating)
-            data.avgRating = spot.avgRating
+            console.log('Second Response Data ', imageData)
+            console.log('edit thunk image data: ', imageData)
             data.previewImage = imageData.url
+            console.log('edit thunk data prev image: ', data.previewImage)
         }
-        // dispatch(editSpot(data))
-        dispatch(getSpotsCurrent())
+        data.avgRating = avgRating;
+        dispatch(editSpot(data))
+        // dispatch(getSpotsCurrent())
     }
 }
 

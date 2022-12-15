@@ -1,7 +1,6 @@
 import './createSpot.css'
 import FormInput from './CreateSpotInput'
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { createSpot } from '../../store/spots';
 
@@ -99,7 +98,7 @@ const CreateSpot = ({ setShowModal }) => {
             label: "ImageUrl",
             errorMessage: "Please enter a URL that contains .jpg, .jpeg, .png, or .gif extension type",
             required: true,
-            pattern: "\.(?i)(jpe?g|png|gif)$",
+            // pattern: "(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?",
         },
     ];
 
@@ -128,7 +127,7 @@ const CreateSpot = ({ setShowModal }) => {
                     <FormInput key={input.id} {...input} value={createSpotData[input.name]} onChange={onChange} />
                     ))}
                 <span id='api-error'>{apiErrors}</span>
-                <button className="btn btn-create-spot">Login</button>
+                <button className="btn btn-create-spot">Create Listing</button>
             </form>
         </div>
     )

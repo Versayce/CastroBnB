@@ -6,6 +6,7 @@ import { Modal } from '../../context/Modal';
 import Signup from '../SignupFormModal/Signup';
 import Login from '../LoginFormModal/Login'
 import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
+import CreateSpot from '../CreateSpotFormModal/CreateSpot';
 import './Navigation.css';
 
 
@@ -19,7 +20,8 @@ const getModalForType = (modalType, setShowModal) => {
       // return <SignupForm setShowModal={setShowModal} />
       return <Signup setShowModal={setShowModal} />
     case MODAL_TYPE.createSpot:
-      return <CreateSpotForm setShowModal={setShowModal} />
+      return <CreateSpot setShowModal={setShowModal} />
+      // return <CreateSpot setShowModal={setShowModal} />
   }
 }
 

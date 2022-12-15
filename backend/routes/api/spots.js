@@ -198,7 +198,7 @@ router.get('/:spotId', async (req, res, next) => {
     newSpot.SpotImages.forEach(image => {
         if(!image) {}
         if(image.preview === true) {
-            newSpot.previewImage = image.url
+            newSpot.previewImage = image.url;
         }
     })
     

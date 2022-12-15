@@ -4,6 +4,7 @@ import { deleteSpot } from '../../store/spots';
 import { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditSpotForm from '../EditSpotForm/EditSpotForm';
+import EditSpot from '../EditSpotForm/EditSpot';
 import './SpotCard.css'
 import '../../context/Modal.css'
 
@@ -52,7 +53,7 @@ export default function CurrentUserSpotCard({ spot }){
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditSpotForm setShowModal={setShowModal} spot={spot} />
+                    <EditSpot setShowModal={setShowModal} spot={spot} />
                 </Modal>
             )}
         </>

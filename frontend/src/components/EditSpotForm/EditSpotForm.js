@@ -1,11 +1,11 @@
+//NOTE: THIS FILE IS NO LONGER IN USE.
+
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editSpotById } from "../../store/spots";
 import { useHistory } from "react-router-dom";
 
 function EditSpotForm({ setShowModal, spot }) {
-  //console.log('EditSpotForm spot: ', spot)
-  //console.log('EditSpotForm spotId: ', spot.id)
   const { avgRating } = spot
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,7 +33,7 @@ function EditSpotForm({ setShowModal, spot }) {
         if (data && data.errors) setErrors(data.errors);
       });
     };
-    //setShowModal(false)
+
     if(address.length <= 4) {
       return setErrors(['Address must be longer than 4 characters'])
     }
