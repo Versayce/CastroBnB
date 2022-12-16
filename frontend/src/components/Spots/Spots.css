@@ -26,6 +26,7 @@
     width: 280px;
     margin: 10px;
     border-radius: 3px 3px 3px 3px;
+    cursor: pointer;
 }
 
 /* .spot-card:hover {

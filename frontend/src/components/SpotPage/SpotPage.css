@@ -9,12 +9,17 @@
     margin-right: 10%;
 }
 
-.spot-wrapper {
+.spot-page-wrapper {
+    /* border: solid 3px red; */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    margin-left: 25%;
-    margin-right: 25%;
+}
+
+#spot-info {
+    /* border: solid 3px red; */
+    display: flex;
+    flex-direction: column;
 }
 
 #spot-title {
@@ -97,15 +102,11 @@ div.spot-page-subheader > ul {
     border-radius: 0px 0px 15px 0px;
 }
 
-#spot-info {
-    display: flex;
-    flex-direction: row;
-}
 
 .spot-details {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     align-items: flex-start;
 }
 
@@ -131,50 +132,54 @@ div.spot-page-subheader > ul {
     word-break:break-all;
     font-size: 16px;
     font-weight: 400;
-    width: 90%;
+    width: 100%;
 }
 
 #review-section {
-    width: 50%;
-
+    width: 100%;
 }
 
 #review-section > h1 {
     font-size: 30px;
     font-weight: 400;
     margin-top: 20px;
-    padding-bottom: 27px;
+    padding-bottom: 0px;
     width: 100%;
     justify-content: center;
     /* border-bottom: solid rgb(235, 235, 235) 2px; */
 }
 
 .spot-reviews {
-    border: solid rgb(196, 196, 196) 2px;
-    border-radius: 10px;
-    /* border: 1px solid red; */
+    border: solid rgba(196, 196, 196, 0.507) 1px;
+    border-radius: 4px;
     padding-top: 0px;
-    /* margin-top: 20px; */
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
-    align-items: flex-start;
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255), 70%, rgb(253, 253, 253));
+}
+
+div.fa-solid.fa-star.fa-xs {
+    margin-bottom: 0px;
+    line-height: 2em;
+    margin-left: 10px;
+    margin-right: 2px;
 }
 
 .spot-reviews > div {
+    /* border: solid rgb(255, 35, 35) 2px; */
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
-    /* border-bottom: solid rgb(235, 235, 235) 2px; */
-    justify-content: center;
 }
 
 #user-reviews-wrapper {
     margin-top: 20px;
+    margin-left: 20px;
     padding-bottom: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     border-bottom: solid rgb(235, 235, 235) 2px;
 }
 
@@ -191,12 +196,14 @@ div.spot-page-subheader > ul {
 }
 
 .spot-review-form {
+    /* border: red solid 2px; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .spot-review-form > form {
+    margin-top: 0px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -209,16 +216,18 @@ div.spot-page-subheader > ul {
 
 #review-form-button {
     margin-top: 30px;
+    margin-bottom: 0px;
+    text-align: center;
 }
 
 .review-delete-button {
-    margin-left: 30px;
     font-family: 'Manrope', sans-serif;
     color: white;
     width: 70px;
-    background-color: grey;
+    background-color: rgb(63, 63, 63);
     border: none;
     border-radius: 10px;
+    margin-left: 20px;
 }
 
 #delete-button {
@@ -231,7 +240,50 @@ div.spot-page-subheader > ul {
     cursor: pointer;
 }
 
-#submit-review-button {
-    align-items: center;
+/* #submit-review-button {
+    justify-content: center !important;
     width: 100%
+} */
+
+.btn.btn.btn-review {
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 13pt;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    /* cursor: pointer; */
+
+    --background-color: rgb(227, 28, 95);
+    --border-size: 2px;
+    --accent-color: rgb(94, 94, 94);
+}
+
+.btn.btn-review {
+    z-index: 1;
+}
+
+.btn.btn-review::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-color);
+    z-index: -1;
+    border: var(--border-size) solid var(--background-color);
+    transition: transform 150ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.btn.btn-review:hover::before {
+    transform: scaleX(.08);
 }

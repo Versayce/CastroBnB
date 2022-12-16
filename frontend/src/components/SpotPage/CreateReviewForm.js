@@ -69,7 +69,7 @@ function CreateReviewForm({ spotId, setIsShown }) {
           
 
           <span className='form-button'>
-            <input id='submit-review-button' type="submit" value='Submit Review' />
+            <input className="btn btn-review" id='submit-review-button' type="submit" value='Submit Review' />
           </span>
         </form>
       );

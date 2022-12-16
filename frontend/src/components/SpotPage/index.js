@@ -85,7 +85,7 @@ function SpotPage () {
 
                         <div className="spot-review-form">
                             <span id='review-form-button'>
-                                <input type="submit" onClick={handleClick} value='Leave a Review' />
+                                <input className="btn btn-review" type="submit" onClick={handleClick} value='Leave a Review' />
                             </span>
                             {isShown && (
                                 <CreateReviewForm setIsShown={setIsShown} spotId={spotId} />

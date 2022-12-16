@@ -18,6 +18,8 @@ const SpotReviews = ({ review }) => {
             <div id="user-reviews">
                 <div id='username'>{`${review.User?.firstName}: `}</div>
                 <div>{review.review}</div>
+                <div className="fa-solid fa-star fa-xs" />
+                <div className='review-star'>{review.stars}</div>
                 {showDeleteForRelatedUser && <span className='review-delete-button'><div id='delete-button' onClick={() => dispatch(deleteReview(review.id))}>Delete</div></span>}
             </div>
         </div>
