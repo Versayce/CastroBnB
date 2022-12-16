@@ -36,11 +36,30 @@
   justify-content: center;
   width: 48%;
   max-width: 900px;
-  height: max-content;
+  height: 80vh;
   position: absolute;
   background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(243, 243, 243));
   border-radius: 15px;
   overflow: auto;
+}
+
+#modal-content::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
 }
 
 .signup {
@@ -67,4 +86,3 @@
   margin-top: 30px;
   margin-bottom: 25px;
 }
-
