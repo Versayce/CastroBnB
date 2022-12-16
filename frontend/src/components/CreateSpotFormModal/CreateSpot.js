@@ -98,7 +98,7 @@ const CreateSpot = ({ setShowModal }) => {
             label: "ImageUrl",
             errorMessage: "Please enter a URL that contains .jpg, .jpeg, .png, .bmp, or .gif extension type",
             required: true,
-            pattern: ".*\.(jpg|jpeg|png|webp|avif|gif|bmp).*",
+            pattern: ".*\.(jpg|jpeg|png|gif|bmp).*",
         },
     ];
 
