@@ -41,6 +41,7 @@
   background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(243, 243, 243));
   border-radius: 15px;
   overflow: auto;
+  scrollbar-gutter: stable both-edges;
 }
 
 #modal-content::-webkit-scrollbar {
@@ -52,14 +53,14 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #d6dee1;
-  border-radius: 20px;
+  background-color: #afafafab;
+  border-radius: 9px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #a8bbbf;
+  background-color: #868686;
 }
 
 .signup {

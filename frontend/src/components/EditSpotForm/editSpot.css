@@ -17,7 +17,7 @@ form {
     flex-direction: column;
     width: 100%;
     margin: 5% 0%;
-    margin-left: 20px;
+    margin-left: 0px;
     max-width: 400px;
 }
 
@@ -26,7 +26,7 @@ form {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     background-color: rgb(63, 63, 63);
     color: white;
     font-size: 13pt;
