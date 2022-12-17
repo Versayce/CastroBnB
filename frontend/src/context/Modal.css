@@ -36,7 +36,7 @@
   justify-content: center;
   width: 48%;
   max-width: 900px;
-  height: 80vh;
+  height: 70vh;
   position: absolute;
   background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(243, 243, 243));
   border-radius: 15px;
@@ -61,29 +61,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #868686;
-}
-
-.signup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#edit-spot-form{
-  margin-left: 10%;
-  margin-right: 10%;
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-#edit-spot-form > h1 {
-  margin-bottom: 40px;
-  margin-top: 40px;
-}
-
-.form-button {
-  width: 50%;
-  margin-top: 30px;
-  margin-bottom: 25px;
 }
