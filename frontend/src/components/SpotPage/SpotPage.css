@@ -245,8 +245,8 @@ div.fa-solid.fa-star.fa-xs {
     width: 100%
 } */
 
-.btn.btn.btn-review {
-    margin-top: 5px;
+.btn {
+    margin-top: 0px;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -269,6 +269,10 @@ div.fa-solid.fa-star.fa-xs {
     z-index: 1;
 }
 
+.btn.btn-review:hover {
+    background-color: rgb(227, 28, 95);
+}
+
 .btn.btn-review::before {
     content: '';
     position: absolute;
@@ -286,4 +290,24 @@ div.fa-solid.fa-star.fa-xs {
 
 .btn.btn-review:hover::before {
     transform: scaleX(.08);
+}
+
+#submit-review-button {
+    margin-top: 25px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 13pt;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+}
+
+#submit-review-button:hover {
+    background-color: rgb(227, 28, 95);
+    cursor: pointer;
 }

@@ -45,7 +45,7 @@ function CreateReviewForm({ spotId, setIsShown }) {
 
 
       return (
-        <form onSubmit={handleSubmit}>
+        <form id="form-review" onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
@@ -69,7 +69,7 @@ function CreateReviewForm({ spotId, setIsShown }) {
           
 
           <span className='form-button'>
-            <input className="btn btn-review" id='submit-review-button' type="submit" value='Submit Review' />
+            <input id='submit-review-button' type="submit" value='Submit Review' />
           </span>
         </form>
       );

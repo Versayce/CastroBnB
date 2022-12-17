@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 75%;
+    margin: auto;
 }
 
 .formInput {
@@ -24,8 +25,6 @@ form {
     flex-direction: column;
     width: 100%;
     max-width: 400px;
-    margin-top: 20%;
-    margin-bottom: 20%;
 }
 
 .btn {
