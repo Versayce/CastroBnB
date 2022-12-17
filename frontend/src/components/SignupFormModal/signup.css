@@ -16,7 +16,7 @@ form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 5% 0%;
+    /* margin: 5% 0%; */
     margin-left: 0px;
     max-width: 400px;
 }
