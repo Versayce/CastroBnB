@@ -164,23 +164,27 @@ div.fa-solid.fa-star.fa-xs {
     margin-bottom: 0px;
     line-height: 2em;
     margin-left: 10px;
-    margin-right: 2px;
+    margin-right: 3px;
 }
 
 .spot-reviews > div {
     /* border: solid rgb(255, 35, 35) 2px; */
     width: 100%;
-    /* padding-top: 10px; */
-    /* padding-bottom: 10px; */
+}
+
+.review-star {
+    margin-right: 20px;
+}
+
+#star-spacing {
+    margin-left: 90px;
 }
 
 #user-reviews-wrapper {
-    /* margin-top: 20px; */
     padding-left: 20px;
     padding-bottom: 20px;
     padding-top: 20px;
     display: flex;
-    justify-content: flex-start;
     border-bottom: solid rgb(235, 235, 235) 2px;
     background-image: linear-gradient(to bottom, rgb(244, 244, 244), rgb(244, 244, 244));
 }
@@ -194,6 +198,12 @@ div.fa-solid.fa-star.fa-xs {
 }
 
 #user-reviews {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.review-content {
     display: flex;
 }
 
@@ -233,7 +243,7 @@ div.fa-solid.fa-star.fa-xs {
     background-color: rgb(63, 63, 63);
     border: none;
     border-radius: 10px;
-    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #delete-button {

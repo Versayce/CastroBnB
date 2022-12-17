@@ -16,12 +16,16 @@ const SpotReviews = ({ review }) => {
     return (
         <div id='user-reviews-wrapper'>
             <div id="user-reviews">
-                <div id='username'>{`${review.User?.firstName}: `}</div>
-                <div>{review.review}</div>
-                <div className="fa-solid fa-star fa-xs" />
-                <div className='review-star'>{review.stars}</div>
-                {showDeleteForRelatedUser && <span className='review-delete-button'><div id='delete-button' onClick={() => dispatch(deleteReview(review.id))}>Delete</div></span>}
+                <div className='review-content'>
+                    <div id='username'>{`${review.User?.firstName}: `}</div>
+                    <div>{review.review}</div>
+                </div>
+                <div className='review-content'>
+                    <div className="fa-solid fa-star fa-xs" />
+                    <div className='review-star'>{review.stars}</div>
+                </div>
             </div>
+                {showDeleteForRelatedUser ? <span className='review-delete-button'><div id='delete-button' onClick={() => dispatch(deleteReview(review.id))}>Delete</div></span> : <span id='star-spacing'></span>}
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { startTransition, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSpotReview } from "../../store/reviews";
 
@@ -10,36 +10,39 @@ function CreateReviewForm({ spotId, setIsShown }) {
     const reviews = useSelector(state => state.reviews.Reviews)
 
     const [review, setReview] = useState("");
-    const [stars, setStars] = useState("");
+    const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
     
     
     //console.log("This is the user:", user)
     //console.log('review form spotId: ', spotId)
-    //console.log('review form stars: ', stars)
+    console.log('review form stars: ', stars)
 
     const handleSubmit = async (e) => {
       e.preventDefault();
 
       const editedSpot = {
           // "User": user,
-          review,
-          stars
-        }
+        review,
+        stars
+      }
 
-      if (review.length > 10) {
-        setErrors([]);
-        return dispatch(createSpotReview(editedSpot, spotId))
-          .then(() => setIsShown(false))
-          .catch(async (res) => {
-            const data = await res.json();
-            if (data && data.message) setErrors([data.message]);
-          })
-      };
-
+      if(Number(stars) > 5 || Number(stars) <= 0) {
+        return setErrors(['Rating must be a number from 1-5'])
+      }
       if(review.length < 10) {
         return setErrors(['Review length must be 10 or greater'])
       }
+
+      
+      return dispatch(createSpotReview(editedSpot, spotId))
+        .then(() => setIsShown(false))
+        .catch(async (res) => {
+          const data = await res.json();
+          if (data && data.message) setErrors([data.message]);
+        })
+      
+
 
     };
 
