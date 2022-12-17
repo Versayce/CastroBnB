@@ -170,17 +170,23 @@ div.fa-solid.fa-star.fa-xs {
 .spot-reviews > div {
     /* border: solid rgb(255, 35, 35) 2px; */
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    /* padding-top: 10px; */
+    /* padding-bottom: 10px; */
 }
 
 #user-reviews-wrapper {
-    margin-top: 20px;
-    margin-left: 20px;
-    padding-bottom: 30px;
+    /* margin-top: 20px; */
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
     display: flex;
     justify-content: flex-start;
     border-bottom: solid rgb(235, 235, 235) 2px;
+    background-image: linear-gradient(to bottom, rgb(244, 244, 244), rgb(244, 244, 244));
+}
+
+#user-reviews-wrapper:hover {
+    background-image: linear-gradient(180deg, rgb(228, 228, 228), 0%, rgb(235, 235, 235), 80%, rgb(228, 228, 228));
 }
 
 #user-reviews-wrapper:last-child {
@@ -246,7 +252,7 @@ div.fa-solid.fa-star.fa-xs {
 } */
 
 .btn {
-    margin-top: 0px;
+    /* margin-top: 0px; */
     padding: 10px;
     border: none;
     border-radius: 5px;
