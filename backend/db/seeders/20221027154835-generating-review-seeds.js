@@ -102,8 +102,8 @@ module.exports = {
       },
       {
         "spotId": 6,
-        "userId": 2,
-        "review": "Review 11",
+        "userId": 3,
+        "review": "Testing this review",
         "stars": 3
       },
       {
