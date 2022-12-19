@@ -10,7 +10,7 @@
 .spot-info {
     /* border: 1px solid red; */
     overflow: auto;
-    width: 65%;
+    width: 63%;
 }
 
 .spot-info > p {
@@ -41,7 +41,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-    width: 35%;
+    width: 37%;
 }
 
 .spot-rating {

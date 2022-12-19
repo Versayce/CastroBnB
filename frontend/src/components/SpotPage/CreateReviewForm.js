@@ -41,42 +41,37 @@ function CreateReviewForm({ spotId, setIsShown }) {
           const data = await res.json();
           if (data && data.message) setErrors([data.message]);
         })
-      
-
-
     };
 
-
-      return (
-        <form id="form-review" onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-          
-            <input
-              type="text"
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
-              placeholder="Review"
-              required
+    return (
+      <form id="form-review" onSubmit={handleSubmit}>
+        
+          <input
+            type="text"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+            placeholder="Review"
+            required
             />
-          
-          <label>Stars</label>
-            <input
-              min='0'
-              type="number"
-              value={stars}
-              onChange={(e) => setStars(e.target.value)}
-              required
+        
+        <label>Stars</label>
+          <input
+            min='0'
+            type="number"
+            value={stars}
+            onChange={(e) => setStars(e.target.value)}
+            required
             />
-          
+        
+        <div>
+          {errors.map((error, idx) => <p id="review-form-error" key={idx}>{error}</p>)}
+        </div>
 
-          <span className='form-button'>
-            <input id='submit-review-button' type="submit" value='Submit Review' />
-          </span>
-        </form>
-      );
-
+        <span className='form-button'>
+          <input id='submit-review-button' type="submit" value='Submit Review' />
+        </span>
+      </form>
+    );
 }
 
 
