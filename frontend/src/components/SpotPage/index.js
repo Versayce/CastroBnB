@@ -21,10 +21,6 @@ function SpotPage () {
 
     //const showDeleteForRelatedUser = sessionUser?.id === review.userId
 
-    //console.log('SINGLE SPOT PAGE SPOT: ', spot)
-    //console.log('SPOT REVIEWS SESSION USER: ', sessionUser)
-    //console.log('ORIGINAL spotId', spot.id)
-
     useEffect(() => {
         dispatch(getOneSpot(spotId));
         dispatch(getSpotReviews(spotId));

@@ -39,7 +39,6 @@ const Signup = ({ setShowModal }) => {
         .catch(
             async (res) => {
                 const data = await res.json();
-                //console.log('Login form data: ', data)
                 if (data && data.errors) setApiErrors(data.errors);
             }
         )
@@ -47,7 +46,6 @@ const Signup = ({ setShowModal }) => {
 
     const onChange = (e) => {
         setLoginData({...loginData, [e.target.name]: e.target.value });
-        console.log('login data: ', loginData)
     };
 
     return (

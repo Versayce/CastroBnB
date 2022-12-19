@@ -16,7 +16,6 @@ export const loadSpotReviews = (reviews) => {
 }
 
 export const addSpotReview = (review) => {
-    console.log('ACTION DATA FOR ADD REVIEW: ', review)
     return {
         type: ADD_REVIEW,
         review
@@ -57,8 +56,6 @@ export const createSpotReview = (spotReview, spotId) => async (dispatch) => {
             stars
         })
     });
-
-    console.log('response: ', res)
     
     if(res.ok){
         const data = await res.json();

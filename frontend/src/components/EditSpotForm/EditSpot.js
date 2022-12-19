@@ -119,7 +119,6 @@ const EditSpot = ({ setShowModal, spot }) => {
 
     const onChange = (e) => {
         setEditSpotData({...editSpotData, [e.target.name]: e.target.value });
-        console.log('edit spot data: ', editSpotData)
     };
 
     return (

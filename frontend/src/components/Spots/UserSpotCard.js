@@ -13,7 +13,6 @@ export default function CurrentUserSpotCard({ spot }){
     const history = useHistory();
     const [showModal, setShowModal] = useState()
     const dispatch = useDispatch();
-    //console.log('spot from currentspotcard: ', spot)
     return (
         <>
             <div onClick={() => history.push(`/spots/${spot.id}`)}>

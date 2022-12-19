@@ -7,7 +7,6 @@ import { useState } from 'react';
 
 
 const SpotReviews = ({ review }) => {
-    // console.log('SpotReviews REVIEW: ', review.User)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     //const showDeleteForRelatedUser = sessionUser?.id === review.userId

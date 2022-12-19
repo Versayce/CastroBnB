@@ -116,7 +116,6 @@ const CreateSpot = ({ setShowModal }) => {
 
     const onChange = (e) => {
         setCreateSpotData({...createSpotData, [e.target.name]: e.target.value });
-        console.log('create spot data: ', createSpotData)
     };
 
     return (
