@@ -13,19 +13,9 @@ function CreateReviewForm({ spotId, setIsShown }) {
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
 
-    function handleScroll() {
-      window.scroll({
-        top: document.body.offsetHeight,
-        left: 0, 
-        behavior: 'smooth',
-      });
-    }
-
     const handleSubmit = async (e) => {
       e.preventDefault();
-      handleScroll();
       const editedSpot = {
-          // "User": user,
         review,
         stars
       }
