@@ -51,6 +51,24 @@ router.get('/', async (req, res) => {
         })
     }
 
+    // SEARCHING RESULTS
+    if(req.query.search){
+        let searchValue = req.query.search.toLowerCase();
+        let searchSpots = await Spot.findAll({
+            where: {
+                name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + searchValue + '%')
+            }
+        })
+        console.log('inside of searching route====================', searchSpots)
+        let searchSpotsResults = [];
+        searchSpots.forEach(spot => {
+            searchSpotsResults.push(spot.toJSON())
+        })
+        return res.json({
+            'Spots': searchSpotsResults
+        })
+    }
+
     // *******GET ALL SPOTS NO PAGINATION********
     const allSpots = await Spot.findAll({
         include: [
