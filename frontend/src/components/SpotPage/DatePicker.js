@@ -1,38 +1,49 @@
 import React, { useState } from 'react';
 import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
+import styled from 'styled-components'
 
 import { DateRangePicker } from 'react-dates';
-// import e from 'express';
+import 'react-dates/lib/css/_datepicker.css';
+import './DateStyles.css'
+
 
 const DatePicker = () => {
-    const [startDate, setStartDate] = useState(null)
-    const [endDate, setEndDate] = useState(null)
-    const [state, setState]= useState({
-        focusedInput: null,
-    });
-
-    console.log('START DATE: ', startDate?.toDate(), '\n', 'END DATE: ', endDate?.toDate())
+    const [startDate, setStartDate] = React.useState();
+    const [endDate, setEndDate] = React.useState();
+    const [focusedInput, setFocusedInput] = React.useState();
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        console.log('TRIGGERED BUTTON', startDate, '\n', endDate)
     }
 
     return (
-        <>
-            <DateRangePicker
-                startDateId="startDate"
-                endDateId="endDate"
-                startDate={startDate}
-                endDate={endDate}
-                onDatesChange={({ startDate, endDate }) => (setStartDate(startDate), setEndDate(endDate))}
-                focusedInput={state.focusedInput}
-                onFocusChange={(focusedInput) => {setState({ focusedInput })}}
-            />
-            <button onClick={(e) => handleSubmit}>Submit</button>
-        </>
-    )
+      <Wrapper>
+        <DateRangePicker
+          startDate={startDate}
+          startDateId="start-date"
+          endDate={endDate}
+          endDateId="end-date"
+          onDatesChange={({ startDate, endDate }) => {
+            setStartDate(startDate);
+            setEndDate(endDate);
+          }}
+          focusedInput={focusedInput}
+          onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+        />
+        <Button onClick={(e) => handleSubmit(e)}>Book Listing</Button>
+      </Wrapper>
+    );
 }
 
 export default DatePicker
+
+const Button = styled.button`
+    width: 20%;
+`
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+`

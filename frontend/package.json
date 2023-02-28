@@ -17,7 +17,8 @@
     "react-scripts": "5.0.1",
     "react-with-direction": "^1.4.0",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "styled-components": "^5.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.7",
     "redux-logger": "^3.0.6"
   },
   "proxy": "http://localhost:8000"

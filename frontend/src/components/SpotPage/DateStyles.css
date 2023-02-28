@@ -1,0 +1,39 @@
+.CalendarDay__selected_span {
+    background: #82e0aa;
+    color: white;
+    border: 1px solid greenyellow;
+  }
+  .CalendarDay__selected {
+    background: green;
+    color: white;
+  }
+  .CalendarDay__selected:hover {
+    background: orange;
+    color: white;
+  }
+  .CalendarDay__hovered_span:hover,
+  .CalendarDay__hovered_span {
+    background: brown;
+  }
+
+.DateInput_input {
+    font-weight: 200;
+    font-size: 19px;
+    line-height: 24px;
+    color: #484848;
+    background-color: #fff;
+    width: 90%;
+    padding: 11px 11px 9px;
+    border: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 2px solid transparent;
+    border-left: 0;
+    border-radius: 0;
+}
+
+.DateRangePickerInput__withBorder {
+    border-radius: 2px;
+    border: 1px solid #dbdbdb;
+    width: 300px;
+}
