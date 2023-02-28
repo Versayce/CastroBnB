@@ -5,6 +5,7 @@ import { getSpotReviews } from "../../store/reviews";
 import { getOneSpot } from "../../store/spots";
 import SpotReviews from "../Spots/SpotReviews";
 import CreateReviewForm from "./CreateReviewForm";
+import DatePicker from "./DatePicker";
 import './SpotPage.css'
 
 function SpotPage () {
@@ -67,6 +68,8 @@ function SpotPage () {
                         </div>
                         <h4>{spot.description}</h4>
                     </div>
+
+                    <DatePicker />
 
                     <div id="review-section">
                         <h1>Reviews</h1>
