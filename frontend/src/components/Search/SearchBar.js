@@ -8,11 +8,12 @@ const SearchBar = () => {
         e.preventDefault();
         console.log('SEARCH QUERY: ', query)
         // dispatch search here
+        setQuery("")
     }
 
     return (
         <SearchWrapper>
-            <StyledInput type="text" onChange={e => setQuery(e.target.value)}/>
+            <StyledInput value={query} type="text" onChange={e => setQuery(e.target.value)}/>
             <StyledButton onClick={e => handleSubmit(e)}>Search</StyledButton>
         </SearchWrapper>
     )
