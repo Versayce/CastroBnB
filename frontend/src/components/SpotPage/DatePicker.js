@@ -18,30 +18,49 @@ const DatePicker = () => {
     }
 
     return (
-      <Wrapper>
-        <DateRangePicker
-          startDate={startDate}
-          startDateId="start-date"
-          endDate={endDate}
-          endDateId="end-date"
-          onDatesChange={({ startDate, endDate }) => {
-            setStartDate(startDate);
-            setEndDate(endDate);
-          }}
-          focusedInput={focusedInput}
-          onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
-        />
-        <Button onClick={(e) => handleSubmit(e)}>Book Listing</Button>
-      </Wrapper>
+        <Wrapper>
+            <DateRangePicker
+            startDate={startDate}
+            startDateId="start-date"
+            endDate={endDate}
+            endDateId="end-date"
+            onDatesChange={({ startDate, endDate }) => {
+                setStartDate(startDate);
+                setEndDate(endDate);
+            }}
+            focusedInput={focusedInput}
+            onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+            />
+            <Button onClick={(e) => handleSubmit(e)}>Book Listing</Button>
+        </Wrapper>
     );
 }
 
 export default DatePicker
 
 const Button = styled.button`
-    width: 20%;
+    margin-top: 0px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 13pt;
+    position: relative;
+    overflow: hidden;
+    width: 18%;
+    justify-content: center;
+    &:hover {
+        background-color: rgb(227, 28, 95);
+        cursor: pointer;
+    }
 `
 const Wrapper = styled.div`
+    border: 1px solid #ececec;
+    background-image: linear-gradient(to bottom, #ffffff, #fdfdfd, #fbfcfb, #fafafa, #f8f8f8);
+    border-radius: 10px;
+    padding: 60px 0px 60px 0px;
+    margin: 30px 0px 30px 0px;
     display: flex;
     flex-direction: row;
     justify-content: center;

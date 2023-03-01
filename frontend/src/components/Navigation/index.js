@@ -8,6 +8,7 @@ import Login from '../LoginFormModal/Login'
 import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
 import CreateSpot from '../CreateSpotFormModal/CreateSpot';
 import './Navigation.css';
+import SearchBar from '../Search/SearchBar';
 
 
 export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot' };
@@ -38,6 +39,7 @@ function Navigation({ isLoaded }){
             <span id="logo-text">Castrobnb</span>
           </NavLink>
         </div>
+        <SearchBar />
         <div>
           {isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}
         </div>
