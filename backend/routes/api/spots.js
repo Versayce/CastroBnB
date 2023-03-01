@@ -55,6 +55,10 @@ router.get('/', async (req, res) => {
     if(req.query.search){
         let searchValue = req.query.search.toLowerCase();
         let searchSpots = await Spot.findAll({
+            include: [
+                {model: Review},
+                {model: SpotImage}
+            ],
             where: {
                 name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + searchValue + '%')
             }
@@ -64,6 +68,33 @@ router.get('/', async (req, res) => {
         searchSpots.forEach(spot => {
             searchSpotsResults.push(spot.toJSON())
         })
+
+        searchSpotsResults.forEach(spot => {
+            let starCount = 0;
+            let numRev = 0;
+            spot.Reviews.forEach(review => {
+                //console.log(review.stars)
+                if(review) {
+                    //console.log(review)
+                    numRev += 1;
+                    starCount += review.stars;
+                    spot.avgRating = Math.round(starCount/numRev * 10 ) / 10;
+                }
+            })
+
+            spot.SpotImages.forEach(image => {
+                if(!image) {}
+                if(image.preview === true) {
+                    spot.previewImage = image.url
+                }
+            })
+
+            if(spot.avgRating === undefined) spot.avgRating = null;
+            if(spot.SpotImages.length === 0) spot.previewImage = null;
+            delete spot.Reviews;
+            delete spot.SpotImages;
+        })
+
         return res.json({
             'Spots': searchSpotsResults
         })
