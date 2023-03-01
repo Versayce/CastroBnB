@@ -204,7 +204,7 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
     }
 }
 
-export const getBookingsBySpotId = (bookingInfo) => async (dispatch) => {
+export const createBookingsBySpotId = (bookingInfo) => async (dispatch) => {
     const {spotId, startDate, endDate} = bookingInfo
     console.log('IN BOOKING THUNK', bookingInfo)
     const res = await csrfFetch(`/api/spots/${spotId}/bookings`, {
@@ -216,8 +216,9 @@ export const getBookingsBySpotId = (bookingInfo) => async (dispatch) => {
         })
     })
     if(res.ok) {
+        res.message = "Successfully Created Booking"
         const data = await res.json();
-        console.log('DATA INSIDE OF BOOKING THUNK', data)
+        return data
     }
 }
 

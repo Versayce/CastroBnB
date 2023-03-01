@@ -432,15 +432,16 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
     
     
-    const makeBooking = await Booking.create({
+    const booking = await Booking.create({
         "startDate": req.body.startDate,
         "endDate": req.body.endDate,
         "spotId": Number.parseInt(req.params.spotId),
         "userId": req.user.id
     })
-    return res.json(
-        makeBooking
-    )
+    return res.json({
+        booking,
+        message: "Successfully Booked"
+    })
 })
 
 

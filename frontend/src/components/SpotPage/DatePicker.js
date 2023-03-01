@@ -7,7 +7,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import './DateStyles.css'
 import { useDispatch } from 'react-redux';
 
-import { getBookingsBySpotId } from '../../store/spots';
+import { createBookingsBySpotId } from '../../store/spots';
 
 
 const DatePicker = (props) => {
@@ -15,11 +15,20 @@ const DatePicker = (props) => {
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
     const [focusedInput, setFocusedInput] = useState();
+    const [successMessage, setSuccessMessage] = useState();
+    const [errors, setErrors] = useState()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('TRIGGERED BUTTON', formData)
-        dispatch(getBookingsBySpotId(formData))
+        dispatch(createBookingsBySpotId(formData))
+        .catch(
+            async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.message);
+                console.log('TRIGGERED BUTTON', data.message)
+            }
+        )
+        setErrors();
     }
 
     const formData = {
@@ -30,6 +39,7 @@ const DatePicker = (props) => {
 
     return (
         <Wrapper>
+            <span id='api-error'>{errors}</span>
             <DateRangePicker
             startDate={startDate}
             startDateId="start-date"
