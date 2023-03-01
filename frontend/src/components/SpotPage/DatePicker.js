@@ -56,8 +56,8 @@ const Button = styled.button`
     }
 `
 const Wrapper = styled.div`
-    border: 1px solid #ececec;
-    background-image: linear-gradient(to bottom, #ffffff, #fdfdfd, #fbfcfb, #fafafa, #f8f8f8);
+    border: 1px solid #e2e2e2;
+    background-image: linear-gradient(to bottom, #ffffff, #fdfdfd, #fafafa, #f8f8f8, #f6f6f6);
     border-radius: 10px;
     padding: 60px 0px 60px 0px;
     margin: 30px 0px 30px 0px;
