@@ -69,7 +69,7 @@ function SpotPage () {
                         <h4>{spot.description}</h4>
                     </div>
 
-                    <DatePicker />
+                    <DatePicker spotId={ spotId }/>
 
                     <div id="review-section">
                         <h1>Reviews</h1>

@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import 'react-dates/initialize';
 import styled from 'styled-components'
 
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import './DateStyles.css'
+import { useDispatch } from 'react-redux';
+
+import { getBookingsBySpotId } from '../../store/spots';
 
 
-const DatePicker = () => {
-    const [startDate, setStartDate] = React.useState();
-    const [endDate, setEndDate] = React.useState();
-    const [focusedInput, setFocusedInput] = React.useState();
+const DatePicker = (props) => {
+    const dispatch = useDispatch();
+    const [startDate, setStartDate] = useState();
+    const [endDate, setEndDate] = useState();
+    const [focusedInput, setFocusedInput] = useState();
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('TRIGGERED BUTTON', startDate, '\n', endDate)
+        console.log('TRIGGERED BUTTON', formData)
+        dispatch(getBookingsBySpotId(formData))
+    }
+
+    const formData = {
+        "spotId": parseInt(props.spotId),
+        "startDate": startDate?.toDate().toISOString().split('T')[0],
+        "endDate": endDate?.toDate().toISOString().split('T')[0]
     }
 
     return (

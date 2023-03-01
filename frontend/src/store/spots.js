@@ -204,6 +204,23 @@ export const editSpotById = (spot) => async (dispatch) => {  //make a fetch requ
     }
 }
 
+export const getBookingsBySpotId = (bookingInfo) => async (dispatch) => {
+    const {spotId, startDate, endDate} = bookingInfo
+    console.log('IN BOOKING THUNK', bookingInfo)
+    const res = await csrfFetch(`/api/spots/${spotId}/bookings`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            'startDate': startDate,
+            'endDate': endDate
+        })
+    })
+    if(res.ok) {
+        const data = await res.json();
+        console.log('DATA INSIDE OF BOOKING THUNK', data)
+    }
+}
+
 //------------------------------ REDUCER ------------------------------//
 
 const initialState = { allSpots: {}, oneSpot: {} }
