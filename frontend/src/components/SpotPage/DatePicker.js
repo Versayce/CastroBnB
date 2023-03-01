@@ -7,7 +7,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import './DateStyles.css'
 import { useDispatch } from 'react-redux';
 
-import { createBookingsBySpotId } from '../../store/spots';
+import { createBookingsBySpotId } from '../../store/bookings';
 
 
 const DatePicker = (props) => {
@@ -29,6 +29,7 @@ const DatePicker = (props) => {
             }
         )
         setErrors();
+        setSuccessMessage("Booking Created")
     }
 
     const formData = {
@@ -40,6 +41,7 @@ const DatePicker = (props) => {
     return (
         <Wrapper>
             <span id='api-error'>{errors}</span>
+            <span id='api-error'>{successMessage}</span>
             <DateRangePicker
             startDate={startDate}
             startDateId="start-date"
