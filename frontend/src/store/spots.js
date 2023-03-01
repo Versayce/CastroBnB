@@ -7,6 +7,7 @@ const ADD_SPOT = 'spots/add'
 const ADD_SPOT_IMAGE = 'spots/spotId/addimages'
 const EDIT_SPOT = '/spots/spotId/edit'
 const LOAD_CURRENT_SPOTS = '/spots/load/current'
+const LOAD_QUERIED_SPOTS = '/spots/load/queried'
 
 
 //------------------------------ ACTIONS ------------------------------//
@@ -21,6 +22,13 @@ export const loadSpots = (spots) => {
 export const loadCurrentSpots = (spots) => {
     return {
         type: LOAD_CURRENT_SPOTS,
+        spots
+    }
+}
+
+export const loadQueriedSpots = (spots) => {
+    return {
+        type: LOAD_QUERIED_SPOTS,
         spots
     }
 }
@@ -79,6 +87,15 @@ export const getSpotsCurrent = () => async (dispatch) => {
     if(res.ok){
         const data = await res.json();
         dispatch(loadCurrentSpots(data.Spots))
+    }
+}
+
+export const getSpotsWithSearchQuery = (query) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots?search=${query}`)
+
+    if(res.ok) {
+        const data = await res.json();
+        dispatch(loadQueriedSpots(data))
     }
 }
 
@@ -206,6 +223,16 @@ const spotReducer = (state = initialState, action) => {
             {
                 const newState = { allSpots: {}, oneSpot: {} };
                 action.spots.forEach(spot => {
+                    newState.allSpots[spot.id] = spot
+                });
+                return newState;
+            }
+            
+            case LOAD_QUERIED_SPOTS:
+            {
+                console.log('QUERIED SPOT DATA =========================================', action.spots.Spots)
+                const newState = { allSpots: {}, oneSpot: {} };
+                action.spots.Spots.forEach(spot => {
                     newState.allSpots[spot.id] = spot
                 });
                 return newState;

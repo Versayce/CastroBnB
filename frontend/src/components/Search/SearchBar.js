@@ -1,13 +1,17 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { getSpotsWithSearchQuery } from "../../store/spots";
 
 const SearchBar = () => {
+    const dispatch = useDispatch()
     const [query, setQuery] = useState("")
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('SEARCH QUERY: ', query)
         // dispatch search here
+        await dispatch(getSpotsWithSearchQuery(query))
         setQuery("")
     }
 
