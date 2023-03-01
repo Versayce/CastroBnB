@@ -29,15 +29,24 @@ const SearchWrapper = styled.div`
     align-items: center;
 `
 
-const StyledLabel = styled.label`
-
-`
-
 const StyledInput = styled.input`
     margin: 0px;
     padding: 5px;
     margin: 0px 10px 0px 10px;
 `
 const StyledButton = styled.button`
-    
+    margin-top: 0px;
+    border: none;
+    padding: 5px 8px 5px 8px;
+    border-radius: 3px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 12pt;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    &:hover {
+        background-color: rgb(227, 28, 95);
+        cursor: pointer;
+    }
 `
