@@ -38,7 +38,7 @@ export const createBookingsBySpotId = (bookingInfo) => async () => {
     }
 }
 
-export const editBookingsById = (bookingInfo) => async () => {
+export const editBookingById = (bookingInfo) => async () => {
     const {bookingId, startDate, endDate} = bookingInfo
     console.log('IN BOOKING THUNK', bookingInfo)
     const res = await csrfFetch(`/api/bookings/${bookingId}`, {

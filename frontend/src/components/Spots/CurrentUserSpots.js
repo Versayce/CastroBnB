@@ -4,7 +4,8 @@ import { getSpotsCurrent } from "../../store/spots";
 import CurrentUserSpotCard from "./UserSpotCard";
 import './SpotCard.css'
 import styled from 'styled-components'
-import { deleteBookingById, getBookings } from "../../store/bookings";
+import { deleteBookingById, editBookingById, getBookings } from "../../store/bookings";
+import EditDatePicker from "./EditDatePicker";
 
 
 const CurrentUserSpots = () => {
@@ -22,6 +23,10 @@ const CurrentUserSpots = () => {
         dispatch(deleteBookingById(bookingId))
     }
 
+    const handleEdit = (bookingId) => {
+        dispatch(editBookingById(bookingId))
+    }
+
     useEffect(() => {
         dispatch(getSpotsCurrent())
         dispatch(getBookings())
@@ -35,7 +40,11 @@ const CurrentUserSpots = () => {
                     {userBookings.length ? userBookings.map((booking) => (
                         <Booking key={booking.id}>
                             <p>{booking.Spot.name}</p>
-                            <StyledButton onClick={() => handleDelete(booking.id)}>Cancel Booking</StyledButton>
+                            <EditDatePicker bookingId={booking.id}/>
+                            <ButtonWrapper>
+                                {/* <StyledButton onClick={() => handleEdit(booking.id)}>Edit Booking</StyledButton> */}
+                                <StyledButton onClick={() => handleDelete(booking.id)}>Cancel Booking</StyledButton>
+                            </ButtonWrapper>
                         </Booking>
                     )) : <h2 style={{marginTop: 40}}>No bookings have been added. Locations you've booked will show up here!</h2>}
                 </UserBookings>
@@ -46,7 +55,6 @@ const CurrentUserSpots = () => {
                             <CurrentUserSpotCard spot={spot} />
                         </div>
                     )) : <h1 style={{marginTop: 40}}>No listings have been added. Please add a listing.</h1>}
-                    
                 </div>
             </Wrapper>
         </div>
@@ -65,13 +73,13 @@ const Wrapper = styled.div`
 const UserBookings = styled.div`
     display: flex;
     flex-direction: column;
-    height: 300px;
+    height: 600px;
     justify-content: center;
     overflow-y: scroll;
     /* border: solid red 2px; */
 
     /* margin: 0px 200px 0px 200px; */
-    width: 600px;
+    width: 80%;
     font-family: 'Manrope', sans-serif;
 `
 const Booking = styled.div`
@@ -79,7 +87,7 @@ const Booking = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 20px;
+    height: 100px;
     padding: 10px;
     background-color: #ebebeb;
     &:hover {
@@ -102,4 +110,10 @@ const StyledButton = styled.button`
         background-color: rgb(227, 28, 95);
         cursor: pointer;
     }
+`
+
+const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 `
