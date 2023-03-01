@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -9,6 +10,7 @@ import CreateSpotForm from '../CreateSpotFormModal/CreateSpotForm';
 import CreateSpot from '../CreateSpotFormModal/CreateSpot';
 import './Navigation.css';
 import SearchBar from '../Search/SearchBar';
+import { getSpots } from '../../store/spots';
 
 
 export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot' };
@@ -27,6 +29,7 @@ const getModalForType = (modalType, setShowModal) => {
 }
 
 function Navigation({ isLoaded }){
+  const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
   const [showModal, setShowModal] = useState();
   const [login, setLogin] = useState(true);
@@ -35,7 +38,7 @@ function Navigation({ isLoaded }){
     <div className='navbar'>
       <div className='nav-elements'>
         <div className='home-button'>
-          <NavLink id="logo-link" exact to="/">
+          <NavLink id="logo-link" exact to="/" onClick={() => dispatch(getSpots())}>
             <span id="logo-text">Castrobnb</span>
           </NavLink>
         </div>
