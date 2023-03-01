@@ -29,9 +29,9 @@ const CurrentUserSpots = () => {
 
     return (
         <div className="spot-index">
-            <div className="page">
+            <Wrapper>
                 <UserBookings>
-                    <h2>Bookings</h2>
+                    <h2>Bookings:</h2>
                     {userBookings.length ? userBookings.map((booking) => (
                         <Booking key={booking.id}>
                             <p>{booking.Spot.name}</p>
@@ -48,19 +48,31 @@ const CurrentUserSpots = () => {
                     )) : <h1 style={{marginTop: 40}}>No listings have been added. Please add a listing.</h1>}
                     
                 </div>
-            </div>
+            </Wrapper>
         </div>
     )
 }
 
 export default CurrentUserSpots;
 
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    `
+
 const UserBookings = styled.div`
     display: flex;
     flex-direction: column;
     height: 300px;
+    justify-content: center;
     overflow-y: scroll;
-    border: solid red 2px;
+    /* border: solid red 2px; */
+
+    /* margin: 0px 200px 0px 200px; */
+    width: 600px;
+    font-family: 'Manrope', sans-serif;
 `
 const Booking = styled.div`
     display: flex;
@@ -68,10 +80,26 @@ const Booking = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 20px;
-    border: solid green 2px;
     padding: 10px;
+    background-color: #ebebeb;
+    &:hover {
+        background-color: #e4e4e4;
+    }
 `
 
 const StyledButton = styled.button`
-
+    margin-top: 0px;
+    border: none;
+    padding: 3px 6px 3px 6px;
+    border-radius: 3px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 10pt;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    &:hover {
+        background-color: rgb(227, 28, 95);
+        cursor: pointer;
+    }
 `

@@ -48,7 +48,7 @@ function ProfileButton({ user, setLogin, setShowModal }) {
             <span>{user.email}</span>
           </div>
           <li>
-            <div className="profile-dropdown-buttons" onClick={() => history.push(`/spots/current`)}>My Spots</div>
+            <div className="profile-dropdown-buttons" onClick={() => history.push(`/spots/current`)}>My Account</div>
           </li>
           <li>
             <div className="profile-dropdown-buttons" onClick={() => {

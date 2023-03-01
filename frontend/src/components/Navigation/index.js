@@ -11,6 +11,7 @@ import CreateSpot from '../CreateSpotFormModal/CreateSpot';
 import './Navigation.css';
 import SearchBar from '../Search/SearchBar';
 import { getSpots } from '../../store/spots';
+import styled from 'styled-components'
 
 
 export const MODAL_TYPE = { login: 'login', signup: 'signup', createSpot: 'createSpot' };
@@ -37,12 +38,12 @@ function Navigation({ isLoaded }){
   return (
     <div className='navbar'>
       <div className='nav-elements'>
-        <div className='home-button'>
+        <LogoNavSide>
           <NavLink id="logo-link" exact to="/" onClick={() => dispatch(getSpots())}>
             <span id="logo-text">Castrobnb</span>
           </NavLink>
-        </div>
-        <SearchBar />
+          <SearchBar />
+        </LogoNavSide>
         <div>
           {isLoaded && <ProfileButton user={sessionUser} setLogin={setLogin} setShowModal={setShowModal} />}
         </div>
@@ -59,3 +60,11 @@ function Navigation({ isLoaded }){
 
 
 export default Navigation;
+
+const LogoNavSide = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  margin-top: 6px;
+`
